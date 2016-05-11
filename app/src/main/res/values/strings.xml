@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ThinkFeelActProject</string>
+    <string name="title_activity_long_term_survey">LongTermSurveyActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
