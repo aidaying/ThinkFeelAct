@@ -10,15 +10,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LongTermSurveyActivity"
-            android:label="@string/title_activity_long_term_survey"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
