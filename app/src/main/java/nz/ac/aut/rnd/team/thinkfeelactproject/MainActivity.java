@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 
 public class MainActivity extends FragmentActivity {
 
-    private static final int fragment_first_time_initial_page=1;
-    private static final int fragment_first_time_survey=2;
+    private final int  fragment_first_time_initial_page=1;
+    private final int  fragment_first_time_survey=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,8 @@ public class MainActivity extends FragmentActivity {
                 FirstTimeInitialPageFragment firstTimeInitialPageFragment = new FirstTimeInitialPageFragment();
                 fragmentTransaction.add(R.id.fragment_container, firstTimeInitialPageFragment);
                 break;
-
             case fragment_first_time_survey:
                 FirstTimeSurveyFragment firstTimeSurveyFragment = new FirstTimeSurveyFragment();
-
                 fragmentTransaction.add(R.id.fragment_container, firstTimeSurveyFragment);
                 break;
 

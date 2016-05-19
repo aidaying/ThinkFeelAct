@@ -1,11 +1,13 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Aida on 12/05/2016.
@@ -14,6 +16,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "THINK_FEEL_ACT";
+    private SQLiteDatabase dbase;
+
     private static final String QUESTION_TABLE_NAME = "QUESTION";
     private static final String USER_TABLE_NAME = "USER";
     private static final String LT_TABLE_NAME = "INITIAL";
@@ -40,20 +44,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String FIRSTTIME = "FIRST_USED";
     private static final String ANSWERED_TRUE = "FIRST_ANSWER";
 
-
-
-
-
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         createTable(db);
-        insertLTSurveyData(db);
+        addQuestions();
     }
 
     @Override
@@ -61,18 +59,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + QUESTION_TABLE_NAME);
         onCreate(db);
     }
-    public ArrayList<String> getAllQuestion(){
-        ArrayList<String> arrayList = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + QUESTION_TABLE_NAME, null);
-        res.moveToFirst();
-
-        while (res.isAfterLast()==false){
-            arrayList.add(res.getString(res.getColumnIndex(QUESTION)));
-            res.moveToNext();
-        }
+    public List<Survey> getAllQuestion(){
+        List<Survey> arrayList = new ArrayList<Survey>();
+        dbase = this.getReadableDatabase();
+        Cursor res = dbase.rawQuery("SELECT * FROM " + QUESTION_TABLE_NAME, null);
+       if(res.moveToFirst()) {
+           do {
+               Survey survey = new Survey();
+               survey.setId(res.getInt(0));
+               survey.setQuestion(res.getString(1));
+               survey.setType(res.getString(2));
+               arrayList.add(survey);
+           }while(res.moveToNext());
+       }
         return arrayList;
     }
+
+    public void addQuestion(Survey survey) {
+
+        ContentValues values = new ContentValues();
+        values.put(QUESTION, survey.getQuestion());
+        values.put(QUESTION_TYPE, survey.getType());
+        dbase.insert(QUESTION_TABLE_NAME, null, values);
+    }
+
     private void createTable(SQLiteDatabase db){
         String CREATE_QUESTION_TABLE = "CREATE TABLE "+ QUESTION_TABLE_NAME + "("
                 + QUESTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + QUESTION + " TEXT, " + QUESTION_TYPE + " TEXT)";
@@ -109,41 +119,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    private void insertLTSurveyData(SQLiteDatabase db){
-        String ONE = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + ", " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Death of a significant person? I.e., a spouse, friend, relative, or family member.' , 'self' )";
-        db.execSQL(ONE);
-        String TWO = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + ", " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Separation or Divorce?' , 'self'  )";
-        db.execSQL(TWO);
-        String FOUR = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Serious sickness or injury (yourself)' , 'self'  )";
-        db.execSQL(FOUR);
-        String FIVE = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Serious sickness or injury (companion)' , 'self'  )";
-        db.execSQL(FIVE);
-        String SIX = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Not enough money/ heavy debt?' , 'self'  )";
-        db.execSQL(SIX);
-        String SEVEN = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Conflict with family, friends or in-laws?' , 'self'  )";
-        db.execSQL(SEVEN);
-        String EIGHT = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Problems with Child Care?' , 'self'  )";
-        db.execSQL(EIGHT);
-        String NINE = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Sexual Conflict or frustration?' , 'self'  )";
-        db.execSQL(NINE);
-        String TEN = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Conflict with spiritual, moral or ethical values?' , 'self'  )";
-        db.execSQL(TEN);
-        String ELEVEN = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Detention in jail or other institution?' , 'self'  )";
-        db.execSQL(ELEVEN);
-        String TWELVE = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
-                " VALUES ( 'Son or daughter leaving home?' , 'self'  )";
-        db.execSQL(TWELVE);
-        String THIRDTEEN = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
+    private void addQuestions(){
+        Survey s1 = new Survey("Death of a significant person? I.e., a spouse, friend, relative, or family member.","Self");
+        this.addQuestion(s1);
+        Survey s2 = new Survey("Separation or Divorce","Self");
+        this.addQuestion(s2);
+        Survey s3 = new Survey("Serious sickness or injury (yourself)","Self");
+        this.addQuestion(s3);
+        Survey s4 = new Survey("Serious sickness or injury (companion)","Self");
+        this.addQuestion(s4);
+        Survey s5 = new Survey("Not enough money/ heavy debt?","Self");
+        this.addQuestion(s5);
+        Survey s6 = new Survey("Conflict with family, friends or in-laws?","Self");
+        this.addQuestion(s6);
+        Survey s7 = new Survey("Problems with Child Care?","Self");
+        this.addQuestion(s7);
+        Survey s8 = new Survey("Sexual Conflict or frustration?","Self");
+        this.addQuestion(s8);
+        Survey s9 = new Survey("Conflict with spiritual, moral or ethical values?","Self");
+        this.addQuestion(s9);
+        Survey s10 = new Survey("Detention in jail or other institution?","Self");
+        this.addQuestion(s10);
+        Survey s11 = new Survey("Son or daughter leaving home?","Self");
+        this.addQuestion(s11);
+
+        /*String THIRDTEEN = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
                 " VALUES ( 'Major change in family when they get-together?' , 'self'  )";
         db.execSQL(THIRDTEEN);
         String FOURTEEN = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
@@ -292,7 +292,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(S_THREE);
         String S_FOUR = "INSERT INTO "+ QUESTION_TABLE_NAME + " ( " + QUESTION + " , " + QUESTION_TYPE + " )" +
                 " VALUES ( 'Unrealistic expectations from parents' , 'study' )";
-        db.execSQL(S_FOUR);
+        db.execSQL(S_FOUR);*/
 
     }
 

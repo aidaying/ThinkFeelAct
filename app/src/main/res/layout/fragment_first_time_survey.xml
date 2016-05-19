@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="match_parent"
+  >
 
     <Button
         android:layout_width="wrap_content"
@@ -51,7 +50,8 @@
         android:id="@+id/stressRateBar"
         android:layout_above="@+id/nextbtn"
         android:layout_alignStart="@+id/truebutton"
-        android:layout_marginBottom="111dp" />
+        android:layout_marginBottom="111dp"
+        android:layout_alignEnd="@+id/nextbtn" />
 
     <TextView
         android:layout_width="wrap_content"
