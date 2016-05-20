@@ -9,8 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 
 public class MainActivity extends FragmentActivity {
 
-    private final int  fragment_first_time_initial_page=1;
-    private final int  fragment_first_time_survey=2;
+    private final int fragment_first_time_initial_page=1;
+    private final int fragment_first_time_survey=2;
+    private final int fragement_add_event_page=3;
+    private final int fragment_self_evaluation=4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

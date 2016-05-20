@@ -18,24 +18,30 @@ public class Survey {
     }
 
     public int getId(){
+
         return this.id;
     }
 
-    public void setId (int ID){
+    public void setId (int id){
+
         this.id = id;
     }
 
     public String getQuestion(){
+
         return this.question;
     }
 
-    public void setQuestion (String Question){
+    public void setQuestion(String question){
+
         this.question = question;
     }
     public void setType (String type){
+
         this.type = type;
     }
     public String getType(){
+
         return this.type;
     }
 }

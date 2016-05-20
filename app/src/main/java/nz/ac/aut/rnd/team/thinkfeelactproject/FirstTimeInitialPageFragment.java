@@ -19,7 +19,7 @@ public class FirstTimeInitialPageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
-        Bundle stuff = getArguments();
+
 
         View titleView = inflater.inflate(R.layout.fragment_first_time_initial_page, container, false);
 

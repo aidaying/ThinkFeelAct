@@ -1,10 +1,9 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,13 +34,8 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
         survey = arrayList.get(i);
         question = (TextView) surveyView.findViewById(R.id.question);
         next = (Button) surveyView.findViewById(R.id.nextbtn);
-
-
         setQuestionView();
-
         next.setOnClickListener(this);
-
-
         return surveyView;
     }
 
@@ -53,13 +47,17 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
      */
     @Override
     public void onClick(View v) {
-
         survey = arrayList.get(i);
         setQuestionView();
+        if(i>61){
+
+
+        }
+
     }
 
     private void setQuestionView(){
-        question.setText(survey.getQuestion());
+        question.setText(arrayList.get(i).getQuestion());
         i++;
 
     }

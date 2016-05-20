@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +49,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        dbase = db;
         createTable(db);
         addQuestions();
+        db.close();
     }
 
     @Override
@@ -62,25 +63,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public List<Survey> getAllQuestion(){
         List<Survey> arrayList = new ArrayList<Survey>();
         dbase = this.getReadableDatabase();
-        Cursor res = dbase.rawQuery("SELECT * FROM " + QUESTION_TABLE_NAME, null);
-       if(res.moveToFirst()) {
+        Cursor cursor = dbase.rawQuery("SELECT * FROM " + QUESTION_TABLE_NAME, null);
+       if(cursor.moveToFirst()) {
            do {
                Survey survey = new Survey();
-               survey.setId(res.getInt(0));
-               survey.setQuestion(res.getString(1));
-               survey.setType(res.getString(2));
+               survey.setId(cursor.getInt(0));
+               survey.setQuestion(cursor.getString(1));
+               survey.setType(cursor.getString(2));
                arrayList.add(survey);
-           }while(res.moveToNext());
+           }while(cursor.moveToNext());
        }
         return arrayList;
     }
 
     public void addQuestion(Survey survey) {
-
         ContentValues values = new ContentValues();
         values.put(QUESTION, survey.getQuestion());
         values.put(QUESTION_TYPE, survey.getType());
         dbase.insert(QUESTION_TABLE_NAME, null, values);
+    }
+
+    public void addEventCurrent(Event event) {
+        ContentValues values = new ContentValues();
+        values.put(EVENT_NAME, event.getName());
+        values.put(ADDED_DATE, event.getDate());
+        values.put(RATING, event.getRating());
+        dbase.insert(EVENT_CURRENT_TABLE_NAME, null, values);
+    }
+
+    public void addLongTermSurvey(LongTermSurvey longTermSurvey) {
+        ContentValues values = new ContentValues();
+        values.put(ANSWERED_TRUE, longTermSurvey.getAnswerTF());
+        values.put(RATING, longTermSurvey.getRating());
+        values.put(FIRSTTIME, longTermSurvey.getFirstTimeUser());
+        values.put(QUESTION_ID, longTermSurvey.getQuestionId());
+        dbase.insert(LT_TABLE_NAME, null, values);
     }
 
     private void createTable(SQLiteDatabase db){
@@ -93,7 +110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_USER_TABLE);
 
         String CREATE_LTSURVEY_TABLE = "CREATE TABLE "+ LT_TABLE_NAME + "("
-                + LTSURVEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ANSWERED_TRUE + " BOOLEAN, " + RATING + " INTEGER, " + FIRSTTIME + " BOOLEAN, "
+                + LTSURVEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ANSWERED_TRUE + " TEXT, " + RATING + " INTEGER, " + FIRSTTIME + " TEXT, "
                 + QUESTION_ID + " INTEGER, FOREIGN KEY("+QUESTION_ID+") REFERENCES "+QUESTION_TABLE_NAME + "("+QUESTION_ID +"))";
         db.execSQL(CREATE_LTSURVEY_TABLE);
 
