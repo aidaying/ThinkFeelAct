@@ -10,6 +10,11 @@ public class Event {
     private String date;
     private int rating;
 
+    public Event(){
+
+
+    }
+
     public Event(String name, String date, int rating) {
         this.name = name;
         this.date = date;

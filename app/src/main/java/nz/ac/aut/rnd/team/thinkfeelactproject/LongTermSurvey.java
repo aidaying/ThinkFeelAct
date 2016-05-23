@@ -9,8 +9,11 @@ public class LongTermSurvey {
     private int rating;
     private int questionId;
 
+    public LongTermSurvey() {
 
-    public LongTermSurvey(String answerTF, int rating,  int questionId) {
+    }
+
+    public LongTermSurvey(String answerTF, int rating, int questionId) {
         this.answerTF = answerTF;
         this.rating = rating;
         this.questionId = questionId;

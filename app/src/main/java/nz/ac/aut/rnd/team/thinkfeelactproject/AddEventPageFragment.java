@@ -71,7 +71,9 @@ public class AddEventPageFragment extends Fragment {
 
                 event = new Event(name,date,rate);
                 mydb.addEventCurrent(event);
-
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                intent.putExtra("fragment_id",3);
+                startActivity(intent);
 
 
             }
@@ -80,7 +82,9 @@ public class AddEventPageFragment extends Fragment {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StressCalculator stressCalculator = new StressCalculator();
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                intent.putExtra("fragment_id",4);
+                startActivity(intent);
 
             }
         });

@@ -40,7 +40,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String RATING = "RATING";
     private static final String ADDED_DATE = "ADDED_DATE";
     private static final String LAST_ACCESSED_DATE = "LAST_ACCESSED_DATE";
-    private static final String FIRSTTIME = "FIRST_USED";
     private static final String ANSWERED_TRUE = "FIRST_ANSWER";
 
     public DatabaseHandler(Context context) {
@@ -76,7 +75,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    public List<Integer> getAlltheRateFromLTSurvey (){
+        List<Integer> arrayList = new ArrayList<Integer>();
+        dbase = this.getReadableDatabase();
+        Cursor cursor = dbase.rawQuery("SELECT " + RATING + " FROM " + LT_TABLE_NAME, null);
+        if(cursor.moveToFirst()) {
+            do {
+                LongTermSurvey longTermSurvey = new LongTermSurvey();
+                longTermSurvey.setRating(cursor.getInt(0));
+                arrayList.add(longTermSurvey.getRating());
+            }while(cursor.moveToNext());
+        }
+        return arrayList;
+    }
+
+    public List<Integer> getAlltheRateFromEvent (){
+        List<Integer> arrayList = new ArrayList<Integer>();
+        dbase = this.getReadableDatabase();
+        Cursor cursor = dbase.rawQuery("SELECT " + RATING + " FROM " + EVENT_CURRENT_TABLE_NAME, null);
+        if(cursor.moveToFirst()) {
+            do {
+                Event event = new Event();
+                event.setRating(cursor.getInt(0));
+                arrayList.add(event.getRating());
+            }while(cursor.moveToNext());
+        }
+        return arrayList;
+    }
+
     public void addQuestion(Survey survey) {
+        dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(QUESTION, survey.getQuestion());
         values.put(QUESTION_TYPE, survey.getType());
@@ -84,6 +112,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void addEventCurrent(Event event) {
+        dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getName());
         values.put(ADDED_DATE, event.getDate());
@@ -93,6 +122,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }catch (Exception e){}
     }
     public void addEventPast(Event event) {
+        dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getName());
         values.put(ADDED_DATE, event.getDate());
@@ -101,6 +131,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void addLongTermSurvey(LongTermSurvey longTermSurvey) {
+        dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(ANSWERED_TRUE, longTermSurvey.getAnswerTF());
         values.put(RATING, longTermSurvey.getRating());

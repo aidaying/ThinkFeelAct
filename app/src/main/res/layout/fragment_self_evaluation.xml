@@ -7,7 +7,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
+        android:id="@+id/bucketModelProgress"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
@@ -16,9 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/percentage"
+        android:id="@+id/bucketModelPercentage"
         android:text="100%"
-        android:layout_below="@+id/progressBar"
+        android:layout_below="@+id/bucketModelProgress"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="45dp" />
 
