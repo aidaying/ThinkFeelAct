@@ -32,6 +32,14 @@ public class MainActivity extends FragmentActivity {
                 FirstTimeSurveyFragment firstTimeSurveyFragment = new FirstTimeSurveyFragment();
                 fragmentTransaction.add(R.id.fragment_container, firstTimeSurveyFragment);
                 break;
+            case fragement_add_event_page:
+                AddEventPageFragment addEventPageFragment = new AddEventPageFragment();
+                fragmentTransaction.add(R.id.fragment_container, addEventPageFragment);
+                break;
+            case fragment_self_evaluation:
+                SelfEvaluationFragment selfEvaluationFragment = new SelfEvaluationFragment();
+                fragmentTransaction.add(R.id.fragment_container, selfEvaluationFragment);
+                break;
 
         }
         fragmentTransaction.commit();

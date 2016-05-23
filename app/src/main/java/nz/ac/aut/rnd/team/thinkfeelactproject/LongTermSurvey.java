@@ -7,14 +7,12 @@ public class LongTermSurvey {
     private int ID;
     private String answerTF;
     private int rating;
-    private String firstTimeUser;
-    private String questionId;
+    private int questionId;
 
 
-    public LongTermSurvey(String answerTF, int rating, String firstTimeUser, String questionId) {
+    public LongTermSurvey(String answerTF, int rating,  int questionId) {
         this.answerTF = answerTF;
         this.rating = rating;
-        this.firstTimeUser = firstTimeUser;
         this.questionId = questionId;
     }
 
@@ -42,19 +40,11 @@ public class LongTermSurvey {
         this.rating = rating;
     }
 
-    public String getFirstTimeUser() {
-        return firstTimeUser;
-    }
-
-    public void setFirstTimeUser(String firstTimeUser) {
-        this.firstTimeUser = firstTimeUser;
-    }
-
-    public String getQuestionId() {
+    public int getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(String questionId) {
+    public void setQuestionId(int questionId) {
         this.questionId = questionId;
     }
 }

@@ -88,6 +88,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EVENT_NAME, event.getName());
         values.put(ADDED_DATE, event.getDate());
         values.put(RATING, event.getRating());
+        try {
+            dbase.insert(EVENT_CURRENT_TABLE_NAME, null, values);
+        }catch (Exception e){}
+    }
+    public void addEventPast(Event event) {
+        ContentValues values = new ContentValues();
+        values.put(EVENT_NAME, event.getName());
+        values.put(ADDED_DATE, event.getDate());
+        values.put(RATING, event.getRating());
         dbase.insert(EVENT_CURRENT_TABLE_NAME, null, values);
     }
 
@@ -95,7 +104,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(ANSWERED_TRUE, longTermSurvey.getAnswerTF());
         values.put(RATING, longTermSurvey.getRating());
-        values.put(FIRSTTIME, longTermSurvey.getFirstTimeUser());
         values.put(QUESTION_ID, longTermSurvey.getQuestionId());
         dbase.insert(LT_TABLE_NAME, null, values);
     }
@@ -106,32 +114,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_QUESTION_TABLE);
 
         String CREATE_USER_TABLE = "CREATE TABLE "+ USER_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER + " TEXT, " + ADDED_DATE + " DATE, " + LAST_ACCESSED_DATE + " DATE )";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER + " TEXT, " + ADDED_DATE + " TEXT, " + LAST_ACCESSED_DATE + " TEXT )";
         db.execSQL(CREATE_USER_TABLE);
 
         String CREATE_LTSURVEY_TABLE = "CREATE TABLE "+ LT_TABLE_NAME + "("
-                + LTSURVEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ANSWERED_TRUE + " TEXT, " + RATING + " INTEGER, " + FIRSTTIME + " TEXT, "
+                + LTSURVEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ANSWERED_TRUE + " TEXT, " + RATING + " INTEGER, "
                 + QUESTION_ID + " INTEGER, FOREIGN KEY("+QUESTION_ID+") REFERENCES "+QUESTION_TABLE_NAME + "("+QUESTION_ID +"))";
         db.execSQL(CREATE_LTSURVEY_TABLE);
 
         String CREATE_EVENT_RECENT_TABLE = "CREATE TABLE "+ EVENT_RECENT_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + ADDED_DATE + " DATE, " + RATING + " INTEGER)";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " INTEGER)";
         db.execSQL(CREATE_EVENT_RECENT_TABLE);
 
         String CREATE_EVENT_CURRENT_TABLE = "CREATE TABLE "+ EVENT_CURRENT_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + ADDED_DATE + " DATE, " + RATING + " INTEGER)";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " INTEGER)";
         db.execSQL(CREATE_EVENT_CURRENT_TABLE);
 
         String CREATE_EMOTIONAL_TABLE = "CREATE TABLE "+ EMOTIONAL_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EMOTIONAL_NAME + " TEXT, " + ADDED_DATE + " DATE, " + RATING + " INTEGER)";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EMOTIONAL_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " INTEGER)";
         db.execSQL(CREATE_EMOTIONAL_TABLE);
 
         String CREATE_PHYSICAL_TABLE = "CREATE TABLE "+ PHYSICAL_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PHYSICAL_NAME + " TEXT, " + ADDED_DATE + " DATE, " + RATING + " INTEGER)";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PHYSICAL_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " INTEGER)";
         db.execSQL(CREATE_PHYSICAL_TABLE);
 
         String CREATE_THOUGHTS_TABLE = "CREATE TABLE "+ THOUGHTS_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + THOUGHTS_NAME + " TEXT, " + ADDED_DATE + " DATE, " + RATING + " INTEGER)";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + THOUGHTS_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " INTEGER)";
         db.execSQL(CREATE_THOUGHTS_TABLE);
 
     }
