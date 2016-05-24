@@ -88,7 +88,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         String TF = getTFValue();
-        if(survey.getId()==61){
+        if(survey.getId()==11){
             longTermSurvey = new LongTermSurvey(TF,getRating(),survey.getId());
             mydb.addLongTermSurvey(longTermSurvey);
             Intent intent = new Intent(getActivity(),MainActivity.class);

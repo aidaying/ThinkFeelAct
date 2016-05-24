@@ -8,45 +8,46 @@ import java.util.List;
  */
 public class StressCalculator {
 
-    List<Integer> squareResultList;
-    int temp;
-    int mean;
-    int sum;
-    int squareMean;
-    int result;
+    List<Double> squareResultList;
+    double temp;
+    double mean;
+    double sum;
+    double squareMean;
+    double result;
 
-    private int getMean( List<Integer> rateList){
+    private Double getMean( List<Double> rateList){
         mean=0;
-        for(int rate: rateList){
+        for(double rate: rateList){
             mean += rate;
         }
         mean = mean/rateList.size();
+
     return mean;
     }
 
-    private List<Integer> squareResult(List<Integer> rateList){
-        squareResultList = new ArrayList<Integer>(){};
-        for(int rate: rateList){
+    private List<Double> squareResult(List<Double> rateList){
+        squareResultList = new ArrayList<Double>(){};
+        for(double rate: rateList){
             temp = (rate - mean) *(rate - mean);
             squareResultList.add(temp);
         }
         return squareResultList;
     }
-    private int sumSquareResult (List<Integer> squareResultList){
-        for(int rate: squareResultList){
+    private Double sumSquareResult (){
+        for(double rate: squareResultList){
             sum += rate;
         }
         return sum;
     }
-    private int getSquaredMean(List<Integer> squareResultList){
+    private Double getSquaredMean(){
         return squareMean = (1/squareResultList.size())*sum;
     }
 
-    public int standardDeviationResult(List<Integer> rateList){
+    public Double standardDeviationResult(List<Double> rateList){
         getMean(rateList);
         squareResult(rateList);
-        sumSquareResult(squareResultList);
-        result = getSquaredMean(squareResultList);
+        sumSquareResult();
+        result = Math.sqrt(squareMean);
         return result;
     }
 }

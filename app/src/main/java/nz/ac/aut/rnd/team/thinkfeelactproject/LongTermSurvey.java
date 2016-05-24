@@ -6,14 +6,14 @@ package nz.ac.aut.rnd.team.thinkfeelactproject;
 public class LongTermSurvey {
     private int ID;
     private String answerTF;
-    private int rating;
+    private double rating;
     private int questionId;
 
     public LongTermSurvey() {
 
     }
 
-    public LongTermSurvey(String answerTF, int rating, int questionId) {
+    public LongTermSurvey(String answerTF, double rating, int questionId) {
         this.answerTF = answerTF;
         this.rating = rating;
         this.questionId = questionId;
@@ -35,11 +35,11 @@ public class LongTermSurvey {
         this.answerTF = answerTF;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,8 +20,8 @@ public class SelfEvaluationFragment extends Fragment {
 
 
     DatabaseHandler mydb;
-    List<Integer> longTermSurveyRating;
-    List<Integer> eventRating;
+    List<Double> longTermSurveyRating;
+    List<Double> eventRating;
     StressCalculator stressCalculator;
     TextView ratingResult;
     ProgressBar bucketModelProgress;
@@ -30,20 +31,19 @@ public class SelfEvaluationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View selfEvaluationView =  inflater.inflate(R.layout.fragment_self_evaluation, container, false);
-
         mydb = new DatabaseHandler(getActivity());
         longTermSurveyRating = mydb.getAlltheRateFromLTSurvey();
-        eventRating = mydb.getAlltheRateFromEvent();
-        stressCalculator = new StressCalculator();
-        int a = stressCalculator.standardDeviationResult(longTermSurveyRating);
-        int b = stressCalculator.standardDeviationResult(eventRating);
+        eventRating = mydb.getAllTheRateFromEvent();
+       stressCalculator = new StressCalculator();
+      double a = stressCalculator.standardDeviationResult(longTermSurveyRating);
+        double b = stressCalculator.standardDeviationResult(eventRating);
 
-        int c = a+b;
+        double c = a+b;
 
         ratingResult = (TextView) selfEvaluationView.findViewById(R.id.bucketModelPercentage);
-        ratingResult.setText(c+" %");
-        bucketModelProgress = (ProgressBar) selfEvaluationView.findViewById(R.id.bucketModelProgress);
-        bucketModelProgress.setProgress(c);
+        ratingResult.setText(c +" %");
+       // bucketModelProgress = (ProgressBar) selfEvaluationView.findViewById(R.id.bucketModelProgress);
+        //bucketModelProgress.setProgress(c);
 
         return selfEvaluationView;
     }

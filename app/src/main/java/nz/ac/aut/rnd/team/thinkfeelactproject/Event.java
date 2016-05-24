@@ -8,14 +8,14 @@ public class Event {
     private int ID;
     private String name;
     private String date;
-    private int rating;
+    private double rating;
 
     public Event(){
 
 
     }
 
-    public Event(String name, String date, int rating) {
+    public Event(String name, String date, double rating) {
         this.name = name;
         this.date = date;
         this.rating = rating;
@@ -45,11 +45,11 @@ public class Event {
         this.date = date;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 }

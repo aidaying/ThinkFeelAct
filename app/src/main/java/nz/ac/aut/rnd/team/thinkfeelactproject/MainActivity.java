@@ -2,6 +2,7 @@ package nz.ac.aut.rnd.team.thinkfeelactproject;
 
 
 
+import android.support.multidex.MultiDex;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,7 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MultiDex.install(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
