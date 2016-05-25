@@ -8,14 +8,14 @@ import java.util.List;
  */
 public class StressCalculator {
 
-    List<Double> squareResultList;
-    double temp;
-    double mean;
-    double sum;
-    double squareMean;
-    double result;
+    private List<Double> squareResultList;
+    private double temp;
+    private double mean;
+    private double sum;
+    private double squareMean;
+    private double result;
 
-    private Double getMean( List<Double> rateList){
+    private double getMean( List<Double> rateList){
         mean=0;
         for(double rate: rateList){
             mean += rate;
@@ -26,28 +26,28 @@ public class StressCalculator {
     }
 
     private List<Double> squareResult(List<Double> rateList){
-        squareResultList = new ArrayList<Double>(){};
+        squareResultList = new ArrayList<Double>();
         for(double rate: rateList){
             temp = (rate - mean) *(rate - mean);
             squareResultList.add(temp);
         }
         return squareResultList;
     }
-    private Double sumSquareResult (){
+    private double sumSquareResult (){
         for(double rate: squareResultList){
             sum += rate;
         }
         return sum;
     }
-    private Double getSquaredMean(){
-        return squareMean = (1/squareResultList.size())*sum;
+    private double getSquaredMean(){
+        return squareMean = (sum/squareResultList.size());
     }
 
-    public Double standardDeviationResult(List<Double> rateList){
+    public double standardDeviationResult(List<Double> rateList){
         getMean(rateList);
         squareResult(rateList);
         sumSquareResult();
-        result = Math.sqrt(squareMean);
+        result = Math.sqrt(getSquaredMean());
         return result;
     }
 }

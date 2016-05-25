@@ -24,6 +24,7 @@ public class SelfEvaluationFragment extends Fragment {
     List<Double> eventRating;
     StressCalculator stressCalculator;
     TextView ratingResult;
+
     ProgressBar bucketModelProgress;
 
 
@@ -34,14 +35,17 @@ public class SelfEvaluationFragment extends Fragment {
         mydb = new DatabaseHandler(getActivity());
         longTermSurveyRating = mydb.getAlltheRateFromLTSurvey();
         eventRating = mydb.getAllTheRateFromEvent();
-       stressCalculator = new StressCalculator();
-      double a = stressCalculator.standardDeviationResult(longTermSurveyRating);
+
+        stressCalculator = new StressCalculator();
+
+        double a = stressCalculator.standardDeviationResult(longTermSurveyRating);
+        stressCalculator = new StressCalculator();
         double b = stressCalculator.standardDeviationResult(eventRating);
 
-        double c = a+b;
+        double c = a + b;
 
         ratingResult = (TextView) selfEvaluationView.findViewById(R.id.bucketModelPercentage);
-        ratingResult.setText(c +" %");
+        ratingResult.setText(a + " + " + b + " = " + c +" %");
        // bucketModelProgress = (ProgressBar) selfEvaluationView.findViewById(R.id.bucketModelProgress);
         //bucketModelProgress.setProgress(c);
 

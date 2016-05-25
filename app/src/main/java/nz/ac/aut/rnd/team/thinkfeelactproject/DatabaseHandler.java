@@ -100,7 +100,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do {
                 LongTermSurvey longTermSurvey = new LongTermSurvey();
-                longTermSurvey.setRating(cursor.getInt(3));
+                longTermSurvey.setRating(cursor.getInt(2));
                 arrayList.add(longTermSurvey.getRating());
             }while(cursor.moveToNext());
         }
@@ -158,6 +158,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(QUESTION_ID, longTermSurvey.getQuestionId());
         try{
         dbase.insert(LT_TABLE_NAME, null, values);}catch(Exception e){}
+    }
+
+    public boolean isEventCurrentEmpty(){
+
+        dbase = this.getReadableDatabase();
+
+        String count = "SELECT COUNT(*) FROM "+ EVENT_CURRENT_TABLE_NAME;
+
+        Cursor cursor = dbase.rawQuery(count,null);
+        cursor.moveToFirst();
+        int i = cursor.getInt(0);
+        if(i>3){
+            return true;
+        }
+        // result is more than 0 if item exists
+        return false;
     }
 
     private void createTable(SQLiteDatabase db){

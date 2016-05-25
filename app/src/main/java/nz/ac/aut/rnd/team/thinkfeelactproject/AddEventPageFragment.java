@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -25,6 +26,7 @@ public class AddEventPageFragment extends Fragment {
     EditText dateEntry;
     Button addButton;
     Button calculateButton;
+    TextView ratePercentage;
     Event event;
     int rate;
 
@@ -33,10 +35,10 @@ public class AddEventPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View addEventView =  inflater.inflate(fragment_add_event_page, container, false);
+        final View addEventView = inflater.inflate(fragment_add_event_page, container, false);
 
         mydb = new DatabaseHandler(getActivity().getApplicationContext());
-
+        ratePercentage = (TextView) addEventView.findViewById(R.id.ratePercentage);
 
         eventEntry = (EditText) addEventView.findViewById(R.id.eventEntry);
         dateEntry = (EditText) addEventView.findViewById(R.id.dateEntry);
@@ -48,6 +50,7 @@ public class AddEventPageFragment extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 rate = eventRateBar.getProgress();
+                ratePercentage.setText(String.valueOf(rate));
             }
 
             @Override
@@ -67,29 +70,33 @@ public class AddEventPageFragment extends Fragment {
             public void onClick(View v) {
                 String name = eventEntry.getText().toString();
                 String date = dateEntry.getText().toString();
-
-
-                event = new Event(name,date,rate);
+                event = new Event(name, date, rate);
                 mydb.addEventCurrent(event);
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                intent.putExtra("fragment_id",3);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("fragment_id", 3);
                 startActivity(intent);
 
 
             }
         });
         calculateButton = (Button) addEventView.findViewById(R.id.calculateButton);
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                intent.putExtra("fragment_id",4);
-                startActivity(intent);
+        calculateButton.setClickable(false);
+        if (mydb.getAllTheRateFromEvent().size()>=3) {
+            calculateButton.setClickable(true);
+            calculateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.putExtra("fragment_id", 4);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
+
+        }
         return addEventView;
     }
-
-
 }
+
+
+

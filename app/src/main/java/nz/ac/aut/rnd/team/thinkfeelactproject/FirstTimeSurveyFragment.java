@@ -48,6 +48,9 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
         radio = (RadioGroup) surveyView.findViewById(R.id.radio);
         trueRB = (RadioButton) surveyView.findViewById(R.id.truebutton);
         falseRB = (RadioButton) surveyView.findViewById(R.id.falseButton);
+
+        rateValue = (TextView) surveyView.findViewById(R.id.rateValue);
+        rateValue.setText(1+"%");
         surveyProgress = (ProgressBar) surveyView.findViewById(R.id.surveyProgress);
         surveyProgress.setMax(arrayList.size());
         surveyProgress.setProgress(i);
@@ -58,7 +61,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
         rateBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rateValue = (TextView) surveyView.findViewById(R.id.rateValue);
+
                 rateValue.setText(String.valueOf(progress));
             }
 
