@@ -3,19 +3,27 @@
     package="nz.ac.aut.rnd.team.thinkfeelactproject">
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="android.support.multidex.MultiDexApplication">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".BucketModelActivity" />
+        <activity android:name=".FirstTimeInitialPageActivity" />
+        <activity android:name=".selfevaluationmodel.SelfEvaluationModel" />
+        <activity android:name=".selfevaluationmodel.AddEmotionPage" />
+        <activity android:name=".selfevaluationmodel.AddBodyPainPage" />
+        <activity android:name=".selfevaluationmodel.AddThoughtPage" />
+        <activity android:name=".InitialPage" />
+        <activity android:name=".FirstTimeLauncherSurveys"></activity>
     </application>
 
 </manifest>

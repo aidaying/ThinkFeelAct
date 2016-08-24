@@ -8,17 +8,18 @@ public class Survey {
     private int id=0;
     private String question="";
     private String type="";
+    private String description="";
 
     public Survey() {
     }
 
-    public Survey(String question,String type) {
+    public Survey(int id, String question,String description) {
+        this.id = id;
         this.question = question;
-        this.type = type;
+        this.description = description;
     }
 
     public int getId(){
-
         return this.id;
     }
 
@@ -43,5 +44,13 @@ public class Survey {
     public String getType(){
 
         return this.type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

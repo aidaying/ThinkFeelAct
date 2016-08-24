@@ -20,11 +20,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/question"
+        android:layout_marginTop="32dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/radio"
-        android:layout_marginTop="49dp" />
+        android:layout_alignStart="@+id/radio" />
     <RadioGroup
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/radio"
@@ -49,15 +49,17 @@
             android:layout_alignEnd="@+id/textView2" />
 
     </RadioGroup>
+
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="6in"
+
         android:id="@+id/stressRateBar"
-        android:layout_above="@+id/nextbtn"
+        android:numStars="10"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="33dp"
         android:layout_alignStart="@+id/textView2"
-        android:layout_marginBottom="66dp"
-        android:layout_alignEnd="@+id/nextbtn" />
+        android:layout_alignEnd="@+id/nextbtn"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,16 +79,12 @@
         android:layout_alignTop="@+id/stressRateBar"
         android:layout_toEndOf="@+id/stressRateBar" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleSmall"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/surveyProgress"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/nextbtn"
-        android:layout_marginTop="10dp" />
-
-
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/desc_survey"
+        android:layout_below="@+id/question"
+        android:layout_alignStart="@+id/question" />
 </RelativeLayout>
