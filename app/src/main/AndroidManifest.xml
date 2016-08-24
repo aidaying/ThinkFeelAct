@@ -16,14 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BucketModelActivity" />
-        <activity android:name=".FirstTimeInitialPageActivity" />
+        <activity android:name=".bucketmodel.BucketModelActivity" />
+        <activity android:name=".firsttimeloadup.FirstTimeInitialPageActivity" />
         <activity android:name=".selfevaluationmodel.SelfEvaluationModel" />
         <activity android:name=".selfevaluationmodel.AddEmotionPage" />
         <activity android:name=".selfevaluationmodel.AddBodyPainPage" />
         <activity android:name=".selfevaluationmodel.AddThoughtPage" />
-        <activity android:name=".InitialPage" />
-        <activity android:name=".FirstTimeLauncherSurveys"></activity>
+        <activity android:name=".normalstartup.InitialPage" />
+        <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveys"></activity>
     </application>
 
 </manifest>

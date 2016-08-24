@@ -1,4 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 
 /**
  * Created by Aida on 12/05/2016.

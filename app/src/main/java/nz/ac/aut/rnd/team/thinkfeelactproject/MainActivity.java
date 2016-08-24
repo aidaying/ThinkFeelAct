@@ -9,6 +9,9 @@ import android.support.multidex.MultiDex;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup.FirstTimeInitialPageActivity;
+import nz.ac.aut.rnd.team.thinkfeelactproject.normalstartup.InitialPage;
+
 public class MainActivity extends FragmentActivity {
 
 

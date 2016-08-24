@@ -1,4 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 
 import java.util.ArrayList;
 import java.util.List;

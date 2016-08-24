@@ -1,4 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.bucketmodel;
 
 
 import android.annotation.SuppressLint;
@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.List;
+
+import nz.ac.aut.rnd.team.thinkfeelactproject.R;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.StressCalculator;
 
 
 /**

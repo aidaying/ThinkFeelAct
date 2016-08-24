@@ -1,4 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
 
 import android.annotation.SuppressLint;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 
 
 public class FirstTimeInitialPageActivity extends Activity {

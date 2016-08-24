@@ -1,4 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
 
 
@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import org.xmlpull.v1.XmlPullParser;
@@ -21,6 +20,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.LongTermSurvey;
+import nz.ac.aut.rnd.team.thinkfeelactproject.R;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.Survey;
 
 public class FirstTimeSurveyFragment extends Fragment implements View.OnClickListener{
 

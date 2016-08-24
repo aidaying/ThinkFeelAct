@@ -1,9 +1,11 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+
+import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 
 public class FirstTimeLauncherSurveys extends FragmentActivity {
 
