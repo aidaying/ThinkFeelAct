@@ -44,10 +44,10 @@ public class StressCalculator {
     }
 
     public double standardDeviationResult(List<Double> rateList){
-        getMean(rateList);
-        squareResult(rateList);
-        sumSquareResult();
-        result = Math.sqrt(getSquaredMean());
+        //getMean(rateList);
+        //squareResult(rateList);
+        //sumSquareResult();
+        result = getMean(rateList);
         return result;
     }
 }
