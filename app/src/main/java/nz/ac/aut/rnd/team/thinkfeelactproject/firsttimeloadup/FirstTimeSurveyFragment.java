@@ -34,8 +34,8 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     TextView rateValue;
     Button next;
     int i = 0;
-    List<Survey> arrayList;
-    Survey survey;
+    List<nz.ac.aut.rnd.team.thinkfeelactproject.survey> arrayList;
+    nz.ac.aut.rnd.team.thinkfeelactproject.survey survey;
     LongTermSurvey longTermSurvey;
     RadioGroup radio;
     private RadioButton trueRB;
@@ -154,7 +154,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     private void parserXML(XmlPullParser parser) throws XmlPullParserException, IOException{
 
         int eventType = parser.getEventType();
-        Survey currentSurvey = null;
+        nz.ac.aut.rnd.team.thinkfeelactproject.survey currentSurvey = null;
 
         while (eventType != XmlPullParser.END_DOCUMENT){
             String name;
@@ -165,7 +165,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
                 case XmlPullParser.START_TAG:
                     name = parser.getName();
                     if(name.equals("survey")){
-                        currentSurvey = new Survey();
+                        currentSurvey = new survey();
                     }else if(currentSurvey != null){
                         switch (name) {
                             case "id":

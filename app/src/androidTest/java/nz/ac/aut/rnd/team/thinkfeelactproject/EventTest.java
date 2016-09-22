@@ -1,12 +1,10 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject;
 
-import org.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.*;
-import junit.framework.Assert;
 
 import static junit.framework.Assert.assertEquals;
 
