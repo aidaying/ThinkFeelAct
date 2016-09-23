@@ -43,6 +43,12 @@ public class StressCalculator {
         return squareMean = (sum/squareResultList.size());
     }
 
+    public double getWeightedMean(double longTerm, double day){
+        double result = 0;
+        result = longTerm * 0.3 + day * 0.7;
+        return result;
+    }
+
     public double standardDeviationResult(List<Double> rateList){
         //getMean(rateList);
         //squareResult(rateList);

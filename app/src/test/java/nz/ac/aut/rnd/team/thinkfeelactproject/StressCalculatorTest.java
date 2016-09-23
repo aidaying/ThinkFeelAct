@@ -5,11 +5,12 @@ import android.test.AndroidTestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.regex.Pattern;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.StressCalculator;
 
 /**
  * Created by Robert on 9/08/2016.
@@ -23,9 +24,15 @@ public class StressCalculatorTest extends AndroidTestCase {
     public void setUp() throws Exception {
         stressCalculator = new StressCalculator();
         rateList = new ArrayList<Double>();
+        rateList.add(1.0);
+        rateList.add(2.0);
+        rateList.add(3.0);
         rateList.add(4.0);
         rateList.add(5.0);
         rateList.add(6.0);
+        rateList.add(7.0);
+        rateList.add(8.0);
+        rateList.add(9.0);
     }
 
     @After
@@ -35,7 +42,7 @@ public class StressCalculatorTest extends AndroidTestCase {
 
     @Test
     public void testStandardDeviationResult() throws Exception {
-        assertEquals(2, stressCalculator.standardDeviationResult(rateList), 0);
+        assertEquals(5, stressCalculator.standardDeviationResult(rateList), 0);
     }
 
 }
