@@ -34,8 +34,8 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     TextView rateValue;
     Button next;
     int i = 0;
-    List<nz.ac.aut.rnd.team.thinkfeelactproject.survey> arrayList;
-    nz.ac.aut.rnd.team.thinkfeelactproject.survey survey;
+    List<Survey> arrayList;
+    Survey survey;
     LongTermSurvey longTermSurvey;
     RadioGroup radio;
     private RadioButton trueRB;
@@ -125,6 +125,8 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         String TF = isTF;
         if(survey.getId()==40){
+            trueRB.setSelected(true);
+            rateBar.setProgress(1);
             longTermSurvey = new LongTermSurvey(TF,getRating(),survey.getId());
             mydb.addLongTermSurvey(longTermSurvey);
             Intent intent = new Intent(getActivity(),FirstTimeLauncherSurveys.class);
@@ -133,6 +135,9 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
         }else {
             setSurveyViews();
             survey = arrayList.get(i);
+            rateBar.setProgress(1);
+            radio.clearCheck();
+            trueRB.setChecked(true);
             longTermSurvey = new LongTermSurvey(TF, getRating(), survey.getId());
             mydb.addLongTermSurvey(longTermSurvey);
         }
@@ -154,7 +159,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     private void parserXML(XmlPullParser parser) throws XmlPullParserException, IOException{
 
         int eventType = parser.getEventType();
-        nz.ac.aut.rnd.team.thinkfeelactproject.survey currentSurvey = null;
+        Survey currentSurvey = null;
 
         while (eventType != XmlPullParser.END_DOCUMENT){
             String name;
@@ -165,7 +170,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
                 case XmlPullParser.START_TAG:
                     name = parser.getName();
                     if(name.equals("survey")){
-                        currentSurvey = new survey();
+                        currentSurvey = new Survey();
                     }else if(currentSurvey != null){
                         switch (name) {
                             case "id":

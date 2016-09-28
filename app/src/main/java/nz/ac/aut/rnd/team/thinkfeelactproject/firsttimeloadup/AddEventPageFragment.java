@@ -1,10 +1,9 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +16,22 @@ import nz.ac.aut.rnd.team.thinkfeelactproject.bucketmodel.BucketModelActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.Event;
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.InputFilterMinMax;
 
 
 public class AddEventPageFragment extends Fragment {
-    DatabaseHandler mydb;
-    EditText eventEntry;
-    SeekBar eventRateBar;
-    EditText dateEntry;
-    Button addButton;
-    Button calculateButton;
-    TextView ratePercentage;
-    Event event;
-    int rate;
+    private DatabaseHandler mydb;
+    private EditText eventEntry;
+    private SeekBar eventRateBar;
+    private EditText dayEntry;
+    private EditText yearEntry;
+    private EditText monthEntry;
+    private Button addButton;
+    private Button calculateButton;
+    private TextView ratePercentage;
+    private Event event;
+    private String added_date;
+    private int rate;
 
 
     @Override
@@ -41,7 +44,12 @@ public class AddEventPageFragment extends Fragment {
         ratePercentage = (TextView) addEventView.findViewById(R.id.ratePercentage);
 
         eventEntry = (EditText) addEventView.findViewById(R.id.eventEntry);
-        dateEntry = (EditText) addEventView.findViewById(R.id.dateEntry);
+        dayEntry = (EditText) addEventView.findViewById(R.id.dayEntry);
+        dayEntry.setFilters(new InputFilter[]{new InputFilterMinMax("1","31")});
+        monthEntry = (EditText) addEventView.findViewById(R.id.monthEntry);
+        monthEntry.setFilters(new InputFilter[]{new InputFilterMinMax("1","12")});
+        yearEntry = (EditText) addEventView.findViewById(R.id.yearEntry);
+        yearEntry.setFilters(new InputFilter[]{new InputFilterMinMax("1","2100")});
         eventRateBar = (SeekBar) addEventView.findViewById(R.id.eventRateBar);
         eventRateBar.setProgress(0);
         eventRateBar.incrementProgressBy(1);
@@ -69,8 +77,11 @@ public class AddEventPageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String name = eventEntry.getText().toString();
-                String date = dateEntry.getText().toString();
-                event = new Event(name, date, rate);
+                String dd = dayEntry.getText().toString();
+                String mm = monthEntry.getText().toString();
+                String yy = yearEntry.getText().toString();
+                added_date = dd + "-" + mm + "-" + yy;
+                event = new Event(name, added_date, rate);
                 mydb.addEventCurrent(event);
                 Intent intent = new Intent(getActivity(), FirstTimeLauncherSurveys.class);
                 intent.putExtra("fragment_id",2 );
@@ -87,6 +98,7 @@ public class AddEventPageFragment extends Fragment {
             calculateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent = new Intent(getActivity(), BucketModelActivity.class);
                     startActivity(intent);
 
