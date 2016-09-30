@@ -1,16 +1,13 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 
 import android.test.AndroidTestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.regex.Pattern;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
-import nz.ac.aut.rnd.team.thinkfeelactproject.java.StressCalculator;
 
 /**
  * Created by Robert on 9/08/2016.
@@ -23,6 +20,16 @@ public class StressCalculatorTest extends AndroidTestCase {
     @Before
     public void setUp() throws Exception {
         stressCalculator = new StressCalculator();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        stressCalculator = null;
+    }
+
+    @Test
+    public void testStandardDeviationResult() throws Exception {
+
         rateList = new ArrayList<Double>();
         rateList.add(1.0);
         rateList.add(2.0);
@@ -33,16 +40,7 @@ public class StressCalculatorTest extends AndroidTestCase {
         rateList.add(7.0);
         rateList.add(8.0);
         rateList.add(9.0);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        stressCalculator = null;
-    }
-
-    @Test
-    public void testStandardDeviationResult() throws Exception {
-        assertEquals(5, stressCalculator.standardDeviationResult(rateList), 0);
+        assertEquals(5.0, stressCalculator.standardDeviationResult(rateList), 0);
     }
 
 }

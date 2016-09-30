@@ -1,4 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 
 
 import org.junit.Test;
