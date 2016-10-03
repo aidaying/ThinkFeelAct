@@ -1,6 +1,4 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
-
-import static org.junit.Assert.*;
+package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
 /**
  * Created by Robert on 9/08/2016.

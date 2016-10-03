@@ -1,8 +1,10 @@
-package nz.ac.aut.rnd.team.thinkfeelactproject;
+package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.Event;
 
 import static org.junit.Assert.*;
 

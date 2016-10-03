@@ -1,7 +1,5 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +22,7 @@ import java.util.List;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.LongTermSurvey;
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
-import nz.ac.aut.rnd.team.thinkfeelactproject.java.Survey;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.survey;
 
 public class FirstTimeSurveyFragment extends Fragment implements View.OnClickListener{
 
@@ -34,8 +32,13 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     TextView rateValue;
     Button next;
     int i = 0;
+<<<<<<< HEAD
     List<Survey> arrayList;
     Survey survey;
+=======
+    List<nz.ac.aut.rnd.team.thinkfeelactproject.java.survey> arrayList;
+    nz.ac.aut.rnd.team.thinkfeelactproject.java.survey survey;
+>>>>>>> origin/master
     LongTermSurvey longTermSurvey;
     RadioGroup radio;
     private RadioButton trueRB;
@@ -161,7 +164,11 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     private void parserXML(XmlPullParser parser) throws XmlPullParserException, IOException{
 
         int eventType = parser.getEventType();
+<<<<<<< HEAD
         Survey currentSurvey = null;
+=======
+        nz.ac.aut.rnd.team.thinkfeelactproject.java.survey currentSurvey = null;
+>>>>>>> origin/master
 
         while (eventType != XmlPullParser.END_DOCUMENT){
             String name;
