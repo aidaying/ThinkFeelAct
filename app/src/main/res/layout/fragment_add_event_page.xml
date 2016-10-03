@@ -35,8 +35,6 @@
         android:layout_alignStart="@+id/event" />
 
     <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/eventRateBar"
         android:maxHeight="100dp"
         android:maxWidth="10dp"
@@ -45,33 +43,16 @@
         android:layout_below="@+id/textView"
         android:layout_alignStart="@+id/textView"
         android:layout_marginTop="41dp"
-        android:layout_alignEnd="@+id/dateEntry" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/dateEntry"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/eventRateBar"
-        android:layout_alignStart="@+id/eventEntry" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Date:"
-        android:id="@+id/date"
-        android:layout_alignTop="@+id/dateEntry"
-        android:layout_alignEnd="@+id/event" />
+        android:layout_width="900dp"
+        android:layout_alignEnd="@+id/calculateButton"
+        android:layout_height="30dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
         android:id="@+id/addButton"
-        android:layout_below="@+id/dateEntry"
+        android:layout_below="@+id/monthEntry"
         android:layout_alignEnd="@+id/textView3"
         android:layout_marginTop="44dp" />
 
@@ -98,9 +79,76 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="%"
+        android:text=""
         android:id="@+id/ratePercentage"
         android:layout_alignBottom="@+id/eventRateBar"
         android:layout_toEndOf="@+id/eventRateBar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Date:"
+        android:id="@+id/date"
+        android:layout_alignBaseline="@+id/dayEntry"
+        android:layout_alignBottom="@+id/dayEntry"
+        android:layout_toStartOf="@+id/eventEntry" />
+
+    <TextView
+        android:text="/"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:layout_alignBottom="@+id/dayEntry"
+        android:layout_toEndOf="@+id/dayEntry"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:text="/"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:layout_above="@+id/addButton"
+        android:layout_toEndOf="@+id/monthEntry"
+        android:textSize="20dp"
+        />
+
+    <EditText
+        android:inputType="date"
+        android:ems="2"
+        android:id="@+id/dayEntry"
+        android:layout_marginTop="53dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:maxLength="2"
+        android:hint="dd"
+        android:layout_below="@+id/eventRateBar"
+        android:layout_toStartOf="@+id/monthEntry" />
+
+    <EditText
+        android:inputType="date"
+        android:ems="2"
+        android:id="@+id/monthEntry"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:maxLength="2"
+        android:hint="mm"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignStart="@+id/addButton"
+        android:layout_marginStart="18dp" />
+
+    <EditText
+        android:inputType="date"
+        android:ems="4"
+        android:id="@+id/yearEntry"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:minEms="4"
+        android:maxLength="4"
+        android:hint="yyyy"
+        android:layout_above="@+id/addButton"
+        android:layout_toEndOf="@+id/addButton"
+        android:layout_marginStart="13dp" />
 
 </RelativeLayout>

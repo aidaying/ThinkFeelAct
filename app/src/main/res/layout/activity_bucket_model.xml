@@ -4,13 +4,34 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:text="SOS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/bucketModelPercentage"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="76dp"
+        android:id="@+id/sosBtn" />
+
+    <Button
+        android:text="Time Out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/sosBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="28dp"
+        android:onClick=""
+        android:id="@+id/timeoutBtn" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/bucketModelPercentage"
         android:text="100%"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/sosBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="174dp" />
 
 </RelativeLayout>

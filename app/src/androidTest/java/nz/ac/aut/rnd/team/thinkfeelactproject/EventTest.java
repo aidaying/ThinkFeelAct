@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.Event;
+
 import static junit.framework.Assert.assertEquals;
 
 

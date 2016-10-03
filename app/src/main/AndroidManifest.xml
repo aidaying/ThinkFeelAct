@@ -18,12 +18,10 @@
         </activity>
         <activity android:name=".bucketmodel.BucketModelActivity" />
         <activity android:name=".firsttimeloadup.FirstTimeInitialPageActivity" />
-        <activity android:name=".selfevaluationmodel.SelfEvaluationModel" />
-        <activity android:name=".selfevaluationmodel.AddEmotionPage" />
-        <activity android:name=".selfevaluationmodel.AddBodyPainPage" />
-        <activity android:name=".selfevaluationmodel.AddThoughtPage" />
         <activity android:name=".normalstartup.InitialPage" />
-        <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveys"></activity>
+        <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveys" />
+        <activity android:name=".sosmodel.SOSModelActivity"/>
+        <activity android:name=".timeoutmodel.TimeOutModelAcivity"/>
     </application>
 
 </manifest>

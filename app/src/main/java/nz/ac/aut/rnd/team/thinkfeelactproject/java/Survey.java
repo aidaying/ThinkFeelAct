@@ -3,17 +3,17 @@ package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 /**
  * Created by Aida on 12/05/2016.
  */
-public class survey {
+public class Survey {
 
     private int id=0;
     private String question="";
     private String type="";
     private String description="";
 
-    public survey() {
+    public Survey() {
     }
 
-    public survey(int id, String question, String description) {
+    public Survey(int id, String question, String description) {
         this.id = id;
         this.question = question;
         this.description = description;

@@ -116,6 +116,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     }
 
 
+
     /**
      * Called when a view has been clicked.
      *
@@ -141,6 +142,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
             longTermSurvey = new LongTermSurvey(TF, getRating(), survey.getId());
             mydb.addLongTermSurvey(longTermSurvey);
         }
+
     }
 
 

@@ -31,7 +31,7 @@ public class InitialPage extends Activity {
         setContentView(R.layout.activity_initial_page);
         sharedPreferences = getSharedPreferences(ShaPreferences, Context.MODE_PRIVATE);
         usernameOutput = (TextView) findViewById(R.id.usernameOutput);
-       String name = sharedPreferences.getString(Name, null);
+        String name = sharedPreferences.getString(Name, null);
         usernameOutput.setText(name);
         start = (Button) findViewById(R.id.start_initial);
 
@@ -46,9 +46,13 @@ public class InitialPage extends Activity {
                 editor.commit();
                 Intent intent = new Intent(view.getContext(),BucketModelActivity.class);
                 startActivity(intent);
+                onBackPressed();
             }
         });
 
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onDestroy();
+    }
 }

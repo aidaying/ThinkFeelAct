@@ -87,7 +87,6 @@ public class AddEventPageFragment extends Fragment {
                 intent.putExtra("fragment_id",2 );
                 startActivity(intent);
 
-
             }
         });
         calculateButton = (Button) addEventView.findViewById(R.id.calculateButton);
@@ -101,6 +100,7 @@ public class AddEventPageFragment extends Fragment {
 
                     Intent intent = new Intent(getActivity(), BucketModelActivity.class);
                     startActivity(intent);
+                    getActivity().onBackPressed();
 
                 }
             });

@@ -5,11 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.audiofx.AudioEffect;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Aida on 12/05/2016.
+ *
+ * needs to fix the database.......after the SE model is updated....
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -24,10 +28,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String EMOTIONAL_TABLE_NAME = "EMOTIONAL";
     private static final String PHYSICAL_TABLE_NAME = "PHYSICAL";
     private static final String THOUGHTS_TABLE_NAME = "THOUGHTS";
-
+    private static final String DESCRIPTION_TABLE_NAME = "DESC";
     //DATABASE RELATED
     private static final String ID = "ID";
     private static final String LTSURVEY_ID = "ID";
+    private static final String DESC_ID = "DESC_ID";
     private static final String QUESTION_ID = "QUESTION_ID";
     private static final String EVENT_NAME = "EVENT_NAME";
     private static final String EMOTIONAL_NAME = "EMOTIONAL_NAME";
@@ -36,6 +41,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String RATING = "RATING";
     private static final String ADDED_DATE = "ADDED_DATE";
     private static final String ANSWERED_TRUE = "FIRST_ANSWER";
+    private static final String DESC = "DESCRIPTION";
+    private static final String DESC_TYPE = "TYPE";
+    private static final String DESC_SELECTED_VALUE = "SELECTED_VALUE";
+    private static final String DESC_NUM = "NUMBER";
+
     boolean isCreating = false;
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -64,6 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return super.getReadableDatabase();
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
@@ -130,6 +141,62 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         dbase.insert(LT_TABLE_NAME, null, values);}catch(Exception e){}
     }
 
+    public void addNewDescInfo(Desc desc) {
+        dbase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DESC, desc.getDesc());
+        values.put(DESC_TYPE, desc.getType());
+        values.put(DESC_SELECTED_VALUE,desc.getSelectedValue());
+        values.put(DESC_NUM, desc.getNum());
+        try{
+            dbase.insert(DESCRIPTION_TABLE_NAME, null, values);}catch(Exception e){}
+    }
+
+    public void alterDescInfo(Desc desc) {
+
+        dbase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DESC_NUM, desc.getNum());
+        String where =  DESC_ID + "=?";
+        String[] whereArgs = new String[]{String.valueOf(desc.getId())};
+
+        dbase.update(DESCRIPTION_TABLE_NAME, values, where, whereArgs);
+
+    }
+
+    public ArrayList<Desc> getAllNewDescInfo (){
+        ArrayList<Desc> arrayList = new ArrayList<Desc>();
+        dbase = this.getReadableDatabase();
+        Cursor cursor = dbase.rawQuery("SELECT * FROM " + DESCRIPTION_TABLE_NAME, null);
+        if(cursor.moveToFirst()) {
+            do {
+                Desc desc = new Desc();
+                desc.setId(cursor.getInt(0));
+                desc.setDesc(cursor.getString(1));
+                desc.setType(cursor.getString(2));
+                desc.setSelectedValue(cursor.getFloat(3));
+                desc.setNum(cursor.getInt(4));
+                arrayList.add(desc);
+            }while(cursor.moveToNext());
+        }
+        return arrayList;
+    }
+    public boolean isDescEmpty(){
+
+        dbase = this.getReadableDatabase();
+
+        String count = "SELECT COUNT(*) FROM "+ DESCRIPTION_TABLE_NAME;
+
+        Cursor cursor = dbase.rawQuery(count,null);
+        cursor.moveToFirst();
+        int i = cursor.getInt(0);
+        if(i > 0){
+            return true;
+        }
+        // result is more than 0 if item exists
+        return false;
+    }
+
     public boolean isEventCurrentEmpty(){
 
         dbase = this.getReadableDatabase();
@@ -173,6 +240,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + THOUGHTS_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " DOUBLE)";
         db.execSQL(CREATE_THOUGHTS_TABLE);
 
+        String CREATE_DESC_TABLE = "CREATE TABLE "+ DESCRIPTION_TABLE_NAME + "("
+                + DESC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DESC + " TEXT, " + DESC_TYPE + " TEXT, " + DESC_SELECTED_VALUE + " FLOAT, " + DESC_NUM + " INTEGER)";
+        db.execSQL(CREATE_DESC_TABLE);
     }
 
 

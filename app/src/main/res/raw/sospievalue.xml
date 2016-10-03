@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <size>10</size>
+    <detail>Sorry</detail>
+    <size>10.01</size>
+    <detail>Implode</detail>
+    <size>10.02</size>
+    <detail>Feel Guilt</detail>
+    <size>10.03</size>
+    <detail>Temporary releaf</detail>
+    <size>10.04</size>
+    <detail>Consequenses</detail>
+    <size>10.05</size>
+    <detail>Bad Thoughts</detail>
+    <size>10.06</size>
+    <detail>Plans to do better</detail>
+    <size>10.07</size>
+    <detail>Tension rise again</detail>
+    <size>10.08</size>
+    <detail>Escalation</detail>
+    <size>10.09</size>
+    <detail>Outburst</detail>
+</resources>

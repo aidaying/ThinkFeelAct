@@ -48,10 +48,14 @@ public class FirstTimeInitialPageActivity extends Activity {
                 editor.apply();
                 Intent intent = new Intent(view.getContext(), FirstTimeLauncherSurveys.class);
                 startActivity(intent);
-
+                onBackPressed();
             }
 
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onDestroy();
+    }
 }
