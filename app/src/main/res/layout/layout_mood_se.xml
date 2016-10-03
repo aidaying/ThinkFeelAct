@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.56">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Select a Mood"
+            android:id="@+id/textView"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@android:color/white"
+            android:layout_above="@+id/SE_OV_stressBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:drawable/editbox_background"
+            android:backgroundTint="?attr/colorPrimary"
+            android:layout_height="40dp" />
+
+        <ImageView
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:id="@+id/SE_MOOD_imgView"
+            android:src="@drawable/ic_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="348dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Content/Just right"
+            android:id="@+id/SE_MOOD_moodView"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@android:drawable/editbox_background" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_content"
+                    android:id="@+id/SE_MOOD_m1Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:contextClickable="false" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_happy"
+                    android:id="@+id/SE_MOOD_m2Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1.0" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_sad"
+                    android:id="@+id/SE_MOOD_m3Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1.0" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_sick"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/SE_MOOD_m4Button" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_negative_thoughts"
+                    android:id="@+id/SE_MOOD_m5Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_feellikecrying"
+                    android:id="@+id/SE_MOOD_m6Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_crying"
+                    android:id="@+id/SE_MOOD_m7Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_frustrated_tpoc"
+                    android:id="@+id/SE_MOOD_m8Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="right">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_meh"
+                    android:id="@+id/SE_MOOD_m9Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_worriednervous"
+                    android:id="@+id/SE_MOOD_m10Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_annoyed"
+                    android:id="@+id/SE_MOOD_m11Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_angry"
+                    android:id="@+id/SE_MOOD_m12Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="right" >
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_embarrassed"
+                    android:id="@+id/SE_MOOD_m13Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_confused"
+                    android:id="@+id/SE_MOOD_m14Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_shocked"
+                    android:id="@+id/SE_MOOD_m15Button"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_scared"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/SE_MOOD_m16Button" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:focusable="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Select parts of your body that hurt"
+            android:id="@+id/textView8"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@android:color/white"
+            android:layout_above="@+id/SE_OV_stressBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:drawable/editbox_background"
+            android:backgroundTint="?attr/colorPrimary"
+            android:layout_marginBottom="20dp"
+            android:textSize="22sp"
+            android:layout_height="40dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="389dp"
+            android:layout_weight="0.15">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/editText2"
+                android:layout_alignEnd="@+id/textView2"
+                android:id="@+id/linearLayout9">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText2"
+                    android:layout_alignEnd="@+id/textView3"
+                    android:id="@+id/linearLayout8"
+                    android:layout_weight="0.06"
+                    android:paddingLeft="20dp"
+                    android:layout_gravity="center">
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/gridLayout"
+                        android:padding="0dp"
+                        android:layout_alignTop="@+id/linearLayout2"
+                        android:layout_alignEnd="@+id/textView3"
+                        android:layout_gravity="center">
+
+                        <ImageButton
+                            android:layout_width="56dp"
+                            android:layout_height="60dp"
+                            android:id="@+id/ic_headButton"
+                            android:src="@drawable/head1"
+                            android:tag="head1"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_row="0"
+                            android:layout_column="1"
+                            android:layout_gravity="center|fill"
+                            android:padding="0dp"
+                            android:scaleType="fitCenter"
+                            android:background="@null"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+
+                        <ImageButton
+                            android:layout_width="22dp"
+                            android:layout_height="89dp"
+                            android:id="@+id/ic_upperLButton"
+                            android:layout_below="@+id/ic_headButton"
+                            android:layout_alignParentStart="true"
+                            android:src="@drawable/upper_leftarm1"
+                            android:tag="upper_leftarm1"
+                            android:layout_row="1"
+                            android:layout_column="0"
+                            android:layout_gravity="center|right|fill"
+                            android:padding="0dp"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+
+                        <ImageButton
+                            android:layout_width="58dp"
+                            android:layout_height="89dp"
+                            android:id="@+id/ic_chestButton"
+                            android:layout_below="@+id/ic_headButton"
+                            android:layout_toEndOf="@+id/ic_upperLButton"
+                            android:src="@drawable/body1"
+                            android:tag="body1"
+                            android:layout_row="1"
+                            android:layout_column="1"
+                            android:layout_gravity="center|fill"
+                            android:padding="0dp"
+                            android:paddingLeft="0dp"
+                            android:paddingRight="0dp"
+                            android:background="@null"
+                            android:paddingTop="0dp"
+                            android:paddingBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+
+                        <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="89dp"
+                            android:id="@+id/ic_upperRButton"
+                            android:src="@drawable/upper_rightarm1"
+                            android:tag="upper_rightarm1"
+                            android:layout_above="@+id/ic_lowerLButton"
+                            android:layout_toEndOf="@+id/ic_chestButton"
+                            android:layout_row="1"
+                            android:layout_column="2"
+                            android:layout_gravity="left|center|fill"
+                            android:padding="0dp"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+
+                        <ImageButton
+                            android:layout_width="19dp"
+                            android:layout_height="31dp"
+                            android:id="@+id/ic_lowerLButton"
+                            android:src="@drawable/lower_lefthand1"
+                            android:tag="lower_lefthand1"
+                            android:layout_below="@+id/ic_upperLButton"
+                            android:layout_toStartOf="@+id/ic_chestButton"
+                            android:layout_row="2"
+                            android:layout_column="0"
+                            android:padding="0dp"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:paddingBottom="0dp"
+                            android:layout_gravity="top|center|fill"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+
+                        <ImageButton
+                            android:layout_width="64dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/ic_lowerBodyButton"
+                            android:layout_below="@+id/ic_chestButton"
+                            android:layout_toEndOf="@+id/ic_lowerLButton"
+                            android:layout_row="2"
+                            android:layout_column="1"
+                            android:layout_gravity="center|fill"
+                            android:padding="0dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:src="@drawable/lower_body1" />
+
+                        <ImageButton
+                            android:layout_width="17dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ic_lowerRButton"
+                            android:layout_below="@+id/ic_lowerLButton"
+                            android:layout_toStartOf="@+id/gridLayout"
+                            android:layout_row="2"
+                            android:layout_column="2"
+                            android:layout_gravity="top|center|fill"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:padding="0dp"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1"
+                            android:src="@drawable/lower_righthand1"
+                            android:paddingBottom="0dp" />
+
+                        <ImageButton
+                            android:layout_width="68dp"
+                            android:layout_height="25dp"
+                            android:id="@+id/ic_feetButton"
+                            android:layout_row="4"
+                            android:layout_column="1"
+                            android:layout_gravity="center|fill"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:src="@drawable/feet1"
+                            android:padding="0dp"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1" />
+
+                        <ImageButton
+                            android:layout_width="61dp"
+                            android:layout_height="51dp"
+                            android:id="@+id/ic_legsButton"
+                            android:layout_row="3"
+                            android:layout_column="1"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:src="@drawable/legs1"
+                            android:layout_gravity="center|fill"
+                            android:padding="0dp"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:layout_rowWeight="1" />
+
+                    </GridLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="148dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout2"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="0.04"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:paddingRight="20dp">
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/SE_BODY_headButton"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:textOff="Head"
+                        android:textOn="Head"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:checked="false"
+                        android:text="Head"
+                        android:background="@drawable/body_button_border" />
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Upper Body"
+                        android:id="@+id/SE_BODY_chestButton"
+                        android:layout_gravity="right"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:textOn="Upper Body"
+                        android:checked="false"
+                        android:textOff="Upper Body"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:background="@drawable/body_button_border" />
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Arms"
+                        android:id="@+id/SE_BODY_armButton"
+                        android:layout_gravity="right"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:textOff="Arms"
+                        android:textOn="Arms"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:background="@drawable/body_button_border" />
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hands"
+                        android:id="@+id/SE_BODY_handButton"
+                        android:layout_gravity="right"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:textOn="Hands"
+                        android:textOff="Hands"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:background="@drawable/body_button_border" />
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lower body"
+                        android:id="@+id/SE_BODY_lowBodyButton"
+                        android:layout_gravity="right"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:textOn="Lower Body"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textOff="Lower Body"
+                        android:background="@drawable/body_button_border" />
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Legs"
+                        android:id="@+id/SE_BODY_legButton"
+                        android:layout_gravity="right"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:textOff="Legs"
+                        android:textOn="Legs"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:background="@drawable/body_button_border" />
+
+                    <ToggleButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Feet"
+                        android:id="@+id/SE_BODY_feetButton"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:textOn="Feet"
+                        android:textOff="Feet"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:background="@drawable/body_button_border" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noPainButton"
+        android:layout_weight="0.09"
+        android:text="NO PAIN"
+        android:layout_alignParentBottom="true"
+        android:hapticFeedbackEnabled="false" />
+
+</RelativeLayout>
