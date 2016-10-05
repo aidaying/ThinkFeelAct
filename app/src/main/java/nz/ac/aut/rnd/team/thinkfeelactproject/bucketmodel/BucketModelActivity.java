@@ -15,6 +15,7 @@ import java.util.List;
 
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
+import nz.ac.aut.rnd.team.thinkfeelactproject.selfevalmodel.SelfEvaluationActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.sosmodel.SOSModelActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.TimeOutModelAcivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
@@ -34,6 +35,7 @@ public class BucketModelActivity extends Activity {
     TextView ratingResult;
     Button sosBtn;
     Button timeoutBtn;
+    Button selfEvalBtn;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -58,6 +60,7 @@ public class BucketModelActivity extends Activity {
 
         sosBtn = (Button) findViewById(R.id.sosBtn);
         timeoutBtn = (Button) findViewById(R.id.timeoutBtn);
+        selfEvalBtn = (Button) findViewById(R.id.selfEvalBtn);
 
         sosBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,13 @@ public class BucketModelActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), TimeOutModelAcivity.class);
+                startActivity(intent);
+            }
+        });
+        selfEvalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SelfEvaluationActivity.class);
                 startActivity(intent);
             }
         });

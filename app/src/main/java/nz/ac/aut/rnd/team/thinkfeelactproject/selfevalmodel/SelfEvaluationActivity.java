@@ -34,7 +34,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
     View scroll_overview, scroll_thoughts;
     View SE_OVERVIEW_moodLayout, SE_OVERVIEW_bodyLayout, SE_OVERVIEW_thoughtsLayout;
     RatingBar ratingBar;
-    ImageButton m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15,m16;
+    ImageButton m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16;
     ImageView moodImgView, ov_ImgView;
     TextView moodTextView, ov_moodText, ov_bodyText, ratingText;
     TextView ov_thoughtsWhat, ov_thoughtsWhyHow, ov_thoughtsFeel;

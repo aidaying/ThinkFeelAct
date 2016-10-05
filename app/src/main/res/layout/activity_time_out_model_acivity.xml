@@ -13,9 +13,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_height="155dp"
-        android:id="@+id/timeoutpie">
+        android:id="@+id/timeoutpie"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/contentView"
+        android:background="@color/timeoutContent"
+        android:layout_height="420dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+    </FrameLayout>
 </RelativeLayout>

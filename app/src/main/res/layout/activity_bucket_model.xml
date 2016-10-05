@@ -14,16 +14,6 @@
         android:layout_marginBottom="76dp"
         android:id="@+id/sosBtn" />
 
-    <Button
-        android:text="Time Out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/sosBtn"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="28dp"
-        android:onClick=""
-        android:id="@+id/timeoutBtn" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,5 +23,25 @@
         android:layout_above="@+id/sosBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="174dp" />
+
+    <Button
+        android:text="Time Out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick=""
+        android:id="@+id/timeoutBtn"
+        android:layout_below="@+id/bucketModelPercentage"
+        android:layout_toEndOf="@+id/bucketModelPercentage"
+        android:layout_marginStart="45dp" />
+
+    <Button
+        android:text="Self-Evaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="24dp"
+        android:id="@+id/selfEvalBtn" />
 
 </RelativeLayout>
