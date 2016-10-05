@@ -517,7 +517,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
 
     public static void disableKeyboard(EditText editText) {
         if (Build.VERSION.SDK_INT >= 11) {
-            editText.setTextIsSelectable(true);
+            //editText.setTextIsSelectable(true);
         } else {
             editText.setRawInputType(InputType.TYPE_NULL);
             editText.setFocusable(true);
