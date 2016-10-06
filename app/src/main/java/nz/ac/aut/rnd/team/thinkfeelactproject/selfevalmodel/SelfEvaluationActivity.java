@@ -23,6 +23,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
 
 
 public class SelfEvaluationActivity extends Activity implements View.OnClickListener{
@@ -48,11 +49,16 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
     ArrayList<String> bodTexts; String[] moodNames; TypedArray moodIDs;
     Context context;
     boolean noPainButtonClicked;
+    private DatabaseHandler mydb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_se);
+
+        mydb = new DatabaseHandler(this);
+
         //=======================OVERVIEW SECTION=====================================
         addEvent = (Button) findViewById(R.id.SE_OV_addEventButton);
         addEvent.setOnClickListener(this);

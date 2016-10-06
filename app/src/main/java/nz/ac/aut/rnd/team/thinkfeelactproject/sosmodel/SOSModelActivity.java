@@ -128,7 +128,6 @@ public class SOSModelActivity extends Activity {
                                 addNewDialog.cancel();
                             }
                         });
-
                     }
 
                 });
@@ -138,9 +137,7 @@ public class SOSModelActivity extends Activity {
                         dialog.dismiss();
                     }
                 });
-
             }
-
             @Override
             public void onNothingSelected() {
 
