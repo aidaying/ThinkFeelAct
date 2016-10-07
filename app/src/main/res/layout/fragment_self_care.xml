@@ -3,8 +3,222 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context="nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.Self_Care">
+    tools:context="nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.Self_Care"
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="Create Your Comfort Space"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="12pt"
+                android:textAlignment="center"
+                android:id="@+id/textView31"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="223dp"
+                android:id="@+id/one">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="209dp"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.5">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="66dp"
+                        android:weightSum="1">
+
+                        <ImageView
+                            android:layout_height="match_parent"
+                            android:src="@drawable/clock"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="5dp"
+                            android:id="@+id/imageView6"
+                            android:layout_width="36dp"
+                            android:layout_weight="0.25" />
+
+                        <TextView
+                            android:layout_width="97dp"
+                            android:layout_height="55dp"
+                            android:id="@+id/editText13"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:textSize="6pt"
+                            android:text="Find a suitable time and a small place at home with to relax"
+                            android:layout_weight="0.50"
+                            android:linksClickable="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:weightSum="1"
+                        android:layout_height="81dp">
+
+                        <TextView
+                            android:layout_width="77dp"
+                            android:layout_height="72dp"
+                            android:ems="10"
+                            android:id="@+id/editText12"
+                            android:textAlignment="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginRight="5dp"
+                            android:textSize="6pt"
+                            android:text="Get a comfy chair to sit next to a window"
+                            android:layout_weight="0.60" />
+
+                        <ImageView
+                            android:src="@drawable/elegantsofa"
+                            android:id="@+id/imageView4"
+                            android:layout_height="match_parent"
+                            android:layout_width="128dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="1">
+
+                        <ImageView
+                            android:layout_width="76dp"
+                            android:src="@drawable/cup"
+                            android:id="@+id/imageView5"
+                            android:layout_height="53dp"
+                            android:layout_weight="0.02" />
+
+                        <TextView
+                            android:layout_width="92dp"
+                            android:id="@+id/editText14"
+                            android:textSize="6pt"
+                            android:textAlignment="center"
+                            android:layout_marginTop="25dp"
+                            android:text="Perhaps with a cup of herbal tea"
+                            android:layout_height="56dp"
+                            android:layout_weight="0.65" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_weight="1">
+
+
+                    <ImageButton
+                        android:layout_width="103dp"
+                        android:src="@drawable/jukebox"
+                        android:scaleType="fitXY"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/playMusicBtn"
+                        android:layout_height="102dp"
+                        android:layout_marginRight="30dp" />
+
+                    <TextView
+                        android:text="Play some smooth music can help too. Click the jukebox to play or pause. "
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="6pt"
+                        android:textAlignment="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="2dp"
+                        android:id="@+id/textView32"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="The example above only helps you to get an idea what you need. Be creative and make your own comfort place to relax and chill down."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/textView34"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:weightSum="1"
+                android:id="@+id/two"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/relax"
+                    android:id="@+id/imageView7"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1.39" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/three">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:text="For details of self care click the book shelf for pdf"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="6pt"
+                        android:id="@+id/textView35"
+                         />
+
+                    <ImageButton
+                        android:layout_width="78dp"
+                        android:src="@drawable/bookcase"
+                        android:id="@+id/imageButton"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

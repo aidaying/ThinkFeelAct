@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -90,7 +93,7 @@ public class SOSModelActivity extends Activity {
                 final Dialog dialog = new Dialog(SOSModelActivity.this);
                 dialog.setContentView(R.layout.fragment_sos_dialog);
                 dialog.setTitle("Details");
-                ImageButton addNewBtn = (ImageButton) dialog.findViewById(R.id.addNewSosEventBtn);
+                final Button addNewBtn = (Button) dialog.findViewById(R.id.addNewSosEventBtn);
                 Button close = (Button) dialog.findViewById(R.id.closeBtn);
                 updateList(dialog, e);
                 dialog.show();
@@ -100,28 +103,44 @@ public class SOSModelActivity extends Activity {
                         final Dialog addNewDialog = new Dialog(SOSModelActivity.this);
                         addNewDialog.setContentView(R.layout.addnewdesclayout);
                         addNewDialog.setTitle("Add New");
-                        Button addNewDescBtn = (Button) addNewDialog.findViewById(R.id.addNewDescBtn);
+                        final Button addNewDescBtn = (Button) addNewDialog.findViewById(R.id.addNewDescBtn);
                         Button cancelAddNewDescBtn = (Button) addNewDialog.findViewById(R.id.cancelAddNewDescBtn);
+                        final EditText addNewDesc = (EditText) addNewDialog.findViewById(R.id.descInput);
                         addNewDialog.show();
+                        addNewDescBtn.setEnabled(false);
+                        addNewDesc.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                        addNewDescBtn.setOnClickListener(new View.OnClickListener() {
+                            }
 
                             @Override
-                            public void onClick(View view) {
-                                EditText addNewDesc = (EditText) addNewDialog.findViewById(R.id.descInput);
-                                String desc = addNewDesc.getText().toString();
-                                String type = "SOS";
-                                int num = 1;
-                                Desc desc1 = new Desc();
-                                desc1.setDesc(desc);
-                                desc1.setType(type);
-                                desc1.setSelectedValue(e.getY());
-                                desc1.setNum(num);
-                                mydb.addNewDescInfo(desc1);
-                                updateList(dialog,e);
-                                addNewDialog.dismiss();
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    addNewDescBtn.setEnabled(s.toString().trim().length() > 0);
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+
                             }
                         });
+                            addNewDescBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    String type = "SOS";
+                                    String desc = addNewDesc.getText().toString();
+                                    int num = 1;
+                                    Desc desc1 = new Desc();
+                                    desc1.setDesc(desc);
+                                    desc1.setType(type);
+                                    desc1.setSelectedValue(e.getY());
+                                    desc1.setNum(num);
+                                    mydb.addNewDescInfo(desc1);
+                                    updateList(dialog, e);
+                                    addNewDialog.dismiss();
+                                }
+                            });
+
                         cancelAddNewDescBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

@@ -5,28 +5,38 @@
     >
 
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:id="@+id/sosListView"
-        android:layout_below="@+id/addNewSosEventBtn"
-        android:layout_alignParentStart="true"
-        android:layout_height="400dp"
-        android:layout_above="@+id/closeBtn" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        android:id="@+id/addNewSosEventBtn"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        <Button
+            android:layout_gravity="end"
+            android:id="@+id/addNewSosEventBtn"
+            android:text="New Item"
+            android:textAlignment="center"
+            android:textSize="6pt"
+            android:textColor="#00999F"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_width="100dp" />
 
-    <Button
-        android:text="Close"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/closeBtn"
-        android:layout_alignParentEnd="true"
-        android:layout_width="match_parent" />
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/sosListView"
+            android:layout_below="@+id/addNewSosEventBtn"
+            android:layout_alignParentStart="true"
+            android:layout_height="490dp"
+            android:layout_weight="4"/>
+
+        <Button
+            android:text="Close"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/closeBtn"
+            android:layout_alignParentEnd="true"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="50dp" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <exercise_name>
     <exercise>
+        <name>yoga_one</name>
+        <explanation>1</explanation>
+    </exercise>
+    <exercise>
+        <name>yoga_two</name>
+        <explanation>1</explanation>
+    </exercise>
+    <exercise>
+        <name>yoga_three</name>
+        <explanation>1</explanation>
+    </exercise>
+    <exercise>
+        <name>yoga_four</name>
+        <explanation>1</explanation>
+    </exercise>
+    <exercise>
+        <name>yoga_five</name>
+        <explanation>1</explanation>
+    </exercise>
+    <exercise>
     <name>exercise_one</name>
     <explanation>1</explanation>
     </exercise>
@@ -18,26 +38,6 @@
     </exercise>
     <exercise>
     <name>exercise_five</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>yoga_one</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>yoga_two</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>yoga_three</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>yoga_four</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>yoga_five</name>
     <explanation>1</explanation>
     </exercise>
 </exercise_name>
