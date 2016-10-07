@@ -186,38 +186,6 @@
                     android:layout_weight="1.39" />
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/three">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="72dp"
-                    android:weightSum="1">
-
-                    <TextView
-                        android:text="For details of self care click the book shelf for pdf"
-                        android:layout_width="230dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:textSize="6pt"
-                        android:id="@+id/textView35"
-                         />
-
-                    <ImageButton
-                        android:layout_width="78dp"
-                        android:src="@drawable/bookcase"
-                        android:id="@+id/imageButton"
-                        android:layout_marginLeft="10dp"
-                        android:background="@android:color/transparent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

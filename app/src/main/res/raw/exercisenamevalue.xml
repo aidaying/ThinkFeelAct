@@ -2,42 +2,22 @@
 <exercise_name>
     <exercise>
         <name>yoga_one</name>
-        <explanation>1</explanation>
+        <explanation>Bridge Pose - This pose helps controlling high blood pressure, sleeping disorder, headaches, and reduces backaches</explanation>
     </exercise>
     <exercise>
         <name>yoga_two</name>
-        <explanation>1</explanation>
+        <explanation>Eagle Pose - This pose can ward off stress by improving focus and balance</explanation>
     </exercise>
     <exercise>
         <name>yoga_three</name>
-        <explanation>1</explanation>
+        <explanation>Extended Triangle Pose - This pose is an excellent stress reliever and helps improve digestion</explanation>
     </exercise>
     <exercise>
         <name>yoga_four</name>
-        <explanation>1</explanation>
+        <explanation>Cow Pose - This pose help relieves stress and calms the mind</explanation>
     </exercise>
     <exercise>
         <name>yoga_five</name>
-        <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>exercise_one</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>exercise_two</name>
-    <explanation>2</explanation>
-    </exercise>
-    <exercise>
-    <name>exercise_three</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>exercise_four</name>
-    <explanation>1</explanation>
-    </exercise>
-    <exercise>
-    <name>exercise_five</name>
-    <explanation>1</explanation>
+        <explanation>Standing Forward Bend - This pose help relieve stress, fatigue and mind depression</explanation>
     </exercise>
 </exercise_name>

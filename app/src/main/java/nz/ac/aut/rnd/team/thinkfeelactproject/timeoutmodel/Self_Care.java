@@ -1,8 +1,12 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,7 +15,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 
@@ -28,15 +37,13 @@ public class Self_Care extends Fragment{
         playBtn = (ImageButton) selfCareView.findViewById(R.id.playMusicBtn);
 
         setMusicPlayer();
-        setupDownloadPDF();
+
+
 
         return selfCareView;
     }
 
-    private void setupDownloadPDF(){
 
-
-    }
 
     private void setMusicPlayer(){
 
