@@ -84,7 +84,7 @@ public class AddEventPageFragment extends Fragment {
                 event = new Event();
                 event.setName(name);
                 event.setDate(added_date);
-                event.setRating(rate);
+                event.setRating(Double.parseDouble(String.valueOf(rate)));
                 event.setEmotion("");
                 event.setPain("");
                 event.setThoughtwhat("");
