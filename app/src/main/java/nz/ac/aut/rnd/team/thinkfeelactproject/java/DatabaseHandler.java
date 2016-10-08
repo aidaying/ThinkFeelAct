@@ -103,7 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do {
                 Event event = new Event();
-                event.setRating(cursor.getInt(3));
+                event.setRating(cursor.getDouble(8));
                 arrayList.add(event.getRating());
             }while(cursor.moveToNext());
         }
@@ -212,7 +212,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String CREATE_EVENT_CURRENT_TABLE = "CREATE TABLE "+ EVENT_TABLE_NAME + "("
                 + EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + EVENT_EMOTIONAL + " TEXT, " + EVENT_PHYSICAL + " TEXT, "
-                + EVENT_THOUGHTS_WHAT + " TEXT, " + EVENT_THOUGHTS_WHY_HOW + " TEXT, " + EVENT_THOUGHTS_FEEL + " TEXT, "+ EVENT_DATE + " TEXT, " + EVENT_RATING + " TEXT)";
+                + EVENT_THOUGHTS_WHAT + " TEXT, " + EVENT_THOUGHTS_WHY_HOW + " TEXT, " + EVENT_THOUGHTS_FEEL + " TEXT, "+ EVENT_DATE + " TEXT, " + EVENT_RATING + " DOUBLE)";
         db.execSQL(CREATE_EVENT_CURRENT_TABLE);
 
         String CREATE_DESC_TABLE = "CREATE TABLE "+ SOS_DESCRIPTION_TABLE_NAME + "("

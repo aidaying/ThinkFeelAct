@@ -13,7 +13,7 @@ public class Event {
     private String thoughtwhyhow;
     private String thoughtfeel;
     private String date;
-    private String rating;
+    private Double rating;
 
     public Event(){
     }
@@ -82,11 +82,11 @@ public class Event {
         this.date = date;
     }
 
-    public String getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
