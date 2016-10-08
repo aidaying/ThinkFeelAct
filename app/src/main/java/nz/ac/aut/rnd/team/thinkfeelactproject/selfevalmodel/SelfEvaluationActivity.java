@@ -35,7 +35,8 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
 
     ToggleButton overview, mood, thoughts, body;
     Button addEvent, noPain;
-    String thoughtWhatString, thoughtWhyHowString, thoughtFeelString, bodyString, moodString, eventName, ratingString;
+    String thoughtWhatString, thoughtWhyHowString, thoughtFeelString, bodyString, moodString, eventName;
+    double finalRating;
     View overviewLayout, moodLayout, thoughtsLayout, bodyLayout, moodLayoutSection;
     View scroll_overview, scroll_thoughts;
     View SE_OVERVIEW_moodLayout, SE_OVERVIEW_bodyLayout, SE_OVERVIEW_thoughtsLayout;
@@ -195,7 +196,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
         //=========================RATING=====================================
         ratingBar = (RatingBar) findViewById(R.id.SE_OVERVIEW_StressRating);
         ratingText = (TextView) findViewById(R.id.ratingText);
-        ratingBar.setStepSize(1);
+        ratingBar.setStepSize(0.5f);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
             @Override
@@ -207,7 +208,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
                 else
                     ratingText.setTextColor(Color.parseColor("#40d973"));
                 ratingText.setText("Rating: " + rating);
-                ratingString = rating + "";
+                finalRating = (double)rating;
 
             }
         });
@@ -337,7 +338,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
          */
 
         //Returns true if body, mood, eventName and ratingString is not empty
-        if(thoughtsComplete() && moodComplete() && bodyComplete() && eventName.length()!=0 && ratingString!=null){
+        if(thoughtsComplete() && moodComplete() && bodyComplete() && eventName.length()!=0 && finalRating!=0){
             //Log testing - Displays in bright red text within -Android Monitor->Log Cat-
             Log.e("COMPLETE", "ALL SET TO ADD EVENT");
             Log.e("Event Name", eventName);
@@ -346,7 +347,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
             Log.e("What happened: ", thoughtWhatString);
             Log.e("Why/How did it happen: ",thoughtWhyHowString);
             Log.e("How are you feeling: ", thoughtFeelString);
-            Log.e("Rating", ratingString);
+            Log.e("Rating", "" + finalRating);
             //End Log testing
 
             event.setName(eventName);
@@ -354,7 +355,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
             @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yy");
             String date = simpleDateFormat.format(c.getTime());
             event.setDate(date);
-            event.setRating(ratingString);
+            event.setRating(finalRating);
             event.setEmotion(moodString);
             event.setPain(bodyString);
             event.setThoughtwhat(thoughtWhatString);
@@ -372,8 +373,8 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
             Log.e("What happened: ", thoughtWhatString);
             Log.e("Why/How did it happen: ",thoughtWhyHowString);
             Log.e("How are you feeling: ", thoughtFeelString);
-            if(ratingString == null) {
-                Log.e("Rating", "NULL");
+            if(finalRating == 0) {
+                Log.e("Rating", "NOT SET");
                 addMessage += "Please set a stress level for this event.";
             }
             Toast.makeText(this, addMessage, Toast.LENGTH_SHORT).show();
