@@ -40,7 +40,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String EVENT_DATE = "EVENT_DATE";
     private static final String EVENT_RATING = "EVENT_RATING";
 
-    private static final String SOS_DESCRIPTION_TABLE_NAME = "SOS DESC";
+    private static final String SOS_DESCRIPTION_TABLE_NAME = "SOS_DESC";
     private static final String SOS_DESC_ID = "DESC_ID";
     private static final String SOS_DESC = "DESCRIPTION";
     private static final String SOS_DESC_TYPE = "TYPE";
