@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:paddingTop="15dp">
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:weightSum="1"
+            android:layout_above="@+id/selectstress">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:id="@+id/linearLayout7"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_below="@+id/linearLayout3"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Overview of event"
+                    android:id="@+id/textView7"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@android:color/white"
+                    android:layout_above="@+id/SE_OV_stressBar"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@android:drawable/editbox_background"
+                    android:backgroundTint="?attr/colorPrimary" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:drawable/editbox_background">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Event Name:"
+                        android:id="@+id/SE_OV_evView"
+                        android:layout_below="@+id/linearLayout7"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center_vertical"
+                        android:textSize="18dp"
+                        android:textColor="#2d2d2d"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:backgroundTint="@android:color/background_light" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:hint="Insert event name"
+                        android:id="@+id/SE_OV_editEventName"
+                        android:gravity="center_vertical"
+                        android:layout_alignBottom="@+id/linearLayout"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="14dp"
+                        android:paddingStart="15dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:layout_marginBottom="5dp"
+                        android:textColorHint="@android:color/holo_red_dark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:weightSum="1"
+                    android:background="@android:drawable/editbox_background"
+                    android:id="@+id/ov_moodSection">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/SE_OVERVIEW_moodLayout"
+                        android:backgroundTint="@android:color/background_light"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Mood:"
+                            android:id="@+id/SE_OV_mdView"
+                            android:layout_alignBottom="@+id/linearLayout7"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="18dp"
+                            android:textColor="#2d2d2d"
+                            android:paddingEnd="15dp"
+                            android:textAlignment="textStart"
+                            android:paddingStart="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.70"
+                            android:gravity="center_vertical"
+                            android:onClick="onClick" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:id="@+id/SE_OV_mood"
+                            android:gravity="center_vertical"
+                            android:textSize="14dp"
+                            android:hint="Click on Mood tab"
+                            android:textColorHint="@android:color/holo_red_dark"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.77"
+                            android:paddingStart="15dp"
+                            android:paddingBottom="5dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="66dp"
+                        android:id="@+id/SE_OVERVIEW_moodImgView"
+                        android:layout_weight="0.07"
+                        android:foregroundGravity="left|center_vertical" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:id="@+id/SE_OVERVIEW_bodyPain"
+                    android:background="@android:drawable/editbox_background">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Physical Pain:"
+                        android:id="@+id/SE_OV_bodView"
+                        android:layout_centerVertical="true"
+                        android:layout_alignStart="@+id/editEvent"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
+                        android:background="@android:drawable/editbox_background"
+                        android:textSize="18dp"
+                        android:textColor="#2d2d2d"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:backgroundTint="@android:color/background_light" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/SE_OV_pain"
+                        android:hint="Click on the Physical Pain tab"
+                        android:gravity="center_vertical"
+                        android:textColorHint="@android:color/holo_red_dark"
+                        android:textSize="14dp"
+                        android:paddingStart="15dp"
+                        android:paddingBottom="5dp"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.56"
+                    android:id="@+id/SE_OVERVIEW_thoughts"
+                    android:background="@android:drawable/editbox_background">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Thoughts:"
+                        android:id="@+id/SE_OV_thView"
+                        android:layout_below="@+id/SE_OV_bodView"
+                        android:layout_toEndOf="@+id/SE_OV_mdView"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
+                        android:background="@android:drawable/editbox_background"
+                        android:textSize="18dp"
+                        android:textColor="#2d2d2d"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:backgroundTint="@android:color/background_light" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/thoughtsWhat"
+                        android:gravity="center_vertical"
+                        android:textSize="14dp"
+                        android:paddingStart="15dp"
+                        android:paddingBottom="5dp"
+                        android:hint="What happened?"
+                        android:background="#f5f5f5"
+                        android:paddingEnd="5dp"
+                        android:paddingTop="5dp"
+                        android:textColorHint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/SE_OV_thoughtsWhat"
+                        android:gravity="center_vertical"
+                        android:textSize="14dp"
+                        android:paddingEnd="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingStart="15dp"
+                        android:hint="Click on the thoughts tab"
+                        android:textColorHint="@android:color/holo_red_dark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/thoughtsWhyHow"
+                        android:gravity="center_vertical"
+                        android:textSize="14dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="15dp"
+                        android:paddingBottom="5dp"
+                        android:hint="Why/How did it happen?"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="15dp"
+                        android:background="#f5f5f5"
+                        android:textColorHint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/SE_OV_thoughtsWhyHow"
+                        android:gravity="center_vertical"
+                        android:textSize="14dp"
+                        android:paddingEnd="15dp"
+                        android:paddingLeft="50dp"
+                        android:paddingStart="15dp"
+                        android:textColorHint="@android:color/holo_red_dark"
+                        android:hint="Click on the thoughts tab" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/thoughtsFeel"
+                        android:gravity="center_vertical"
+                        android:textSize="14dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="15dp"
+                        android:paddingBottom="5dp"
+                        android:hint="How am I feeling?"
+                        android:paddingTop="5dp"
+                        android:background="#f5f5f5"
+                        android:textColorHint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/SE_OV_thoughtsFeel"
+                        android:gravity="center_vertical"
+                        android:textSize="14dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingEnd="15dp"
+                        android:paddingLeft="50dp"
+                        android:paddingStart="15dp"
+                        android:textColorHint="@android:color/holo_red_dark"
+                        android:hint="Click on the thoughts tab" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="@android:drawable/editbox_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Select stress level of event"
+                android:id="@+id/selectstress"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
+                android:layout_above="@+id/SE_OV_stressBar"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:background="@android:drawable/editbox_background"
+                android:backgroundTint="?attr/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Green: 0-3 Relaxed 3-4 Dealing with daily stress"
+                android:id="@+id/infoGreen"
+                android:textColor="#40d873"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Orange: 5-7 On the verge of over-stressing"
+                android:id="@+id/infoOrange"
+                android:textColor="#fda04a"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Red: 8-10 Overstressed"
+                android:id="@+id/infoRed"
+                android:textColor="#fd484b"
+                android:textAlignment="center" />
+
+            <RatingBar
+                android:id="@+id/SE_OVERVIEW_StressRating"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:numStars="10"
+                android:rating="5"
+                android:scaleX="1.9"
+                android:scaleY="1.9"
+                android:isIndicator="false"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:progressTint="@color/colorAccent" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/textView14"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#40d973"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="1"
+                    android:id="@+id/textView15"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#40d973"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="2"
+                    android:id="@+id/textView16"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#40d973"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="3"
+                    android:id="@+id/textView17"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#40d973"
+                    android:textColor="#ffffff"
+                    android:autoText="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="4"
+                    android:id="@+id/textView18"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#40d973"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="5"
+                    android:id="@+id/textView19"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.8"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#ffa14a"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="6"
+                    android:id="@+id/textView20"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#ffa14a"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="7"
+                    android:id="@+id/textView21"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#ffa14a"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="8"
+                    android:id="@+id/textView22"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="#ffffff"
+                    android:background="#ff484b" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="9"
+                    android:id="@+id/textView23"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="#ffffff"
+                    android:background="#ff484b" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="10"
+                    android:id="@+id/textView24"
+                    android:layout_weight="0.5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="#ffffff"
+                    android:background="#ff484b" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/ratingText"
+                android:hint="Rating: "
+                android:layout_gravity="center"
+                android:background="@android:drawable/editbox_background"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="ADD EVENT"
+            android:id="@+id/SE_OV_addEventButton"
+            android:textColor="#ffffff"
+            android:background="#005ece"
+            android:layout_below="@+id/scrollView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<surveys>
+    <survey>
+        <id>1</id>
+        <question>Death of a significant person?</question>
+        <description>(eg. A spouse, friend, relative, family member, or pet.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>2</id>
+        <question>Separation/Breakup or Divorce?</question>
+        <description>(eg. Your own, your family's, a companion's)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>3</id>
+        <question>Serious sickness or injury?</question>
+        <description>(eg. Cancer, heart attack, stroke, seizures, leukemia, broken bones, etc)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>4</id>
+        <question>Health/ Medical problems?</question>
+        <description>(eg. Allergic reactions, asthma, hay fever, menopause, infection etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>5</id>
+        <question>Diagnosed with mental illness?</question>
+        <description>(eg. Anxiety, Depression Eating/Personality/Panic disorders, Phobias, OCD, ADHD, etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>6</id>
+        <question>Self harm? Suicidal thoughts?</question>
+        <description> </description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>7</id>
+        <question>Bad at comprosing yourself/maintaining your health/handling pressure</question>
+        <description>(eg. Controlling your anger, anxiety, panic, worry, nervousness, etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>8</id>
+        <question>Troubles you have no courage to tell anyone about?</question>
+        <description>(eg. Fear of being burdensome, getting help, coming out, unspoken opinions, etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>9</id>
+        <question>Worrying over a companion's condition?</question>
+        <description> </description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>10</id>
+        <question>Sexual Conflict or frustration?</question>
+        <description> </description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>11</id>
+        <question>Conflict with spiritual, moral or ethical values?</question>
+        <description> </description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>12</id>
+        <question>Conflict/Challenges within family, friends or extended family?</question>
+        <description>(eg. Major increase in argument between family members, communication etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>13</id>
+        <question>Parenting, childcare, being a parental guardian?</question>
+        <description> </description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>14</id>
+        <question>Pregnancy troubles?</question>
+        <description>(eg. worrying about going into labour, miscarriage, eating too much)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>15</id>
+        <question>Changes within family, friends or extended family?</question>
+        <description>(eg. Family member leaving home, moving to a different country, gaining a new family member etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>16</id>
+        <question>Home sick?</question>
+        <description>(eg. away from home, international students, living independently etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>17</id>
+        <question>Faced/facing any kind of discrimination, bullying or harassment?</question>
+        <description>(eg. sexual harassament, getting targeted/picked on, prejudice, unkind/rule comments etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>18</id>
+        <question>Have you been betrayed by someone before?</question>
+        <description>(eg. family, friend, compannion, girlfriend/boyfriend etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>19</id>
+        <question>Do you feel guilty or regreful of actions done in the past?</question>
+        <description>(eg. cheating, bullying, guilt, manipulation, not studying to your fullest potential etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>20</id>
+        <question>Having a tendency to avoid things?</question>
+        <description>(eg. responsibilities, admitting faults etc.)</description>
+        <type>Self</type>
+    </survey>
+    <survey>
+        <id>21</id>
+        <question>Bad at handling change/unfamiliar situations?</question>
+        <description>(eg. moving out, graduation, interrupted routines etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>22</id>
+        <question>Financial troubles?</question>
+        <description>(eg. Overdue credit card payments, loans, debt, mortage, living costs etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>23</id>
+        <question>Having a part-time/full-time job?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>24</id>
+        <question>Major change in social activities?</question>
+        <description>(eg. Becoming more/less sociable, joining a club/team etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>25</id>
+        <question>Too many responsibilities?</question>
+        <description>(eg. work overload, demanding/unreasonable dedlines, being relied on too much etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>26</id>
+        <question>Major Changes regarding work/education?</question>
+        <description>(eg. changing to a different line of work, changing university courses/papers, transferring schools etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>27</id>
+        <question>Major changes in working hours or conditions?</question>
+        <description>(eg. change in working shifts, super early/late classes in university etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>28</id>
+        <question>Conflict with friends, classmates, teachers, co-workers, boss, customers?</question>
+        <description>(eg. clashing opinions, unfriendly, un-respectful etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>29</id>
+        <question>Insecurity in your progress or status within school, the workforce or your lifestyle?</question>
+        <description>(eg. Promotions/demotions, grades, fear of failing, university isn't working out for you, hitting a slump etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>30</id>
+        <question>Being fired from work/failing school?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>31</id>
+        <question>Facing culture shock/Adapting to a new culture?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>32</id>
+        <question>Bad time management?</question>
+        <description>(eg. Bad at controlling procrastination, easily distracted, constantly avoiding tasks etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>33</id>
+        <question>Worrying/nervousness?</question>
+        <description>(eg. difficulty speaking in public, social interaction, new environment, getting put on the spot etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>34</id>
+        <question>Do you have addiction?</question>
+        <description>(eg. Drugs, gambling, games, social media etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>35</id>
+        <question>Eating/Digestion issues? Change in diet?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>36</id>
+        <question>Pet troubles?</question>
+        <description>(eg. increase in visits to the vet, pet behaviour changes, aging etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>37</id>
+        <question>Working under dangerous conditions?</question>
+        <description>(eg. Dangerous jobs, illegal jobs, blackmail, threats, harassment etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>38</id>
+        <question>Unclear/unrealistic expectations from others?</question>
+        <description>(eg. Unrealistic expectations from partner, parents, family, team-mates, teachers, boss, colleagues etc.)</description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>39</id>
+        <question>Have you violated the law before?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>40</id>
+        <question>Are you currently under detention, house arrest, jail or other institutions?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+    <survey>
+        <id>41</id>
+        <question>Leaky home Stress?</question>
+        <description> </description>
+        <type>other</type>
+    </survey>
+</surveys>

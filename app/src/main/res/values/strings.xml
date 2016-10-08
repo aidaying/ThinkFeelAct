@@ -2,7 +2,48 @@
     <string name="app_name">ThinkFeelActProject</string>
     <string name="title_activity_long_term_survey">LongTermSurveyActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="add_text">ADD</string>
+    <string name="calculate_text">CALCULATE</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="mood_names">
+        <item>Content/Just Right</item>
+        <item>Happy</item>
+        <item>Sad</item>
+        <item>Sick</item>
+        <item>Deep thoughts</item>
+        <item>On the verge of crying</item>
+        <item>Crying</item>
+        <item>Frustrated</item>
+        <item>Indifferent</item>
+        <item>Worried/Nervous</item>
+        <item>Annoyed</item>
+        <item>Angry/Furious</item>
+        <item>Embarrassed/Shy</item>
+        <item>Confused</item>
+        <item>Shocked/Surprised</item>
+        <item>Scared</item>
+    </string-array>
+
+    <integer-array name="moodIDs">
+        <item>@drawable/ic_content</item>
+        <item>@drawable/ic_happy</item>
+        <item>@drawable/ic_sad</item>
+        <item>@drawable/ic_sick</item>
+        <item>@drawable/ic_negative_thoughts</item>
+        <item>@drawable/ic_feellikecrying</item>
+        <item>@drawable/ic_crying</item>
+        <item>@drawable/ic_frustrated_tpoc</item>
+        <item>@drawable/ic_meh</item>
+        <item>@drawable/ic_worriednervous</item>
+        <item>@drawable/ic_annoyed</item>
+        <item>@drawable/ic_angry</item>
+        <item>@drawable/ic_embarrassed</item>
+        <item>@drawable/ic_confused</item>
+        <item>@drawable/ic_shocked</item>
+        <item>@drawable/ic_scared</item>
+    </integer-array>
+    <string name="title_activity_credits">Credits</string>
 </resources>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout4">
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overview"
+            android:textColor="#ffffff"
+            android:id="@+id/overviewButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1.0"
+            android:background="@drawable/sel_button_border"
+            android:textOff="Overview"
+            android:textOn="Overview"
+            android:checked="true"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout6">
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mood"
+            android:textColor="#ffffff"
+            android:layout_weight="1.1"
+            android:id="@+id/moodButton"
+            android:background="@drawable/del_button_border"
+            android:checked="false"
+            android:textOff="Mood"
+            android:textOn="Mood"
+            android:textSize="16sp" />
+
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thoughts"
+            android:textColor="#ffffff"
+            android:layout_weight="1.1"
+            android:id="@+id/thoughtsButton"
+            android:background="@drawable/del_button_border"
+            android:checked="false"
+            android:textOff="Thoughts"
+            android:textOn="Thoughts"
+            android:textSize="16sp" />
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Physical Pain"
+            android:textColor="#ffffff"
+            android:layout_weight="0.8"
+            android:id="@+id/bodyButton"
+            android:background="@drawable/del_button_border"
+            android:checked="false"
+            android:textOff="Physical Pain"
+            android:textOn="Physical Pain"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scroll_thoughts"
+        android:layout_below="@+id/linearLayout6">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_thoughts_se"
+            android:id="@+id/thoughtsLayout"
+            android:layout_alignParentStart="true"
+            android:visibility="invisible"
+            android:focusable="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/moodLayout" />
+    </ScrollView>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_mood_se"
+        android:id="@+id/moodLayout"
+        android:visibility="invisible"
+        android:layout_below="@+id/linearLayout6"
+        android:focusable="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_body_se"
+        android:id="@+id/bodyLayout"
+        android:layout_below="@+id/linearLayout6"
+        android:onClick="bodyFragment"
+        android:visibility="invisible"
+        android:focusable="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scroll_overview"
+        android:layout_below="@+id/linearLayout6"
+        android:fillViewport="true" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_overview_se"
+            android:id="@+id/overviewLayout"
+            android:focusable="true" />
+    </ScrollView>
+
+    <!--android:visibility="gone"-->
+
+</RelativeLayout>

@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="match_parent"
+    >
 
     <Button
         android:layout_width="wrap_content"
@@ -10,10 +9,10 @@
         android:text="Next"
         android:id="@+id/nextbtn"
         android:layout_gravity="right|bottom"
+        android:layout_marginBottom="43dp"
+        android:layout_marginEnd="41dp"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/falseButton"
-        android:layout_marginStart="37dp"
-        android:layout_marginBottom="37dp" />
+        android:layout_alignEnd="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,37 +20,46 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/question"
+        android:layout_marginTop="32dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="38dp" />
-
-    <RadioButton
+        android:layout_alignStart="@+id/radio" />
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="True"
-        android:id="@+id/truebutton"
-        android:checked="false"
+        android:orientation="horizontal"
+        android:id="@+id/radio"
         android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/question"
-        android:layout_marginBottom="58dp" />
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignEnd="@+id/stressRateBar">
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="False"
-        android:id="@+id/falseButton"
-        android:checked="false"
-        android:layout_alignTop="@+id/truebutton"
-        android:layout_centerHorizontal="true" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="True"
+            android:id="@+id/truebutton"
+            android:checked="true"
+            android:layout_marginBottom="58dp" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="False"
+            android:id="@+id/falseButton"
+            android:checked="false"
+            android:layout_alignTop="@+id/radio"
+            android:layout_alignEnd="@+id/textView2" />
+
+    </RadioGroup>
 
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:id="@+id/stressRateBar"
-        android:layout_above="@+id/nextbtn"
-        android:layout_alignStart="@+id/truebutton"
-        android:layout_marginBottom="111dp" />
+        android:numStars="10"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="33dp"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignEnd="@+id/nextbtn"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,8 +67,24 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Stress Rating (Min 1 - Max 10)"
         android:id="@+id/textView2"
-        android:layout_above="@+id/stressRateBar"
-        android:layout_alignStart="@+id/stressRateBar"
-        android:layout_marginBottom="33dp" />
+        android:layout_marginStart="39dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rateValue"
+        android:layout_alignTop="@+id/stressRateBar"
+        android:layout_toEndOf="@+id/stressRateBar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/desc_survey"
+        android:layout_below="@+id/question"
+        android:layout_alignStart="@+id/question" />
 </RelativeLayout>

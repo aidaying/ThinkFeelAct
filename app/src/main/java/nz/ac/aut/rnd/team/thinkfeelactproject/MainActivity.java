@@ -2,39 +2,45 @@ package nz.ac.aut.rnd.team.thinkfeelactproject;
 
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.multidex.MultiDex;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+
+import nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup.FirstTimeInitialPageActivity;
+import nz.ac.aut.rnd.team.thinkfeelactproject.normalstartup.InitialPage;
 
 public class MainActivity extends FragmentActivity {
 
-    private static final int fragment_first_time_initial_page=1;
-    private static final int fragment_first_time_survey=2;
+
+    public static final String ShaPreferences = "ShaPreferences" ;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MultiDex.install(this);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        switch(getIntent().getIntExtra("fragment_id",1)){
-            case fragment_first_time_initial_page:
-                FirstTimeInitialPageFragment firstTimeInitialPageFragment = new FirstTimeInitialPageFragment();
-                fragmentTransaction.add(R.id.fragment_container, firstTimeInitialPageFragment);
-                break;
-
-            case fragment_first_time_survey:
-                FirstTimeSurveyFragment firstTimeSurveyFragment = new FirstTimeSurveyFragment();
-
-                fragmentTransaction.add(R.id.fragment_container, firstTimeSurveyFragment);
-                break;
+        sharedPreferences = getSharedPreferences(ShaPreferences, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean firstTime = sharedPreferences.getBoolean("first",true);
+        if(firstTime){
+            editor.putBoolean("first",false);
+            editor.apply();
+            Intent intent= new Intent(this,FirstTimeInitialPageActivity.class);
+            startActivity(intent);
 
         }
-        fragmentTransaction.commit();
+        else{
+            Intent intent= new Intent(this,InitialPage.class);
+            startActivity(intent);
+        }
+
+
     }
 
 }
