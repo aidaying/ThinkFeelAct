@@ -31,7 +31,7 @@ public class AddEventPageFragment extends Fragment {
     private TextView ratePercentage;
     private Event event;
     private String added_date;
-    private int rate;
+    private double rate;
 
 
     @Override
@@ -84,7 +84,7 @@ public class AddEventPageFragment extends Fragment {
                 event = new Event();
                 event.setName(name);
                 event.setDate(added_date);
-                event.setRating(Double.parseDouble(String.valueOf(rate)));
+                event.setRating(rate);
                 event.setEmotion("");
                 event.setPain("");
                 event.setThoughtwhat("");
