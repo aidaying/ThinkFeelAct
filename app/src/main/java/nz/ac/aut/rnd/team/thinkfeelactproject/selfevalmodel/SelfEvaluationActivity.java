@@ -1,5 +1,6 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.selfevalmodel;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,9 +21,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
+import nz.ac.aut.rnd.team.thinkfeelactproject.java.Event;
 
 
 public class SelfEvaluationActivity extends Activity implements View.OnClickListener{
@@ -34,7 +39,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
     View scroll_overview, scroll_thoughts;
     View SE_OVERVIEW_moodLayout, SE_OVERVIEW_bodyLayout, SE_OVERVIEW_thoughtsLayout;
     RatingBar ratingBar;
-    ImageButton m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15,m16;
+    ImageButton m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16;
     ImageView moodImgView, ov_ImgView;
     TextView moodTextView, ov_moodText, ov_bodyText, ratingText;
     TextView ov_thoughtsWhat, ov_thoughtsWhyHow, ov_thoughtsFeel;
@@ -48,11 +53,18 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
     ArrayList<String> bodTexts; String[] moodNames; TypedArray moodIDs;
     Context context;
     boolean noPainButtonClicked;
+    private DatabaseHandler mydb;
+    private Event event;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_se);
+
+        mydb = new DatabaseHandler(this);
+        event = new Event();
+
         //=======================OVERVIEW SECTION=====================================
         addEvent = (Button) findViewById(R.id.SE_OV_addEventButton);
         addEvent.setOnClickListener(this);
@@ -329,6 +341,23 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
 
         switch (buttonPressed) {
             case R.id.SE_OV_addEventButton:
+                event.setName(eventNameEdit.getText().toString());
+                Calendar c = Calendar.getInstance();
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yy");
+                String date = simpleDateFormat.format(c.getTime());
+                event.setDate(date);
+                event.setRating(ratingText.getText().toString());
+                String moods = "-";
+                for(int j = 0; j < moodNames.length; j++) {
+                    moods += moodNames[j];
+                }
+                event.setEmotion(moods);
+                event.setPain(ov_bodyText.getText().toString());
+                event.setThoughtwhat(thoughtWhatEdit.getEditableText().toString());
+                event.setThoughtwhyhow(thoughtWhyHowEdit.getEditableText().toString());
+                event.setThoughtfeel(thoughtFeelEdit.getEditableText().toString());
+
+
 //                if(seComplete()){
 //                    Toast.makeText(context, "ADD COMPLETE NOT REALLY", Toast.LENGTH_SHORT).show();
 //                }else{

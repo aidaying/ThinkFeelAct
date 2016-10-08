@@ -81,8 +81,16 @@ public class AddEventPageFragment extends Fragment {
                 String mm = monthEntry.getText().toString();
                 String yy = yearEntry.getText().toString();
                 added_date = dd + "-" + mm + "-" + yy;
-                event = new Event(name, added_date, rate);
-                mydb.addEventCurrent(event);
+                event = new Event();
+                event.setName(name);
+                event.setDate(added_date);
+                event.setRating(rate);
+                event.setEmotion("");
+                event.setPain("");
+                event.setThoughtwhat("");
+                event.setThoughtwhyhow("");
+                event.setThoughtfeel("");
+                mydb.addFirstTimeEvent(event);
                 Intent intent = new Intent(getActivity(), FirstTimeLauncherSurveys.class);
                 intent.putExtra("fragment_id",2 );
                 startActivity(intent);

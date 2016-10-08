@@ -21,30 +21,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "THINK_FEEL_ACT";
     SQLiteDatabase dbase = null;
 
-
-    private static final String LT_TABLE_NAME = "INITIAL";
-    private static final String EVENT_RECENT_TABLE_NAME = "RECENT_EVENT";
-    private static final String EVENT_CURRENT_TABLE_NAME = "CURRENT_EVENT";
-    private static final String EMOTIONAL_TABLE_NAME = "EMOTIONAL";
-    private static final String PHYSICAL_TABLE_NAME = "PHYSICAL";
-    private static final String THOUGHTS_TABLE_NAME = "THOUGHTS";
-    private static final String DESCRIPTION_TABLE_NAME = "DESC";
     //DATABASE RELATED
-    private static final String ID = "ID";
+    private static final String LT_TABLE_NAME = "INITIAL";
     private static final String LTSURVEY_ID = "ID";
-    private static final String DESC_ID = "DESC_ID";
     private static final String QUESTION_ID = "QUESTION_ID";
-    private static final String EVENT_NAME = "EVENT_NAME";
-    private static final String EMOTIONAL_NAME = "EMOTIONAL_NAME";
-    private static final String THOUGHTS_NAME = "THOUGHTS_NAME";
-    private static final String PHYSICAL_NAME = "PHYSICAL_NAME";
     private static final String RATING = "RATING";
     private static final String ADDED_DATE = "ADDED_DATE";
     private static final String ANSWERED_TRUE = "FIRST_ANSWER";
-    private static final String DESC = "DESCRIPTION";
-    private static final String DESC_TYPE = "TYPE";
-    private static final String DESC_SELECTED_VALUE = "SELECTED_VALUE";
-    private static final String DESC_NUM = "NUMBER";
+
+    private static final String EVENT_TABLE_NAME = "EVENT";
+    private static final String EVENT_ID = "EVENT_ID";
+    private static final String EVENT_NAME = "EVENT_NAME";
+    private static final String EVENT_EMOTIONAL = "EVENT_MOOD";
+    private static final String EVENT_PHYSICAL = "EVENT_PHYSICAL";
+    private static final String EVENT_THOUGHTS_WHAT = "EVENT_THOUGHTS_WHAT";
+    private static final String EVENT_THOUGHTS_WHY_HOW = "EVENT_THOUGHTS_WHY_HOW";
+    private static final String EVENT_THOUGHTS_FEEL = "EVENT_THOUGHTS_FEEL";
+    private static final String EVENT_DATE = "EVENT_DATE";
+    private static final String EVENT_RATING = "EVENT_RATING";
+
+    private static final String SOS_DESCRIPTION_TABLE_NAME = "SOS DESC";
+    private static final String SOS_DESC_ID = "DESC_ID";
+    private static final String SOS_DESC = "DESCRIPTION";
+    private static final String SOS_DESC_TYPE = "TYPE";
+    private static final String SOS_DESC_SELECTED_VALUE = "SELECTED_VALUE";
+    private static final String SOS_DESC_NUM = "NUMBER";
 
     boolean isCreating = false;
     public DatabaseHandler(Context context) {
@@ -98,7 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public List<Double> getAllTheRateFromEvent (){
         List<Double> arrayList = new ArrayList<Double>();
          dbase = this.getReadableDatabase();
-        Cursor cursor = dbase.rawQuery("SELECT * FROM " + EVENT_CURRENT_TABLE_NAME, null);
+        Cursor cursor = dbase.rawQuery("SELECT * FROM " + EVENT_TABLE_NAME, null);
         if(cursor.moveToFirst()) {
             do {
                 Event event = new Event();
@@ -111,24 +112,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-    public void addEventCurrent(Event event) {
+    public void addEvent(Event event) {
          dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getName());
-        values.put(ADDED_DATE, event.getDate());
-        values.put(RATING, event.getRating());
+        values.put(EVENT_EMOTIONAL, event.getEmotion());
+        values.put(EVENT_PHYSICAL, event.getPain());
+        values.put(EVENT_THOUGHTS_WHAT, event.getThoughtwhat());
+        values.put(EVENT_THOUGHTS_WHY_HOW, event.getThoughtwhyhow());
+        values.put(EVENT_THOUGHTS_FEEL, event.getThoughtfeel());
+        values.put(EVENT_DATE, event.getDate());
+        values.put(EVENT_RATING, event.getRating());
         try {
-            dbase.insert(EVENT_CURRENT_TABLE_NAME, null, values);
+            dbase.insert(EVENT_TABLE_NAME, null, values);
         }catch (Exception e){}
     }
-    public void addEventPast(Event event) {
-           dbase = this.getWritableDatabase();
+    public void addFirstTimeEvent(Event event) {
+        dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getName());
-        values.put(ADDED_DATE, event.getDate());
-        values.put(RATING, event.getRating());
-        try{
-        dbase.insert(EVENT_CURRENT_TABLE_NAME, null, values);}catch(Exception e){}
+        values.put(EVENT_RATING, event.getRating());
+        try {
+            dbase.insert(EVENT_TABLE_NAME, null, values);
+        }catch (Exception e){}
     }
 
     public void addLongTermSurvey(LongTermSurvey longTermSurvey) {
@@ -144,30 +150,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void addNewDescInfo(Desc desc) {
         dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DESC, desc.getDesc());
-        values.put(DESC_TYPE, desc.getType());
-        values.put(DESC_SELECTED_VALUE,desc.getSelectedValue());
-        values.put(DESC_NUM, desc.getNum());
+        values.put(SOS_DESC, desc.getDesc());
+        values.put(SOS_DESC_TYPE, desc.getType());
+        values.put(SOS_DESC_SELECTED_VALUE,desc.getSelectedValue());
+        values.put(SOS_DESC_NUM, desc.getNum());
         try{
-            dbase.insert(DESCRIPTION_TABLE_NAME, null, values);}catch(Exception e){}
+            dbase.insert(SOS_DESCRIPTION_TABLE_NAME, null, values);}catch(Exception e){}
     }
 
     public void alterDescInfo(Desc desc) {
 
         dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DESC_NUM, desc.getNum());
-        String where =  DESC_ID + "=?";
+        values.put(SOS_DESC_NUM, desc.getNum());
+        String where =  SOS_DESC_ID + "=?";
         String[] whereArgs = new String[]{String.valueOf(desc.getId())};
 
-        dbase.update(DESCRIPTION_TABLE_NAME, values, where, whereArgs);
+        dbase.update(SOS_DESCRIPTION_TABLE_NAME, values, where, whereArgs);
 
     }
 
     public ArrayList<Desc> getAllNewDescInfo (){
         ArrayList<Desc> arrayList = new ArrayList<Desc>();
         dbase = this.getReadableDatabase();
-        Cursor cursor = dbase.rawQuery("SELECT * FROM " + DESCRIPTION_TABLE_NAME, null);
+        Cursor cursor = dbase.rawQuery("SELECT * FROM " + SOS_DESCRIPTION_TABLE_NAME, null);
         if(cursor.moveToFirst()) {
             do {
                 Desc desc = new Desc();
@@ -185,28 +191,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         dbase = this.getReadableDatabase();
 
-        String count = "SELECT COUNT(*) FROM "+ DESCRIPTION_TABLE_NAME;
+        String count = "SELECT COUNT(*) FROM "+ SOS_DESCRIPTION_TABLE_NAME;
 
         Cursor cursor = dbase.rawQuery(count,null);
         cursor.moveToFirst();
         int i = cursor.getInt(0);
         if(i > 0){
-            return true;
-        }
-        // result is more than 0 if item exists
-        return false;
-    }
-
-    public boolean isEventCurrentEmpty(){
-
-        dbase = this.getReadableDatabase();
-
-        String count = "SELECT COUNT(*) FROM "+ EVENT_CURRENT_TABLE_NAME;
-
-        Cursor cursor = dbase.rawQuery(count,null);
-        cursor.moveToFirst();
-        int i = cursor.getInt(0);
-        if(i>3){
             return true;
         }
         // result is more than 0 if item exists
@@ -220,28 +210,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + QUESTION_ID + " INTEGER)";
         db.execSQL(CREATE_LTSURVEY_TABLE);
 
-        String CREATE_EVENT_RECENT_TABLE = "CREATE TABLE "+ EVENT_RECENT_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " DOUBLE)";
-        db.execSQL(CREATE_EVENT_RECENT_TABLE);
-
-        String CREATE_EVENT_CURRENT_TABLE = "CREATE TABLE "+ EVENT_CURRENT_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " DOUBLE)";
+        String CREATE_EVENT_CURRENT_TABLE = "CREATE TABLE "+ EVENT_TABLE_NAME + "("
+                + EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + EVENT_EMOTIONAL + " TEXT, " + EVENT_PHYSICAL + " TEXT, "
+                + EVENT_THOUGHTS_WHAT + " TEXT, " + EVENT_THOUGHTS_WHY_HOW + " TEXT, " + EVENT_THOUGHTS_FEEL + " TEXT, "+ EVENT_DATE + " TEXT, " + EVENT_RATING + " TEXT)";
         db.execSQL(CREATE_EVENT_CURRENT_TABLE);
 
-        String CREATE_EMOTIONAL_TABLE = "CREATE TABLE "+ EMOTIONAL_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EMOTIONAL_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " DOUBLE)";
-        db.execSQL(CREATE_EMOTIONAL_TABLE);
-
-        String CREATE_PHYSICAL_TABLE = "CREATE TABLE "+ PHYSICAL_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PHYSICAL_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " DOUBLE)";
-        db.execSQL(CREATE_PHYSICAL_TABLE);
-
-        String CREATE_THOUGHTS_TABLE = "CREATE TABLE "+ THOUGHTS_TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + THOUGHTS_NAME + " TEXT, " + ADDED_DATE + " TEXT, " + RATING + " DOUBLE)";
-        db.execSQL(CREATE_THOUGHTS_TABLE);
-
-        String CREATE_DESC_TABLE = "CREATE TABLE "+ DESCRIPTION_TABLE_NAME + "("
-                + DESC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DESC + " TEXT, " + DESC_TYPE + " TEXT, " + DESC_SELECTED_VALUE + " FLOAT, " + DESC_NUM + " INTEGER)";
+        String CREATE_DESC_TABLE = "CREATE TABLE "+ SOS_DESCRIPTION_TABLE_NAME + "("
+                + SOS_DESC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SOS_DESC + " TEXT, " + SOS_DESC_TYPE + " TEXT, " + SOS_DESC_SELECTED_VALUE + " FLOAT, " + SOS_DESC_NUM + " INTEGER)";
         db.execSQL(CREATE_DESC_TABLE);
     }
 

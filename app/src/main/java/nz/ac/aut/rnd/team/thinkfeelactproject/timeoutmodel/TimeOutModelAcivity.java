@@ -1,9 +1,13 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
@@ -25,21 +29,21 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
-import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
+import nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.exercise.Exercise;
 
-public class TimeOutModelAcivity extends Activity {
+public class TimeOutModelAcivity extends FragmentActivity {
 
-    private DatabaseHandler mydb;
-    private RelativeLayout relativeLayout;
+    private RelativeLayout selectionContentLayout;
     private PieChart sosSelection;
     private float[]  yData;
     private String[] xData;
+    private float selection;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_out_model_acivity);
-        mydb = new DatabaseHandler(getApplicationContext());
         XmlPullParserFactory pullParserFactory;
         try{
             pullParserFactory = XmlPullParserFactory.newInstance();
@@ -52,11 +56,58 @@ public class TimeOutModelAcivity extends Activity {
             e.printStackTrace();
         }
 
-        relativeLayout = (RelativeLayout) findViewById(R.id.timeoutpie);
+        selectionContentLayout = (RelativeLayout) findViewById(R.id.timeoutpie);
+
+
+        setUpSelection();
+
+        sosSelection.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
+                    Exercise exercise = new Exercise();
+                    fragmentTransaction.replace(R.id.contentView, exercise);
+
+
+                if(String.valueOf(e.getY()).equals("10.01")) {
+                    Self_Care self_care = new Self_Care();
+                    fragmentTransaction.replace(R.id.contentView, self_care);
+
+                }
+                if(String.valueOf(e.getY()).equals("10.02")) {
+                    Client_Contact client_contact = new Client_Contact();
+                    fragmentTransaction.replace(R.id.contentView, client_contact);
+
+                }
+                fragmentTransaction.commit();
+
+            }
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
+
+
+
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreatePanelView(int featureId) {
+        return super.onCreatePanelView(featureId);
+    }
+
+    private void setUpSelection(){
         sosSelection = new PieChart(this);
 
-        relativeLayout.addView(sosSelection);
-        relativeLayout.setBackgroundColor(Color.TRANSPARENT);
+        selectionContentLayout.addView(sosSelection);
+        selectionContentLayout.setBackgroundColor(Color.TRANSPARENT);
         moveOffScreen();
         sosSelection.setUsePercentValues(true);
         sosSelection.setEntryLabelColor(Color.BLACK);
@@ -69,28 +120,10 @@ public class TimeOutModelAcivity extends Activity {
         sosSelection.setMaxAngle(180);
         sosSelection.setRotationAngle(180);
         sosSelection.setRotationEnabled(false);
-
-
-
         ViewGroup.LayoutParams params = sosSelection.getLayoutParams();
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-
-        sosSelection.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(final Entry e, Highlight h) {
-
-
-
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });
         addData();
-
     }
 
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="preferExternal"
     package="nz.ac.aut.rnd.team.thinkfeelactproject">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -8,7 +11,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:largeHeap="true">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC2PMKs9BMhNnSVGO3DulmHS66GVVHyAbo" />
+
         <activity android:name=".bucketmodel.BucketModelActivity" />
         <activity android:name=".firsttimeloadup.FirstTimeInitialPageActivity" />
         <activity android:name=".normalstartup.InitialPage" />
         <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveys" />
         <activity android:name=".sosmodel.SOSModelActivity"/>
         <activity android:name=".timeoutmodel.TimeOutModelAcivity"/>
+        <activity android:name=".selfevalmodel.SelfEvaluationActivity"/>
     </application>
 
 </manifest>

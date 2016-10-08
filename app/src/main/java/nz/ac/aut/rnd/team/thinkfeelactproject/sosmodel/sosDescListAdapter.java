@@ -47,7 +47,7 @@ public class sosDescListAdapter extends ArrayAdapter<Desc>{
         if(d != null){}
         TextView descOutput = (TextView) v.findViewById(R.id.infoText);
         final TextView numOutput = (TextView) v.findViewById(R.id.numText);
-        ImageButton addOne = (ImageButton) v.findViewById(R.id.addOneBtn);
+        Button addOne = (Button) v.findViewById(R.id.addOneBtn);
 
         if(descOutput != null){
             descOutput.setText(d.getDesc());
