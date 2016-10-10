@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:layout_margin="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text">
+
+            <TextView
+                android:text="What is this bucket?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView38"
+                android:textSize="18sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:text="This bucket displays an estimation of your current stress level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView39"
+                android:textSize="14sp"
+                android:padding="10dp" />
+
+            <TextView
+                android:text="What do the numbers mean?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView41"
+                android:textSize="18sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:text="@string/bGreenDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView42"
+                android:textColor="#40d973"
+                android:textSize="14sp"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView43"
+                android:textColor="#ffa14a"
+                android:textSize="14sp"
+                android:padding="10dp"
+                android:text="@string/bOrangeDesc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView44"
+                android:textColor="#ff484b"
+                android:textSize="14sp"
+                android:padding="10dp"
+                android:text="@string/bRedDesc" />
+
+            <Button
+                android:text="OKAY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bOkayButton" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

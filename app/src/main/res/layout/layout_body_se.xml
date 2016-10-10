@@ -245,11 +245,12 @@
                     android:layout_weight="0.04"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
-                    android:paddingRight="20dp">
+                    android:paddingRight="20dp"
+                    android:layout_marginBottom="10dp">
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/SE_BODY_headButton"
                         android:textColor="#ffffff"
                         android:layout_weight="1"
@@ -263,7 +264,7 @@
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Upper Body"
                         android:id="@+id/SE_BODY_chestButton"
                         android:layout_gravity="right"
@@ -278,7 +279,7 @@
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Arms"
                         android:id="@+id/SE_BODY_armButton"
                         android:layout_gravity="right"
@@ -293,7 +294,7 @@
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Hands"
                         android:id="@+id/SE_BODY_handButton"
                         android:layout_gravity="right"
@@ -308,7 +309,7 @@
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Lower body"
                         android:id="@+id/SE_BODY_lowBodyButton"
                         android:layout_gravity="right"
@@ -323,7 +324,7 @@
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Legs"
                         android:id="@+id/SE_BODY_legButton"
                         android:layout_gravity="right"
@@ -338,7 +339,7 @@
 
                     <ToggleButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Feet"
                         android:id="@+id/SE_BODY_feetButton"
                         android:textColor="#ffffff"
