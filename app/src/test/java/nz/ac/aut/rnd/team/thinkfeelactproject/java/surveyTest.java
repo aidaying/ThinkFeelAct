@@ -11,11 +11,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class surveyTest {
 
-    private survey survey;
+    private Survey survey;
 
     @Before
     public void setUp() throws Exception {
-        survey = new survey();
+        survey = new Survey();
         survey.setId(1);
         survey.setQuestion("www");
         survey.setType("aaa");

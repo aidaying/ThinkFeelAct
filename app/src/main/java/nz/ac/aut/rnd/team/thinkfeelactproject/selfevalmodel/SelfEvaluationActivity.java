@@ -98,7 +98,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
         thoughtWhatEdit = (EditText) findViewById(R.id.SE_THOUGHTS_what);
         thoughtWhyHowEdit = (EditText) findViewById(R.id.SE_THOUGHTS_whyhow);
         thoughtFeelEdit = (EditText) findViewById(R.id.SE_THOUGHTS_feel);
-        eventNameEdit = (EditText) findViewById(R.id.editEvent);
+        eventNameEdit = (EditText) findViewById(R.id.SE_OV_editEventName);
 
         ov_ImgView = (ImageView) findViewById(R.id.SE_OVERVIEW_moodImgView);
 
@@ -325,12 +325,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
      */
     public boolean setComplete(){
         String addMessage = "Added event";
-        eventName = eventNameEdit.getText().toString();
-        thoughtWhatString = ov_thoughtsWhat.getText().toString();
-        thoughtWhyHowString = ov_thoughtsWhyHow.getText().toString();
-        thoughtFeelString = ov_thoughtsFeel.getText().toString();
-        bodyString = ov_bodyText.getText().toString();
-        moodString = ov_moodText.getText().toString();
+
         //ratingString = use for stress value
 
         /**
@@ -338,7 +333,13 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
          */
 
         //Returns true if body, mood, eventName and ratingString is not empty
-        if(thoughtsComplete() && moodComplete() && bodyComplete() && eventName.length()!=0 && finalRating!=0){
+        if(thoughtsComplete() && moodComplete() && bodyComplete() && eventName!=null && finalRating!=0.0){
+            eventName = eventNameEdit.getText().toString();
+            thoughtWhatString = ov_thoughtsWhat.getText().toString();
+            thoughtWhyHowString = ov_thoughtsWhyHow.getText().toString();
+            thoughtFeelString = ov_thoughtsFeel.getText().toString();
+            bodyString = ov_bodyText.getText().toString();
+            moodString = ov_moodText.getText().toString();
             //Log testing - Displays in bright red text within -Android Monitor->Log Cat-
             Log.e("COMPLETE", "ALL SET TO ADD EVENT");
             Log.e("Event Name", eventName);
@@ -363,16 +364,12 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
             event.setThoughtfeel(thoughtFeelString);
 
             Toast.makeText(this, addMessage, Toast.LENGTH_SHORT).show();
+            super.onBackPressed();
             return true;
         }else{
-            addMessage = "Please complete sections that are still highlighted red.";
+            Log.e("Event Name", eventNameEdit.getText().toString());
+            addMessage = "Please complete sections that are still highlighted red. ";
             Log.e("FAILED", "NOT READY TO ADD EVENT");
-            Log.e("Event Name", eventName);
-            Log.e("Body", bodyString);
-            Log.e("Mood", moodString);
-            Log.e("What happened: ", thoughtWhatString);
-            Log.e("Why/How did it happen: ",thoughtWhyHowString);
-            Log.e("How are you feeling: ", thoughtFeelString);
             if(finalRating == 0) {
                 Log.e("Rating", "NOT SET");
                 addMessage += "Please set a stress level for this event.";
@@ -388,6 +385,9 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        if(eventNameEdit.getText().length()!=0){
+            eventName = eventNameEdit.getText().toString();
+        }
 
         ov_bodyText.setText("");
         bodTexts = null; bodTexts = new ArrayList<>();

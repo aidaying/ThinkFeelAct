@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.audiofx.AudioEffect;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,8 +126,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EVENT_RATING, event.getRating());
         try {
             dbase.insert(EVENT_TABLE_NAME, null, values);
-        }catch (Exception e){}
+        }catch (Exception e){
+            Log.e("ADD EVENT", "NOPE");}
     }
+
     public void addFirstTimeEvent(Event event) {
         dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
