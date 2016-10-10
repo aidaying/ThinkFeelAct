@@ -78,7 +78,7 @@
 
                         <TextView
                             android:layout_width="77dp"
-                            android:layout_height="72dp"
+                            android:layout_height="wrap_content"
                             android:ems="10"
                             android:id="@+id/editText12"
                             android:textAlignment="center"
@@ -87,7 +87,7 @@
                             android:layout_marginRight="5dp"
                             android:textSize="6pt"
                             android:text="Get a comfy chair to sit next to a window"
-                            android:layout_weight="0.60" />
+                            android:layout_weight="0.48" />
 
                         <ImageView
                             android:src="@drawable/elegantsofa"

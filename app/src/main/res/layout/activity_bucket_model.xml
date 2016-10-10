@@ -11,43 +11,49 @@
         android:layout_height="match_parent"
         android:weightSum="1">
 
-        <Button
-            android:text="Self-Evaluation"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="22dp"
-            android:layout_marginTop="24dp"
-            android:id="@+id/selfEvalBtn" />
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="373dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/b10"
-                android:id="@+id/imageView8"
+                android:id="@+id/bucketImg"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="false"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/bucketModelPercentage"
-                android:text="100%"
-                android:textAlignment="gravity"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="121dp" />
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/b0" />
 
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/bucketModelPercentage"
+            android:hint="Rating: "
+            android:layout_gravity="center"
+            android:background="@android:drawable/editbox_background"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:textAlignment="center"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/rateDesc"
+            android:background="@android:drawable/editbox_background" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:id="@+id/bucketSeek"
+            android:progress="5"
+            android:max="10"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -63,6 +69,15 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="76dp"
                 android:id="@+id/sosBtn"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="Add a stressful event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/selfEvalBtn"
                 android:layout_weight="1" />
 
             <Button

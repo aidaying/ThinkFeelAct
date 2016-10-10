@@ -17,7 +17,7 @@
             android:textAlignment="center"
             android:textSize="6pt"
             android:textColor="#00999F"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_width="100dp" />
 
@@ -36,7 +36,7 @@
             android:layout_alignParentEnd="true"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </RelativeLayout>
