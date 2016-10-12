@@ -87,4 +87,12 @@
         android:id="@+id/desc_survey"
         android:layout_below="@+id/question"
         android:layout_alignStart="@+id/question" />
+
+    <TextView
+        android:text="qNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/qNum"
+        android:layout_alignTop="@+id/question"
+        android:layout_alignEnd="@+id/rateValue" />
 </RelativeLayout>

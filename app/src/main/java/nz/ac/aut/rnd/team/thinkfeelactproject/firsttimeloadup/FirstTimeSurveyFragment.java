@@ -27,7 +27,7 @@ import nz.ac.aut.rnd.team.thinkfeelactproject.java.Survey;
 public class FirstTimeSurveyFragment extends Fragment implements View.OnClickListener{
 
     DatabaseHandler mydb;
-    TextView question;
+    TextView question, qNum;
     TextView desc;
     TextView rateValue;
     Button next;
@@ -63,6 +63,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
 
         survey = arrayList.get(i);
         question = (TextView) surveyView.findViewById(R.id.question);
+        qNum = (TextView) surveyView.findViewById(R.id.qNum);
         desc = (TextView) surveyView.findViewById(R.id.desc_survey);
         next = (Button) surveyView.findViewById(R.id.nextbtn);
         radio = (RadioGroup) surveyView.findViewById(R.id.radio);
@@ -79,6 +80,11 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 rateValue.setText(String.valueOf(i));
+                if(i==0){
+                    rateBar.setEnabled(false);
+                }else{
+                    rateBar.setEnabled(true);
+                }
             }
 
             @Override
@@ -156,6 +162,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
     private void setSurveyViews(){
         question.setText(arrayList.get(i).getQuestion());
         desc.setText(arrayList.get(i).getDescription());
+        qNum.setText("Q:"+i);
         i++;
     }
     private void parserXML(XmlPullParser parser) throws XmlPullParserException, IOException{
@@ -186,6 +193,7 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
                             case "description":
                                 currentSurvey.setDescription(parser.nextText());
                                 break;
+
                         }
                     }
                     break;

@@ -42,6 +42,7 @@ public class AddEventPageFragment extends Fragment {
         // Inflate the layout for this fragment
         final View addEventView = inflater.inflate(R.layout.fragment_add_event_page, container, false);
 
+
         mydb = new DatabaseHandler(getActivity().getApplicationContext());
         ratePercentage = (TextView) addEventView.findViewById(R.id.ratePercentage);
 
@@ -116,6 +117,9 @@ public class AddEventPageFragment extends Fragment {
             });
 
         }
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(addEventView.getWindowToken(), 0);
+
         return addEventView;
     }
 

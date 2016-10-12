@@ -32,7 +32,7 @@
         <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveys" />
         <activity android:name=".sosmodel.SOSModelActivity" />
         <activity android:name=".timeoutmodel.TimeOutModelAcivity" />
-        <activity android:name=".selfevalmodel.SelfEvaluationActivity" />
+        <activity android:name=".selfevalmodel.SelfEvaluationActivity" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".Credits"/>
     </application>
 

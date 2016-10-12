@@ -45,7 +45,7 @@ public class BucketModelActivity extends AppCompatActivity {
     StressCalculator stressCalculator;
     TextView ratingResult, rateDesc;
     ImageView bImg;
-    Button sosBtn, timeoutBtn, selfEvalBtn;
+    Button sosBtn, timeoutBtn, selfEvalBtn, realRateButton;
     SeekBar seekTest;
     RatingBar ratingBar;
 
@@ -65,83 +65,41 @@ public class BucketModelActivity extends AppCompatActivity {
         double b = stressCalculator.standardDeviationResult(eventRating);
         String aR = new DecimalFormat("##").format(a);
         String bR = new DecimalFormat("##").format(b);
-        double c = a + b;
+        final double c = a + b;
         String cR = new DecimalFormat("##").format(c);
+
         ratingResult = (TextView) findViewById(R.id.bucketModelPercentage);
-        ratingResult.setText(aR + " + " + bR + " = " + cR +" %");
+        //ratingResult.setText(aR + " + " + bR + " = " + cR +" %");
         rateDesc = (TextView) findViewById(R.id.rateDesc);
+
 
         sosBtn = (Button) findViewById(R.id.sosBtn);
         timeoutBtn = (Button) findViewById(R.id.timeoutBtn);
         selfEvalBtn = (Button) findViewById(R.id.selfEvalBtn);
-
         bImg = (ImageView) findViewById(R.id.bucketImg);
-        seekTest = (SeekBar) findViewById(R.id.bucketSeek);
+        displayStressValue(bImg,(int)c);
+        realRateButton = (Button) findViewById(R.id.realRateButton);
 
+        realRateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayStressValue(bImg,(int)c);
+            }
+        });
+
+        seekTest = (SeekBar) findViewById(R.id.bucketSeek);
+        seekTest.setProgress((int)c);
         seekTest.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int result = 0;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 result = progress;
                 ratingResult.setText("Rating: "+ result + "/10");
-                if (result >= 8) {
-                    ratingResult.setTextColor(Color.parseColor("#ff484b"));
-                    rateDesc.setText("Danger Zone: You are over-stressing");
-                    rateDesc.setTextColor(Color.parseColor("#ff484b"));
-                }
-                else if (result < 8 && result >= 5) {
-                    ratingResult.setTextColor(Color.parseColor("#ffa14a"));
-                    rateDesc.setText("Warning Zone: You are on the verge of over-stressing");
-                    rateDesc.setTextColor(Color.parseColor("#ffa14a"));
-                }
-                else if(result<5 && result > 3){
-                    ratingResult.setTextColor(Color.parseColor("#40d973"));
-                    rateDesc.setText("Fairly Relaxed: Everyday stress");
-                    rateDesc.setTextColor(Color.parseColor("#40d973"));
-                }else{
-                    ratingResult.setTextColor(Color.parseColor("#40d973"));
-                    rateDesc.setText("Relaxed: Stress free");
-                    rateDesc.setTextColor(Color.parseColor("#40d973"));
-                }
-                switch(result){
-                    case (0):{
-                        bImg.setBackgroundResource(R.drawable.b0);
-                    }break;
-                    case (1):{
-                        bImg.setBackgroundResource(R.drawable.b1);
-                    }break;
-                    case (2):{
-                        bImg.setBackgroundResource(R.drawable.b2);
-                    }break;
-                    case (3):{
-                        bImg.setBackgroundResource(R.drawable.b3);
-                    }break;
-                    case (4):{
-                        bImg.setBackgroundResource(R.drawable.b4);
-                    }break;
-                    case (5):{
-                        bImg.setBackgroundResource(R.drawable.b5);
-                    }break;
-                    case (6):{
-                        bImg.setBackgroundResource(R.drawable.b6);
-                    }break;
-                    case (7):{
-                        bImg.setBackgroundResource(R.drawable.b7);
-                    }break;
-                    case (8):{
-                        bImg.setBackgroundResource(R.drawable.b8);
-                    }break;
-                    case (9):{
-                        bImg.setBackgroundResource(R.drawable.b9);
-                    }break;
-                    case (10):{
-                        bImg.setBackgroundResource(R.drawable.b10);
-                    }break;
-                }
+                displayStressValue(bImg, result);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
+                seekTest.setProgress((int)c);
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -174,6 +132,67 @@ public class BucketModelActivity extends AppCompatActivity {
 
     }
 
+    public void displayStressValue(ImageView bImg, int result){
+        ratingResult.setText("Rating: "+ result + "/10");
+        if(seekTest!=null){
+            seekTest.setProgress(result);
+        }
+        if (result >= 8) {
+            ratingResult.setTextColor(Color.parseColor("#ff484b"));
+            rateDesc.setText("Danger Zone: You are over-stressing");
+            rateDesc.setTextColor(Color.parseColor("#ff484b"));
+        }
+        else if (result < 8 && result >= 5) {
+            ratingResult.setTextColor(Color.parseColor("#ffa14a"));
+            rateDesc.setText("Warning Zone: You are on the verge of over-stressing");
+            rateDesc.setTextColor(Color.parseColor("#ffa14a"));
+        }
+        else if(result<5 && result > 3){
+            ratingResult.setTextColor(Color.parseColor("#40d973"));
+            rateDesc.setText("Fairly Relaxed: Everyday stress");
+            rateDesc.setTextColor(Color.parseColor("#40d973"));
+        }else{
+            ratingResult.setTextColor(Color.parseColor("#40d973"));
+            rateDesc.setText("Relaxed: Stress free");
+            rateDesc.setTextColor(Color.parseColor("#40d973"));
+        }
+        switch((int)result){
+            case (0):{
+                bImg.setBackgroundResource(R.drawable.b0);
+            }break;
+            case (1):{
+                bImg.setBackgroundResource(R.drawable.b1);
+            }break;
+            case (2):{
+                bImg.setBackgroundResource(R.drawable.b2);
+            }break;
+            case (3):{
+                bImg.setBackgroundResource(R.drawable.b3);
+            }break;
+            case (4):{
+                bImg.setBackgroundResource(R.drawable.b4);
+            }break;
+            case (5):{
+                bImg.setBackgroundResource(R.drawable.b5);
+            }break;
+            case (6):{
+                bImg.setBackgroundResource(R.drawable.b6);
+            }break;
+            case (7):{
+                bImg.setBackgroundResource(R.drawable.b7);
+            }break;
+            case (8):{
+                bImg.setBackgroundResource(R.drawable.b8);
+            }break;
+            case (9):{
+                bImg.setBackgroundResource(R.drawable.b9);
+            }break;
+            case (10):{
+                bImg.setBackgroundResource(R.drawable.b10);
+            }break;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -192,6 +211,7 @@ public class BucketModelActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onDestroy();
+        //super.onDestroy();
+        super.finish();
     }
 }
