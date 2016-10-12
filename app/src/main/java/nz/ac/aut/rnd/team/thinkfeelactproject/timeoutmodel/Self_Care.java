@@ -60,10 +60,12 @@ public class Self_Care extends Fragment{
 
                     if(mediaPlayer.isPlaying()){
                         mediaPlayer.pause();
+                        playBtn.setBackgroundResource(R.drawable.quantum_ic_pause_circle_filled_grey600_36);
                         Toast.makeText(getContext(), "Paused Music", Toast.LENGTH_SHORT);
 
                     }else {
                         mediaPlayer.start();
+                        playBtn.setBackgroundResource(R.drawable.quantum_ic_play_circle_filled_grey600_36);
                         mediaPlayer.setLooping(true);
                         Toast.makeText(getContext(), "Music is playing", Toast.LENGTH_SHORT);
                     }
