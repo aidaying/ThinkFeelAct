@@ -12,7 +12,7 @@
 
     <string name="bOrangeDesc">5-7 Represents a stress warning. This indicates that you might be on the verge of over-stressing. Examples: Holding back anger, anxiety, too much work</string>
 
-    <string name="bRedDesc">5-7 Represents a danger zone. This means you are over-stressing. Examples: Getting violent, overwhelming depression, self-harm, suicidal.
+    <string name="bRedDesc">7-10 Represents a danger zone. This means you are over-stressing. Examples: Getting violent, overwhelming depression, self-harm, suicidal.
 
 </string>
 

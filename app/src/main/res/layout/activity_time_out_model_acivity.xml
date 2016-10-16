@@ -8,9 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.TimeOutModelAcivity"
-    android:background="@color/timeoutBackground">
-
+    tools:context="nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.TimeOutModelAcivity">
     <FrameLayout
         android:layout_width="match_parent"
         android:id="@+id/contentView"
