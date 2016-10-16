@@ -12,7 +12,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Write down your thoughts"
             android:id="@+id/textView6"
@@ -20,7 +20,8 @@
             android:textAlignment="center"
             android:background="@android:drawable/editbox_background"
             android:textColor="#ffffff"
-            android:backgroundTint="?attr/colorPrimary" />
+            android:backgroundTint="?attr/colorPrimary"
+            android:textSize="22sp" />
 
         <LinearLayout
             android:orientation="vertical"

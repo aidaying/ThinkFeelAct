@@ -68,7 +68,7 @@
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Physical Pain"
+            android:text="Body"
             android:textColor="#ffffff"
             android:layout_weight="0.8"
             android:id="@+id/bodyButton"
@@ -122,20 +122,40 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
-    <ScrollView
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scroll_overview"
-        android:layout_below="@+id/linearLayout6"
-        android:fillViewport="true" >
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout6">
 
-        <include
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/layout_overview_se"
-            android:id="@+id/overviewLayout"
-            android:focusable="true" />
-    </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scroll_overview"
+            android:fillViewport="true"
+            android:layout_above="@+id/SE_OV_addEventButton">
+
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                layout="@layout/layout_overview_se"
+                android:id="@+id/overviewLayout"
+                android:focusable="true" />
+        </ScrollView>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ADD EVENT"
+                android:id="@+id/SE_OV_addEventButton"
+                android:textColor="#ffffff"
+                android:background="#005ece"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp" />
+
+    </RelativeLayout>
 
     <!--android:visibility="gone"-->
 

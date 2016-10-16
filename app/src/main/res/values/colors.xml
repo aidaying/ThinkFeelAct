@@ -3,6 +3,4 @@
     <color name="colorPrimary">#005ece</color>
     <color name="colorPrimaryDark">#003dc3</color>
     <color name="colorAccent">#ffe940</color>
-    <color name="timeoutBackground">#eccaccca</color>
-    <color name="timeoutContent">#6f59a3fc</color>
 </resources>

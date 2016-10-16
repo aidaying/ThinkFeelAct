@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:weightSum="1">
 
     <LinearLayout
@@ -306,7 +306,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:background="@android:drawable/editbox_background">
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -326,7 +327,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Green: 0-3 Relaxed 3-4 Dealing with daily stress"
+                android:text="Green: 0-3 Relaxed 3-5 Dealing with daily stress"
                 android:id="@+id/infoGreen"
                 android:textColor="#40d873"
                 android:textAlignment="center" />
@@ -335,7 +336,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Orange: 5-7 On the verge of over-stressing"
+                android:text="Orange: 6-7 On the verge of over-stressing"
                 android:id="@+id/infoOrange"
                 android:textColor="#fda04a"
                 android:textAlignment="center" />
@@ -439,7 +440,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.8"
                     android:gravity="center_vertical|center_horizontal"
-                    android:background="#ffa14a"
+                    android:background="#40d973"
                     android:textColor="#ffffff" />
 
                 <TextView
@@ -516,16 +517,6 @@
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="ADD EVENT"
-            android:id="@+id/SE_OV_addEventButton"
-            android:textColor="#ffffff"
-            android:background="#005ece"
-            android:layout_below="@+id/scrollView"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true" />
     </LinearLayout>
 
 </RelativeLayout>

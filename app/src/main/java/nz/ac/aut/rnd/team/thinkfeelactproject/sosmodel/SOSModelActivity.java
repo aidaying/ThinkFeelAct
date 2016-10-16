@@ -71,7 +71,6 @@ public class SOSModelActivity extends Activity {
         sosSelection = new PieChart(this);
 
         relativeLayout.addView(sosSelection);
-        relativeLayout.setBackgroundColor(Color.LTGRAY);
         sosSelection.setEntryLabelColor(Color.BLACK);
         sosSelection.setUsePercentValues(true);
         sosSelection.setDescription("");
