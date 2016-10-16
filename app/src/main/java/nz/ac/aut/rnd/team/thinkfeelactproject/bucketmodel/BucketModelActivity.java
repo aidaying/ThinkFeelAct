@@ -54,6 +54,7 @@ public class BucketModelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bucket_model);
+        setTitle("Bucket Model");
         mydb = new DatabaseHandler(this);
         longTermSurveyRating = mydb.getAlltheRateFromLTSurvey();
         eventRating = mydb.getAllTheRateFromEvent();

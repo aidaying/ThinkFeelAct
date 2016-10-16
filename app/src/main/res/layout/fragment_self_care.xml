@@ -127,9 +127,8 @@
 
                     <ImageButton
                         android:layout_width="72dp"
-                        android:src="@drawable/quantum_ic_play_circle_filled_grey600_36"
                         android:scaleType="fitXY"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/quantum_ic_play_circle_filled_grey600_36"
                         android:id="@+id/playMusicBtn"
                         android:layout_height="69dp"
                         android:layout_gravity="center_vertical|clip_horizontal"

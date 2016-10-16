@@ -327,7 +327,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Green: 0-3 Relaxed 3-4 Dealing with daily stress"
+                android:text="Green: 0-3 Relaxed 3-5 Dealing with daily stress"
                 android:id="@+id/infoGreen"
                 android:textColor="#40d873"
                 android:textAlignment="center" />
@@ -336,7 +336,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Orange: 5-7 On the verge of over-stressing"
+                android:text="Orange: 6-7 On the verge of over-stressing"
                 android:id="@+id/infoOrange"
                 android:textColor="#fda04a"
                 android:textAlignment="center" />
@@ -440,7 +440,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.8"
                     android:gravity="center_vertical|center_horizontal"
-                    android:background="#ffa14a"
+                    android:background="#40d973"
                     android:textColor="#ffffff" />
 
                 <TextView

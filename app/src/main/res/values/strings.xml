@@ -5,14 +5,11 @@
     <string name="add_text">ADD</string>
     <string name="calculate_text">CALCULATE</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bGreenDesc">0-3 Represents a relaxed mental state. This rating is shown by people that are well practiced with self-relaxation, meditating. \n\n4-5 Represents daily stress. Examples: refilling petrol, missing bus, planning a holiday</string>
 
-    <string name="bGreenDesc">0-3 Represents a relaxed mental state. This rating is shown by people that are well practiced with self-relaxation, meditating. \n\n3-5 Represents daily stress. Examples: refilling petrol, missing bus, planning a holiday</string>
+    <string name="bOrangeDesc">6-7 Represents a stress warning. This indicates that you might be on the verge of over-stressing. Examples: Holding back anger, anxiety, too much work</string>
 
-    <string name="bOrangeDesc">5-7 Represents a stress warning. This indicates that you might be on the verge of over-stressing. Examples: Holding back anger, anxiety, too much work</string>
-
-    <string name="bRedDesc">7-10 Represents a danger zone. This means you are over-stressing. Examples: Getting violent, overwhelming depression, self-harm, suicidal.
+    <string name="bRedDesc">8-10 Represents a danger zone. This means you are over-stressing. Examples: Getting violent, overwhelming depression, self-harm, suicidal.
 
 </string>
 
