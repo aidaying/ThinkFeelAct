@@ -441,7 +441,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
             moodLayout.setVisibility(View.INVISIBLE);
             thoughtsLayout.setVisibility(View.INVISIBLE);
             bodyLayout.setVisibility(View.INVISIBLE); scroll_thoughts.setVisibility(View.INVISIBLE);
-            scroll_overview.setVisibility(View.INVISIBLE);
+            scroll_overview.setVisibility(View.INVISIBLE); addEvent.setVisibility(View.INVISIBLE);
             overview.setChecked(false); overview.setBackgroundResource(R.drawable.del_button_border);
             thoughts.setChecked(false); thoughts.setBackgroundResource(R.drawable.del_button_border);
             body.setChecked(false); body.setBackgroundResource(R.drawable.del_button_border);
@@ -467,6 +467,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
                 break;
             case R.id.overviewButton:
                 scroll_overview.setVisibility(View.VISIBLE);
+                addEvent.setVisibility(View.VISIBLE);
                 overview.setChecked(true);
                 overview.setBackgroundResource(R.drawable.sel_button_border);
                 break;
