@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ThinkFeelActProject="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/infoIcon"
         android:icon="@android:drawable/ic_dialog_info"
-        android:orderInCategory="100"
-        ThinkFeelActProject:showAsAction="always"/>
+        ThinkFeelActProject:showAsAction="always"
+        android:title="Bucket Help"/>
+
+    <item
+        android:id="@+id/credits"
+        android:title="Credits"/>
 </menu>
