@@ -206,8 +206,12 @@ public class BucketModelActivity extends AppCompatActivity {
         android.app.FragmentManager fm = getFragmentManager();
         switch(item.getItemId()) {
             case R.id.infoIcon:
+                AboutDialog aboutDialog = new AboutDialog();
+                aboutDialog.show(fm, "about");
                 return true;
             case R.id.credits:
+                Credits credits = new Credits();
+                credits.show(fm, "credits");
                 return true;
         }
         return true;
