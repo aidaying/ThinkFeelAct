@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 
-public class FirstTimeLauncherSurveys extends FragmentActivity {
+public class FirstTimeLauncherSurveysActivity extends FragmentActivity {
 
     private static final int LTsurvey = 1;
     private static final int STevent = 2;

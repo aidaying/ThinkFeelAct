@@ -2,6 +2,7 @@ package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,38 +18,168 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
-
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.LongTermSurvey;
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
-import nz.ac.aut.rnd.team.thinkfeelactproject.java.Survey;
 
-public class FirstTimeSurveyFragment extends Fragment implements View.OnClickListener{
 
-    DatabaseHandler mydb;
-    TextView question, qNum;
-    TextView desc;
-    TextView rateValue;
-    Button next;
-    int i = 0;
+public class FirstTimeSurveyFragment extends Fragment {
 
-    List<Survey> arrayList;
-    Survey survey;
-
-    LongTermSurvey longTermSurvey;
-    RadioGroup radio;
-    private RadioButton trueRB;
-    private RadioButton falseRB;
+    private DatabaseHandler mydb;
+    private TextView question, qNum;
+    private TextView desc;
+    private TextView rateValue;
+    private Button next;
+    private int i = 0;
+    private double rate = 0.0;
+    private ArrayList<LongTermSurvey> arrayList;
+    private LongTermSurvey survey;
+    private LongTermSurvey longTermSurvey;
+    private RadioGroup radio;
+    private RadioButton radioButton;
+    private RadioButton trueButton;
     private SeekBar rateBar;
-    private String isTF="";
+    private String isTF= "";
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View surveyView = inflater.inflate(R.layout.fragment_first_time_survey, container, false);
         mydb = new DatabaseHandler(getActivity());
+        xmlInit();
+        question = (TextView) surveyView.findViewById(R.id.question);
+        qNum = (TextView) surveyView.findViewById(R.id.qNum);
+        desc = (TextView) surveyView.findViewById(R.id.desc_survey);
+        radio = (RadioGroup) surveyView.findViewById(R.id.radioGroup);
+        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.truebutton:
+                        rateBar.setEnabled(true);
+                        rateBar.setProgress(1);
+                        rate = ((double) rateBar.getProgress());
+                        break;
+                    case R.id.falseButton:
+                        rateBar.setEnabled(false);
+                        rateBar.setProgress(0);
+                        rate = 0.0;
+                        break;
 
+                }
+            }
+        });
+        trueButton = (RadioButton) surveyView.findViewById(R.id.truebutton);
+        int selectedId = radio.getCheckedRadioButtonId();
+        radioButton = (RadioButton) surveyView.findViewById(selectedId);
+
+        isTF = (String) radioButton.getText();
+        rateValue = (TextView) surveyView.findViewById(R.id.rateValue);
+        rateValue.setText("1");
+        rateBar = (SeekBar) surveyView.findViewById(R.id.longtermRateBar);
+        rateBar.incrementProgressBy(1);
+        if(isTF.equals("False")){
+            rate = 0.0;
+        }else{
+            rate = ((double) rateBar.getProgress());
+            rateBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    rateValue.setText(String.valueOf(i));
+                }
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    rate = ((double) seekBar.getProgress());
+                }
+            });
+
+        }
+
+        setSurveyViews();
+        next = (Button) surveyView.findViewById(R.id.nextbtn);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                storeSurvey(v.getRootView());
+                i++;
+                if(i==41){
+                    Intent intent = new Intent(getActivity(),FirstTimeLauncherSurveysActivity.class);
+                    intent.putExtra("fragment_id",2);
+                    startActivity(intent);
+                }
+                setSurveyViews();
+                rateBar.setProgress(1);
+                trueButton.setChecked(true);
+            }
+        });
+        return surveyView;
+    }
+
+
+    private void storeSurvey(View v){
+        survey = arrayList.get(i);
+        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.truebutton:
+                        rateBar.setEnabled(true);
+                        rateBar.setProgress(1);
+                        rate = ((double) rateBar.getProgress());
+                        break;
+                    case R.id.falseButton:
+                        rateBar.setEnabled(false);
+                        rateBar.setProgress(0);
+                        rate = ((double) rateBar.getProgress());
+                        break;
+
+                }
+            }
+        });
+        int selectedId = radio.getCheckedRadioButtonId();
+        radioButton = (RadioButton) v.findViewById(selectedId);
+        isTF = (String) radioButton.getText();
+        if(isTF.equals("False")){
+            rate=0.0;
+        }
+        rate = ((double) rateBar.getProgress());
+        rateBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                rateValue.setText(String.valueOf(i));
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                rate = ((double) seekBar.getProgress());
+            }
+        });
+
+
+        longTermSurvey = new LongTermSurvey();
+        longTermSurvey.setID(survey.getID());
+        longTermSurvey.setAnswerTF(isTF);
+        longTermSurvey.setRating(rate);
+        mydb.addLongTermSurvey(longTermSurvey);
+
+    }
+
+    private void setSurveyViews(){
+        if(i<41) {
+            question.setText(arrayList.get(i).getQuestion());
+            desc.setText(arrayList.get(i).getDescription());
+            qNum.setText("Q:" + arrayList.get(i).getID());
+        }
+
+    }
+
+    private void xmlInit(){
         XmlPullParserFactory pullParserFactory;
         try{
             pullParserFactory = XmlPullParserFactory.newInstance();
@@ -60,118 +191,10 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
         }catch(XmlPullParserException | IOException e){
             e.printStackTrace();
         }
-
-        survey = arrayList.get(i);
-        question = (TextView) surveyView.findViewById(R.id.question);
-        qNum = (TextView) surveyView.findViewById(R.id.qNum);
-        desc = (TextView) surveyView.findViewById(R.id.desc_survey);
-        next = (Button) surveyView.findViewById(R.id.nextbtn);
-        radio = (RadioGroup) surveyView.findViewById(R.id.radio);
-        trueRB = (RadioButton) surveyView.findViewById(R.id.truebutton);
-        falseRB = (RadioButton) surveyView.findViewById(R.id.falseButton);
-
-        rateValue = (TextView) surveyView.findViewById(R.id.rateValue);
-        rateValue.setText("1");
-        rateBar = (SeekBar) surveyView.findViewById(R.id.stressRateBar);
-        rateBar.setProgress(1);
-        rateBar.incrementProgressBy(1);
-        rateBar.setMax(10);
-        rateBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                rateValue.setText(String.valueOf(i));
-                if(i==0){
-                    rateBar.setEnabled(false);
-                }else{
-                    rateBar.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                View radioButtons = radio.findViewById(i);
-                int index = radio.indexOfChild(radioButtons);
-                switch (index){
-                    case 0:
-                        isTF = trueRB.getText().toString();
-                        rateBar.setEnabled(true);
-                        rateBar.setProgress(1);
-                        break;
-                    case 1:
-                        isTF = falseRB.getText().toString();
-                        rateBar.setEnabled(false);
-                        rateBar.setProgress(0);
-                        break;
-                }
-            }
-        });
-        setSurveyViews();
-        next.setOnClickListener(this);
-        return surveyView;
-    }
-
-
-
-    /**
-     * Called when a view has been clicked.
-     *
-     * @param v The view that was clicked.
-     */
-    @Override
-    public void onClick(View v) {
-        String TF = isTF;
-        if(survey.getId()==40){
-            trueRB.setSelected(true);
-            rateBar.setProgress(1);
-            longTermSurvey = new LongTermSurvey(TF,getRating(),survey.getId());
-            mydb.addLongTermSurvey(longTermSurvey);
-            Intent intent = new Intent(getActivity(),FirstTimeLauncherSurveys.class);
-            intent.putExtra("fragment_id",2);
-            startActivity(intent);
-        }else {
-            setSurveyViews();
-            survey = arrayList.get(i);
-            rateBar.setProgress(1);
-            radio.clearCheck();
-            trueRB.setChecked(true);
-            longTermSurvey = new LongTermSurvey(TF, getRating(), survey.getId());
-            mydb.addLongTermSurvey(longTermSurvey);
-        }
-
-    }
-
-
-
-    private int getRating(){
-        int rate = 0;
-        rate = rateBar.getProgress();
-        return rate;
-    }
-
-    private void setSurveyViews(){
-        question.setText(arrayList.get(i).getQuestion());
-        desc.setText(arrayList.get(i).getDescription());
-        qNum.setText("Q:"+i);
-        i++;
     }
     private void parserXML(XmlPullParser parser) throws XmlPullParserException, IOException{
-
         int eventType = parser.getEventType();
-
-        Survey currentSurvey = null;
-
-
+        LongTermSurvey currentSurvey = null;
         while (eventType != XmlPullParser.END_DOCUMENT){
             String name;
             switch (eventType){
@@ -181,11 +204,11 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
                 case XmlPullParser.START_TAG:
                     name = parser.getName();
                     if(name.equals("survey")){
-                        currentSurvey = new Survey();
+                        currentSurvey = new LongTermSurvey();
                     }else if(currentSurvey != null){
                         switch (name) {
                             case "id":
-                                currentSurvey.setId(Integer.valueOf(parser.nextText()));
+                                currentSurvey.setID(Integer.valueOf(parser.nextText()));
                                 break;
                             case "question":
                                 currentSurvey.setQuestion(parser.nextText());
@@ -193,7 +216,6 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
                             case "description":
                                 currentSurvey.setDescription(parser.nextText());
                                 break;
-
                         }
                     }
                     break;
@@ -202,10 +224,8 @@ public class FirstTimeSurveyFragment extends Fragment implements View.OnClickLis
                     if(name.equalsIgnoreCase("survey")&& currentSurvey != null) {
                         arrayList.add(currentSurvey);
                     }
-
             }
             eventType = parser.next();
         }
-
     }
 }
