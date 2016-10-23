@@ -37,7 +37,6 @@ public class TimeOutModelAcivity extends FragmentActivity {
     private PieChart sosSelection;
     private float[]  yData;
     private String[] xData;
-    private float selection;
 
 
     @Override

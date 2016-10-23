@@ -10,7 +10,7 @@
         android:layout_height="fill_parent"
         android:gravity="center"
         android:id="@+id/infoText"
-        android:layout_weight="1" />
+        android:layout_weight="0.65" />
 
     <TextView
         android:text="TextView"
@@ -18,15 +18,17 @@
         android:layout_height="fill_parent"
         android:gravity="center"
         android:id="@+id/numText"
-        />
+        android:layout_weight="0.08" />
 
     <Button
         android:layout_width="50dp"
         android:layout_height="fill_parent"
+        android:layout_marginLeft="5dp"
         android:text="+"
         android:textAlignment="center"
         android:textSize="8pt"
         android:textColor="#0066cc"
-        android:id="@+id/addOneBtn" />
+        android:id="@+id/addOneBtn"
+        android:layout_weight="0.07" />
 
 </LinearLayout>

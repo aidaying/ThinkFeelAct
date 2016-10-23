@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,7 @@ import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.InputFilterMinMax;
 
 
-public class AddEventPageFragment extends Fragment {
+public class AddEventPageFragment extends Fragment implements TextWatcher{
     private DatabaseHandler mydb;
     private EditText eventEntry;
     private SeekBar eventRateBar;
@@ -60,7 +62,7 @@ public class AddEventPageFragment extends Fragment {
         eventRateBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rate = eventRateBar.getProgress();
+
                 ratePercentage.setText(String.valueOf(rate));
             }
 
@@ -71,7 +73,7 @@ public class AddEventPageFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                rate = seekBar.getProgress();
             }
         });
         addButton = (Button) addEventView.findViewById(R.id.addButton);
@@ -93,15 +95,15 @@ public class AddEventPageFragment extends Fragment {
                 event.setThoughtwhat("");
                 event.setThoughtwhyhow("");
                 event.setThoughtfeel("");
-                mydb.addFirstTimeEvent(event);
-                Intent intent = new Intent(getActivity(), FirstTimeLauncherSurveys.class);
+                mydb.addEvent(event);
+                Intent intent = new Intent(getActivity(), FirstTimeLauncherSurveysActivity.class);
                 intent.putExtra("fragment_id",2 );
                 startActivity(intent);
 
             }
         });
         calculateButton = (Button) addEventView.findViewById(R.id.calculateButton);
-        calculateButton.setClickable(false);
+
         if (mydb.getAllTheRateFromEvent().size()>=3) {
 
             calculateButton.setClickable(true);
@@ -123,13 +125,26 @@ public class AddEventPageFragment extends Fragment {
         return addEventView;
     }
 
-    /**
-     * Method for hiding the soft keybooard
-     * @param v The EditText view whos keyboard you want to hide
-     */
+
     public void hide(EditText v) {
         InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    }
+
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
     }
 }
 

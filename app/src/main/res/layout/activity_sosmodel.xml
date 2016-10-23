@@ -17,4 +17,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView8" />
+
+    <Button
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_button"
+        android:id="@+id/addSOSListBtn"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
