@@ -3,8 +3,12 @@
     package="nz.ac.aut.rnd.team.thinkfeelactproject"
     android:installLocation="preferExternal">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -29,11 +33,17 @@
         <activity android:name=".bucketmodel.BucketModelActivity" />
         <activity android:name=".firsttimeloadup.FirstTimeInitialPageActivity" />
         <activity android:name=".normalstartup.InitialPage" />
-        <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveys" />
+        <activity android:name=".firsttimeloadup.FirstTimeLauncherSurveysActivity" />
         <activity android:name=".sosmodel.SOSModelActivity" />
         <activity android:name=".timeoutmodel.TimeOutModelAcivity" />
-        <activity android:name=".selfevalmodel.SelfEvaluationActivity" android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Credits"/>
+        <activity
+            android:name=".selfevalmodel.SelfEvaluationActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Credits" />
+        <activity android:name=".timelinemodel.TimelineActivity"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

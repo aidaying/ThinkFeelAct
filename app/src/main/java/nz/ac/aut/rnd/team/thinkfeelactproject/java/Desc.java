@@ -31,10 +31,9 @@ public class Desc {
         this.num = num;
     }
 
-    public Desc(String desc, String type, float selectedValue, int num) {
+    public Desc(String desc, String type, int num) {
         this.desc = desc;
         this.type = type;
-        this.selectedValue = selectedValue;
         this.num = num;
     }
 
@@ -60,13 +59,5 @@ public class Desc {
 
     public void setNum(int num) {
         this.num = num;
-    }
-
-    public float getSelectedValue() {
-        return selectedValue;
-    }
-
-    public void setSelectedValue(float selectedValue) {
-        this.selectedValue = selectedValue;
     }
 }

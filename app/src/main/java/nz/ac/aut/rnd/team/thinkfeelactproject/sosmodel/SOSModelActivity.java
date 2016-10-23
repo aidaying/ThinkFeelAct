@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -48,6 +49,7 @@ public class SOSModelActivity extends Activity {
     private float[]  yData;
     private String[] xData;
     private sosDescListAdapter sosDescListAdapter;
+    private Button addSoSListBtn;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -66,8 +68,9 @@ public class SOSModelActivity extends Activity {
             e.printStackTrace();
         }
 
-        relativeLayout = (RelativeLayout) findViewById(R.id.sospie);
 
+
+        relativeLayout = (RelativeLayout) findViewById(R.id.sospie);
         sosSelection = new PieChart(this);
 
         relativeLayout.addView(sosSelection);
@@ -76,27 +79,28 @@ public class SOSModelActivity extends Activity {
         sosSelection.setDescription("");
         sosSelection.setDrawHoleEnabled(true);
         sosSelection.setHoleColor(Color.TRANSPARENT);
-        sosSelection.setHoleRadius(30);
-        sosSelection.setTransparentCircleRadius(30);
+        sosSelection.setHoleRadius(60);
+        sosSelection.setTransparentCircleRadius(60);
 
         sosSelection.setRotationAngle(0);
-        sosSelection.setRotationEnabled(true);
+        sosSelection.setRotationEnabled(false);
+        addSoSListBtn = (Button) relativeLayout.findViewById(R.id.addSOSListBtn);
 
-        sosSelection.setCenterText("Same Old Stuff happens\n all the time");
+
 
         ViewGroup.LayoutParams params = sosSelection.getLayoutParams();
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
 
-        sosSelection.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+        addSoSListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onValueSelected(final Entry e, Highlight h) {
+            public void onClick(View v) {
                 final Dialog dialog = new Dialog(SOSModelActivity.this);
                 dialog.setContentView(R.layout.fragment_sos_dialog);
                 dialog.setTitle("Details");
                 final Button addNewBtn = (Button) dialog.findViewById(R.id.addNewSosEventBtn);
                 Button close = (Button) dialog.findViewById(R.id.closeBtn);
-                updateList(dialog, e);
+                updateList(dialog);
                 dialog.show();
                 addNewBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -134,10 +138,10 @@ public class SOSModelActivity extends Activity {
                                     Desc desc1 = new Desc();
                                     desc1.setDesc(desc);
                                     desc1.setType(type);
-                                    desc1.setSelectedValue(e.getY());
+
                                     desc1.setNum(num);
                                     mydb.addNewDescInfo(desc1);
-                                    updateList(dialog, e);
+                                    updateList(dialog);
                                     addNewDialog.dismiss();
                                 }
                             });
@@ -158,23 +162,21 @@ public class SOSModelActivity extends Activity {
                     }
                 });
             }
-            @Override
-            public void onNothingSelected() {
-
-            }
         });
         addData();
 
     }
 
-    private void updateList(Dialog dialog, Entry e){
+
+
+    private void updateList(Dialog dialog){
         if(mydb.isDescEmpty() == true) {
             ArrayList<Desc> descList = mydb.getAllNewDescInfo();
             ArrayList<Desc> list = new ArrayList<Desc>();
             for(int i = 0; i < descList.size(); i++){
-                    if (descList.get(i).getSelectedValue() == e.getY()) {
+
                         list.add(descList.get(i));
-                    }
+
             }
             sosDescListAdapter = new sosDescListAdapter(dialog.getContext(), list);
             ListView listView = (ListView) dialog.findViewById(R.id.sosListView);

@@ -383,7 +383,7 @@ public class SelfEvaluationActivity extends Activity implements View.OnClickList
             event.setThoughtwhat(thoughtWhatString);
             event.setThoughtwhyhow(thoughtWhyHowString);
             event.setThoughtfeel(thoughtFeelString);
-
+            mydb.addEvent(event);
             Toast.makeText(this, addMessage, Toast.LENGTH_LONG).show();
             //Returns to Bucket model activity when event is added
             super.onBackPressed();

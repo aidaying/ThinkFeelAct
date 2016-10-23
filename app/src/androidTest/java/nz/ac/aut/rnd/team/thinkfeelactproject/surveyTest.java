@@ -4,10 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import nz.ac.aut.rnd.team.thinkfeelactproject.java.Survey;
-
-import static org.junit.Assert.*;
-
 /**
  * Created by Robert on 9/08/2016.
  */

@@ -25,9 +25,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //DATABASE RELATED
     private static final String LT_TABLE_NAME = "INITIAL";
     private static final String LTSURVEY_ID = "ID";
-    private static final String QUESTION_ID = "QUESTION_ID";
     private static final String RATING = "RATING";
-    private static final String ADDED_DATE = "ADDED_DATE";
+    private static final String QUESTION_ID = "QUESTION_ID";
     private static final String ANSWERED_TRUE = "FIRST_ANSWER";
 
     private static final String EVENT_TABLE_NAME = "EVENT";
@@ -45,7 +44,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String SOS_DESC_ID = "DESC_ID";
     private static final String SOS_DESC = "DESCRIPTION";
     private static final String SOS_DESC_TYPE = "TYPE";
-    private static final String SOS_DESC_SELECTED_VALUE = "SELECTED_VALUE";
     private static final String SOS_DESC_NUM = "NUMBER";
 
     boolean isCreating = false;
@@ -90,11 +88,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do {
                 LongTermSurvey longTermSurvey = new LongTermSurvey();
-                longTermSurvey.setRating(cursor.getInt(2));
+                longTermSurvey.setRating(cursor.getDouble(3));
                 arrayList.add(longTermSurvey.getRating());
             }while(cursor.moveToNext());
         }
         return arrayList;
+    }
+
+    public ArrayList<LongTermSurvey> getAllLTSurvey (){
+        ArrayList<LongTermSurvey> arrayList = new ArrayList<LongTermSurvey>();
+        dbase = this.getReadableDatabase();
+        Cursor cursor = dbase.rawQuery("SELECT * FROM " + LT_TABLE_NAME, null);
+        if(cursor.moveToFirst()) {
+            do {
+                LongTermSurvey longTermSurvey = new LongTermSurvey();
+                longTermSurvey.setID(cursor.getInt(2));
+                longTermSurvey.setAnswerTF(cursor.getString(1));
+                longTermSurvey.setRating(cursor.getDouble(3));
+                arrayList.add(longTermSurvey);
+            }while(cursor.moveToNext());
+        }
+        return arrayList;
+    }
+
+    public void alterLongTermRate(LongTermSurvey longTermRate) {
+
+        dbase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(RATING, longTermRate.getRating());
+        String where =  LTSURVEY_ID + "=?";
+        String[] whereArgs = new String[]{String.valueOf(longTermRate.getID())};
+
+        dbase.update(LT_TABLE_NAME, values, where, whereArgs);
+
     }
 
     public List<Double> getAllTheRateFromEvent (){
@@ -130,22 +156,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Log.e("ADD EVENT", "NOPE");}
     }
 
-    public void addFirstTimeEvent(Event event) {
+    public void addLongTermSurvey(LongTermSurvey longTermSurvey) {
         dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(EVENT_NAME, event.getName());
-        values.put(EVENT_RATING, event.getRating());
-        try {
-            dbase.insert(EVENT_TABLE_NAME, null, values);
-        }catch (Exception e){}
-    }
-
-    public void addLongTermSurvey(LongTermSurvey longTermSurvey) {
-          dbase = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
         values.put(ANSWERED_TRUE, longTermSurvey.getAnswerTF());
+        values.put(QUESTION_ID, longTermSurvey.getID());
         values.put(RATING, longTermSurvey.getRating());
-        values.put(QUESTION_ID, longTermSurvey.getQuestionId());
         try{
         dbase.insert(LT_TABLE_NAME, null, values);}catch(Exception e){}
     }
@@ -155,7 +171,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(SOS_DESC, desc.getDesc());
         values.put(SOS_DESC_TYPE, desc.getType());
-        values.put(SOS_DESC_SELECTED_VALUE,desc.getSelectedValue());
         values.put(SOS_DESC_NUM, desc.getNum());
         try{
             dbase.insert(SOS_DESCRIPTION_TABLE_NAME, null, values);}catch(Exception e){}
@@ -183,8 +198,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 desc.setId(cursor.getInt(0));
                 desc.setDesc(cursor.getString(1));
                 desc.setType(cursor.getString(2));
-                desc.setSelectedValue(cursor.getFloat(3));
-                desc.setNum(cursor.getInt(4));
+                desc.setNum(cursor.getInt(3));
                 arrayList.add(desc);
             }while(cursor.moveToNext());
         }
@@ -209,8 +223,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private void createTable(SQLiteDatabase db){
 
         String CREATE_LTSURVEY_TABLE = "CREATE TABLE "+ LT_TABLE_NAME + "("
-                + LTSURVEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ANSWERED_TRUE + " TEXT, " + RATING + " DOUBLE, "
-                + QUESTION_ID + " INTEGER)";
+                + LTSURVEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ANSWERED_TRUE + " TEXT, " + QUESTION_ID + " INTEGER, " + RATING + " DOUBLE)";
         db.execSQL(CREATE_LTSURVEY_TABLE);
 
         String CREATE_EVENT_CURRENT_TABLE = "CREATE TABLE "+ EVENT_TABLE_NAME + "("
@@ -219,7 +232,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_EVENT_CURRENT_TABLE);
 
         String CREATE_DESC_TABLE = "CREATE TABLE "+ SOS_DESCRIPTION_TABLE_NAME + "("
-                + SOS_DESC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SOS_DESC + " TEXT, " + SOS_DESC_TYPE + " TEXT, " + SOS_DESC_SELECTED_VALUE + " FLOAT, " + SOS_DESC_NUM + " INTEGER)";
+                + SOS_DESC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SOS_DESC + " TEXT, " + SOS_DESC_TYPE + " TEXT, "  + SOS_DESC_NUM + " INTEGER)";
         db.execSQL(CREATE_DESC_TABLE);
     }
 

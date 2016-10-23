@@ -28,6 +28,7 @@ import java.util.List;
 import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 import nz.ac.aut.rnd.team.thinkfeelactproject.selfevalmodel.SelfEvaluationActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.sosmodel.SOSModelActivity;
+import nz.ac.aut.rnd.team.thinkfeelactproject.timelinemodel.TimelineActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.timeoutmodel.TimeOutModelAcivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.StressCalculator;
@@ -45,7 +46,7 @@ public class BucketModelActivity extends AppCompatActivity {
     StressCalculator stressCalculator;
     TextView ratingResult, rateDesc;
     ImageView bImg;
-    Button sosBtn, timeoutBtn, selfEvalBtn, realRateButton;
+    Button sosBtn, timeoutBtn, selfEvalBtn, realRateButton,timelineBtn;
     SeekBar seekTest;
     RatingBar ratingBar;
 
@@ -60,20 +61,13 @@ public class BucketModelActivity extends AppCompatActivity {
         eventRating = mydb.getAllTheRateFromEvent();
 
         stressCalculator = new StressCalculator();
-
-        double a = stressCalculator.standardDeviationResult(longTermSurveyRating);
-        stressCalculator = new StressCalculator();
-        double b = stressCalculator.standardDeviationResult(eventRating);
-        String aR = new DecimalFormat("##").format(a);
-        String bR = new DecimalFormat("##").format(b);
-        final double c = a + b;
-        String cR = new DecimalFormat("##").format(c);
+        double a =stressCalculator.calculationResult(longTermSurveyRating);
+        double b = stressCalculator.calculationResult(eventRating);
+        final double c = stressCalculator.getWeightedMean(a, b);
 
         ratingResult = (TextView) findViewById(R.id.bucketModelPercentage);
-        //ratingResult.setText(aR + " + " + bR + " = " + cR +" %");
         rateDesc = (TextView) findViewById(R.id.rateDesc);
-
-
+        timelineBtn = (Button) findViewById(R.id.timelineBtn);
         sosBtn = (Button) findViewById(R.id.sosBtn);
         timeoutBtn = (Button) findViewById(R.id.timeoutBtn);
         selfEvalBtn = (Button) findViewById(R.id.selfEvalBtn);
@@ -130,7 +124,13 @@ public class BucketModelActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        timelineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), TimelineActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void displayStressValue(ImageView bImg, int result){
