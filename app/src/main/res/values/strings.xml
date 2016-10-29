@@ -9,9 +9,12 @@
 
     <string name="bOrangeDesc">6-7 Represents a stress warning. This indicates that you might be on the verge of over-stressing. Examples: Holding back anger, anxiety, too much work</string>
 
-    <string name="bRedDesc">8-10 Represents a danger zone. This means you are over-stressing. Examples: Getting violent, overwhelming depression, self-harm, suicidal.
+    <string name="bRedDesc">8-10 Represents a danger zone. This means you are over-stressing. Examples: Getting violent, overwhelming depression, self-harm, suicidal.</string>
 
-</string>
+    <string name="toSongInfo">The song in timeout model is permitted for commercial use under license Creative Commons Attribution 4.0 International License</string>
+
+    <string name="toImgInfo">Pictures in the timeout model were Designed by Freepik and distributed by Flaticon</string>
+
 
 
     <string-array name="mood_names">

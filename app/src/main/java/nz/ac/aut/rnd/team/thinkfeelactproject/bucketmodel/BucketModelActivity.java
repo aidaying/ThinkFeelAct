@@ -89,7 +89,7 @@ public class BucketModelActivity extends AppCompatActivity {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 result = progress;
-                ratingResult.setText("Rating: "+ result + "/10");
+                ratingResult.setText("Your Stress Rating: "+ result + "/10");
                 displayStressValue(bImg, result);
             }
 
@@ -143,12 +143,12 @@ public class BucketModelActivity extends AppCompatActivity {
             rateDesc.setText("Danger Zone: You are over-stressing");
             rateDesc.setTextColor(Color.parseColor("#ff484b"));
         }
-        else if (result < 8 && result >= 5) {
+        else if (result < 8 && result >= 6) {
             ratingResult.setTextColor(Color.parseColor("#ffa14a"));
             rateDesc.setText("Warning Zone: You are on the verge of over-stressing");
             rateDesc.setTextColor(Color.parseColor("#ffa14a"));
         }
-        else if(result<5 && result > 3){
+        else if(result<6 && result > 3){
             ratingResult.setTextColor(Color.parseColor("#40d973"));
             rateDesc.setText("Fairly Relaxed: Everyday stress");
             rateDesc.setTextColor(Color.parseColor("#40d973"));
@@ -204,10 +204,17 @@ public class BucketModelActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         android.app.FragmentManager fm = getFragmentManager();
-        AboutDialog aboutDialog = new AboutDialog();
-        aboutDialog.show(fm, "about");
-
-        return super.onOptionsItemSelected(item);
+        switch(item.getItemId()) {
+            case R.id.infoIcon:
+                AboutDialog aboutDialog = new AboutDialog();
+                aboutDialog.show(fm, "about");
+                return true;
+            case R.id.credits:
+                Credits credits = new Credits();
+                credits.show(fm, "credits");
+                return true;
+        }
+        return true;
     }
 
     @Override

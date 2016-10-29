@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="Thoughts"
             android:textColor="#ffffff"
-            android:layout_weight="1.1"
+            android:layout_weight="1.05"
             android:id="@+id/thoughtsButton"
             android:background="@drawable/del_button_border"
             android:checked="false"
@@ -74,8 +74,8 @@
             android:id="@+id/bodyButton"
             android:background="@drawable/del_button_border"
             android:checked="false"
-            android:textOff="Physical Pain"
-            android:textOn="Physical Pain"
+            android:textOff="Body"
+            android:textOn="Body"
             android:textSize="16sp" />
 
     </LinearLayout>

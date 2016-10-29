@@ -65,8 +65,7 @@
                         android:textSize="18dp"
                         android:textColor="#2d2d2d"
                         android:paddingEnd="15dp"
-                        android:paddingStart="15dp"
-                        android:backgroundTint="@android:color/background_light" />
+                        android:paddingStart="15dp" />
 
                     <EditText
                         android:layout_width="match_parent"
