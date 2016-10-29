@@ -9,38 +9,42 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:id="@+id/textView37"
             android:text="ID"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_weight="0.1"/>
 
         <TextView
             android:text="Question"
             android:layout_height="match_parent"
             android:id="@+id/textView40"
             android:gravity="center"
-            android:layout_width="280dp" />
+            android:layout_width="250dp"
+            android:layout_weight="0.7"/>
 
         <TextView
             android:text="Rate"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:id="@+id/textView46"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_weight="0.1"/>
 
         <TextView
             android:text="Edit"
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:id="@+id/textView49"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_weight="0.1"/>
 
 
     </LinearLayout>

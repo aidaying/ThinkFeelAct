@@ -11,21 +11,20 @@
     tools:context=".sosmodel.SOSModelActivity">
 
     <TextView
-        android:text="SOS Model"
+        android:text="Same Old Stuff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView8" />
 
-    <Button
-        android:text="+"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/circle_button"
-        android:id="@+id/addSOSListBtn"
-        android:layout_centerVertical="true"
+    <TextView
+        android:text="You can click anywhere on the pie chart to open a list where you can store all the event that is keep occuring when you are too stressful"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textView28"
+        android:layout_width="300dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
