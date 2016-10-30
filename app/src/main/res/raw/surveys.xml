@@ -38,7 +38,7 @@
     </survey>
     <survey>
         <id>7</id>
-        <question>Bad at comprosing yourself/maintaining your health/handling pressure</question>
+        <question>Bad at composing yourself/maintaining your health/handling pressure</question>
         <description>(eg. Controlling your anger, anxiety, panic, worry, nervousness, etc.)</description>
         <type>Self</type>
     </survey>
@@ -110,7 +110,7 @@
     </survey>
     <survey>
         <id>19</id>
-        <question>Do you feel guilty or regreful of actions done in the past?</question>
+        <question>Do you feel guilty or regretful of actions done in the past?</question>
         <description>(eg. cheating, bullying, guilt, manipulation, not studying to your fullest potential etc.)</description>
         <type>Self</type>
     </survey>
@@ -200,7 +200,7 @@
     </survey>
     <survey>
         <id>34</id>
-        <question>Do you have addiction?</question>
+        <question>Do you have an addiction?</question>
         <description>(eg. Drugs, gambling, games, social media etc.)</description>
         <type>other</type>
     </survey>
@@ -242,8 +242,8 @@
     </survey>
     <survey>
         <id>41</id>
-        <question>Leaky home Stress?</question>
-        <description> </description>
+        <question>Sudden issues in daily life</question>
+        <description>(eg. Leaky roof, Plumbing issues, Punctured Car tyre etc.)</description>
         <type>other</type>
     </survey>
 </surveys>
