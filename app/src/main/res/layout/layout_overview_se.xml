@@ -138,8 +138,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="66dp"
                         android:id="@+id/SE_OVERVIEW_moodImgView"
-                        android:foregroundGravity="left"
-                        android:layout_gravity="left|start"
+                        android:foregroundGravity="left|center_vertical|center_horizontal"
+                        android:layout_gravity="left|center_vertical|center_horizontal|start"
                         android:paddingRight="20dp" />
 
                 </LinearLayout>
