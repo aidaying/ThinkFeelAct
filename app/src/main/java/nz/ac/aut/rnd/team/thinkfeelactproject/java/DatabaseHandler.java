@@ -95,6 +95,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    public void alterLTRate(LongTermSurvey longTermSurvey) {
+
+        dbase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(RATING, longTermSurvey.getRating());
+        values.put(ANSWERED_TRUE, longTermSurvey.getAnswerTF());
+        String where =  LTSURVEY_ID + "=?";
+        String[] whereArgs = new String[]{String.valueOf(longTermSurvey.getID())};
+
+        dbase.update(LT_TABLE_NAME, values, where, whereArgs);
+    }
     public ArrayList<LongTermSurvey> getAllLTSurvey (){
         ArrayList<LongTermSurvey> arrayList = new ArrayList<LongTermSurvey>();
         dbase = this.getReadableDatabase();
