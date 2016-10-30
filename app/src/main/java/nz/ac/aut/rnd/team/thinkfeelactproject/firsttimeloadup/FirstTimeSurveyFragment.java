@@ -3,7 +3,9 @@ package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -119,7 +123,10 @@ public class FirstTimeSurveyFragment extends Fragment {
         return surveyView;
     }
 
-
+    public void onBackPressed() {
+        //handle back press event
+        Toast.makeText(getContext(),"Please Finish the survey First", Toast.LENGTH_SHORT).show();
+    }
     private void storeSurvey(View v){
         survey = arrayList.get(i);
         radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -179,6 +186,7 @@ public class FirstTimeSurveyFragment extends Fragment {
 
     }
 
+
     private void xmlInit(){
         XmlPullParserFactory pullParserFactory;
         try{
@@ -227,5 +235,38 @@ public class FirstTimeSurveyFragment extends Fragment {
             }
             eventType = parser.next();
         }
+    }
+
+    /**
+     * Called when the fragment's activity has been created and this
+     * fragment's view hierarchy instantiated.  It can be used to do final
+     * initialization once these pieces are in place, such as retrieving
+     * views or restoring state.  It is also useful for fragments that use
+     * {@link #setRetainInstance(boolean)} to retain their instance,
+     * as this callback tells the fragment when it is fully associated with
+     * the new activity instance.  This is called after {@link #onCreateView}
+     * and before {@link #onViewStateRestored(Bundle)}.
+     *
+     * @param savedInstanceState If the fragment is being re-created from
+     *                           a previous saved state, this is the state.
+     */
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        Toast.makeText(getActivity(), "Please Finish all the survey first", Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 }

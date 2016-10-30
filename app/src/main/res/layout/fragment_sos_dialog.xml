@@ -21,6 +21,40 @@
             android:layout_weight="0.3"
             android:layout_width="100dp" />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="145dp"
+                android:layout_height="40dp"
+                android:id="@+id/textView35"
+                android:gravity="center_horizontal"
+                android:padding="4dp"
+                android:layout_weight="0.65"
+                android:text="Same Old Stuff Event Name" />
+
+            <TextView
+                android:text="Number of Time(s)"
+                android:layout_width="100dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/textView36"
+                android:padding="3dp"
+                android:layout_weight="0.08"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:text="Add When Occur again"
+                android:layout_width="108dp"
+                android:layout_height="40dp"
+                android:padding="3dp"
+                android:gravity="center_horizontal"
+                android:layout_weight="0.07"
+                android:id="@+id/textView47" />
+
+        </LinearLayout>
+
         <ListView
             android:layout_width="match_parent"
             android:id="@+id/sosListView"
