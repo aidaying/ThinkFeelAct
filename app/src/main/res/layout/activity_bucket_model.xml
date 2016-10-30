@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/linearLayout5">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="match_parent"
@@ -49,16 +49,6 @@
                 android:layout_toStartOf="@+id/bucketImg"
                 android:layout_alignBottom="@+id/bucketImg" />
 
-            <Button
-                android:text="Timeline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="293dp"
-                android:layout_marginTop="30dp"
-                android:id="@+id/timelineBtn" />
-
         </RelativeLayout>
 
         <TextView
@@ -91,39 +81,47 @@
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+            <Button
+                android:text="SOS"
+                android:layout_height="match_parent"
+                android:id="@+id/sosBtn"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content" />
+
+            <Button
+                android:text="Add a \nstressful \nevent"
+                android:layout_height="match_parent"
+                android:id="@+id/selfEvalBtn"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content" />
+
+            <Button
+                android:text="Time Out"
+                android:layout_height="match_parent"
+                android:id="@+id/timeoutBtn"
+                android:layout_toEndOf="@+id/bucketModelPercentage"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
 
         <Button
-            android:text="SOS"
-            android:layout_height="match_parent"
-            android:id="@+id/sosBtn"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content" />
+            android:text="Timeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/timelineBtn" />
 
-        <Button
-            android:text="Add a \nstressful \nevent"
-            android:layout_height="match_parent"
-            android:id="@+id/selfEvalBtn"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content" />
-
-        <Button
-            android:text="Time Out"
-            android:layout_height="match_parent"
-            android:id="@+id/timeoutBtn"
-            android:layout_toEndOf="@+id/bucketModelPercentage"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content" />
     </LinearLayout>
 
 </RelativeLayout>
