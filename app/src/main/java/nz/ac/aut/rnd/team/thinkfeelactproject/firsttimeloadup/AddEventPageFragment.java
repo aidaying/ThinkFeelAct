@@ -3,10 +3,12 @@ package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.bucketmodel.BucketModelActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.DatabaseHandler;
@@ -23,7 +26,7 @@ import nz.ac.aut.rnd.team.thinkfeelactproject.R;
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.InputFilterMinMax;
 
 
-public class AddEventPageFragment extends Fragment implements TextWatcher{
+public class AddEventPageFragment extends Fragment {
     private DatabaseHandler mydb;
     private EditText eventEntry;
     private SeekBar eventRateBar;
@@ -38,6 +41,7 @@ public class AddEventPageFragment extends Fragment implements TextWatcher{
     private double rate;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,12 +53,16 @@ public class AddEventPageFragment extends Fragment implements TextWatcher{
         ratePercentage = (TextView) addEventView.findViewById(R.id.ratePercentage);
 
         eventEntry = (EditText) addEventView.findViewById(R.id.eventEntry);
+
         dayEntry = (EditText) addEventView.findViewById(R.id.dayEntry);
         dayEntry.setFilters(new InputFilter[]{new InputFilterMinMax("1","31")});
+
         monthEntry = (EditText) addEventView.findViewById(R.id.monthEntry);
         monthEntry.setFilters(new InputFilter[]{new InputFilterMinMax("1","12")});
+
         yearEntry = (EditText) addEventView.findViewById(R.id.yearEntry);
         yearEntry.setFilters(new InputFilter[]{new InputFilterMinMax("1","2100")});
+
         eventRateBar = (SeekBar) addEventView.findViewById(R.id.eventRateBar);
         eventRateBar.setProgress(0);
         eventRateBar.incrementProgressBy(1);
@@ -81,6 +89,22 @@ public class AddEventPageFragment extends Fragment implements TextWatcher{
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isEmptyField(eventEntry)){
+                    Toast.makeText(getContext(), "Fill in Event Name First", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(isEmptyField(dayEntry)){
+                    Toast.makeText(getContext(), "Fill in Day First", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(isEmptyField(monthEntry)){
+                    Toast.makeText(getContext(), "Fill in Month First", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(isEmptyField(yearEntry)){
+                    Toast.makeText(getContext(), "Fill in Year First", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String name = eventEntry.getText().toString();
                 String dd = dayEntry.getText().toString();
                 String mm = monthEntry.getText().toString();
@@ -103,10 +127,10 @@ public class AddEventPageFragment extends Fragment implements TextWatcher{
             }
         });
         calculateButton = (Button) addEventView.findViewById(R.id.calculateButton);
-
+        calculateButton.setEnabled(false);
         if (mydb.getAllTheRateFromEvent().size()>=3) {
-
-            calculateButton.setClickable(true);
+            Toast.makeText(getContext(), "You can now choose calculate the result or keep adding event", Toast.LENGTH_LONG).show();
+            calculateButton.setEnabled(true);
             calculateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -130,21 +154,27 @@ public class AddEventPageFragment extends Fragment implements TextWatcher{
         InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
-
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+    private boolean isEmptyField (EditText editText){
+        return  editText.getText().toString().length() <= 0;
     }
-
     @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
 
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        Toast.makeText(getActivity(), "Please Fill in At Least 3 event entry First", Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 }
 
