@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <size>10</size>
-    <detail>Sorry</detail>
+    <detail>Breaking down</detail>
     <size>10</size>
-    <detail>Implode</detail>
+    <detail>Rejection</detail>
     <size>10</size>
-    <detail>Feel Guilt</detail>
+    <detail>Pain</detail>
     <size>10</size>
-    <detail>Temporary releaf</detail>
-    <size>10</size>
-    <detail>Consequenses</detail>
+    <detail>Guilt</detail>
     <size>10</size>
     <detail>Bad Thoughts</detail>
     <size>10</size>
-    <detail>Plans to do better</detail>
+    <detail>Outbursts</detail>
     <size>10</size>
-    <detail>Tension rise again</detail>
+    <detail>Tension</detail>
     <size>10</size>
-    <detail>Escalation</detail>
-    <size>10</size>
-    <detail>Outburst</detail>
+    <detail>Irrational thoughts</detail>
 </resources>
