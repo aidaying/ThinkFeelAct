@@ -49,7 +49,7 @@ public class LongTermResultListAdaptor extends ArrayAdapter<LongTermSurvey> {
         if(l != null){}
         TextView idOutput = (TextView) v.findViewById(R.id.longTermQuestionIdDisplay);
         TextView questionOutput = (TextView) v.findViewById(R.id.longTermQuestionDisplay);
-        TextView rateOutput = (TextView) v.findViewById(R.id.longTermRateDisplay);
+        final TextView rateOutput = (TextView) v.findViewById(R.id.longTermRateDisplay);
         ImageButton edit = (ImageButton) v.findViewById(R.id.editLongTermRatingButton);
 
         if(idOutput != null){
@@ -100,14 +100,14 @@ public class LongTermResultListAdaptor extends ArrayAdapter<LongTermSurvey> {
                             lt.setID(l.getID());
                             lt.setRating(rate);
                             lt.setAnswerTF("True");
+                            l.setRating(rate);
                         }
                         mydb.alterLongTermRate(lt);
                         notifyDataSetChanged();
-                        addNewDialog.dismiss();
 
+                        addNewDialog.dismiss();
                     }
                 });
-
                 ltCancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
