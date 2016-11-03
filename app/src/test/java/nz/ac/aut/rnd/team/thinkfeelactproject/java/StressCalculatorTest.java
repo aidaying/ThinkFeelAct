@@ -40,7 +40,7 @@ public class StressCalculatorTest extends AndroidTestCase {
         rateList.add(7.0);
         rateList.add(8.0);
         rateList.add(9.0);
-        assertEquals(5.0, stressCalculator.standardDeviationResult(rateList), 0);
+        assertEquals(5.0, stressCalculator.calculationResult(rateList), 0);
     }
 
 }

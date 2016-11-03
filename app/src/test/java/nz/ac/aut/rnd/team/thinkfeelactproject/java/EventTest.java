@@ -1,12 +1,15 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.java;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import nz.ac.aut.rnd.team.thinkfeelactproject.java.Event;
 
-import static org.junit.Assert.*;
+import static junit.framework.Assert.assertEquals;
+
 
 /**
  * Created by Robert on 9/08/2016.

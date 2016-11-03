@@ -1,5 +1,6 @@
 package nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup;
 
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -23,6 +24,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * Created by Robert on 30/09/2016.
  */
 @RunWith(AndroidJUnit4.class)
+@LargeTest
 public class FirstTimeInitialPageActivityTest{
 
     @Rule
@@ -43,6 +45,6 @@ public class FirstTimeInitialPageActivityTest{
     public void testOnCreate() throws Exception {
         onView(withId(R.id.nameInput)).perform(typeText("HELLO"), closeSoftKeyboard());
         onView(withId(R.id.enter)).perform(click());
-        onView(withId(R.id.nameInput)).check(matches(withText("HELLO")));
+        onView(withId(R.id.question)).check(matches(withText("Death of a significant person?")));
     }
 }

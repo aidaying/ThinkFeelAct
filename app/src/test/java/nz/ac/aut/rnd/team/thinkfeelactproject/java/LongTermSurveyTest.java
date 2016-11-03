@@ -14,7 +14,7 @@ public class LongTermSurveyTest {
 
     @Before
     public void setup(){
-        longTermSurvey = new LongTermSurvey("T", 5.0, 1);
+        longTermSurvey = new LongTermSurvey(1, "T", 5.0);
         longTermSurvey.setID(1);
     }
 
@@ -38,8 +38,8 @@ public class LongTermSurveyTest {
 
     @Test
     public void testSetQuestionId() throws Exception {
-        longTermSurvey.setQuestionId(2);
-        assertEquals(2, longTermSurvey.getQuestionId());
+        longTermSurvey.setID(2);
+        assertEquals(2, longTermSurvey.getID());
     }
 
     @Test
@@ -59,6 +59,6 @@ public class LongTermSurveyTest {
 
     @Test
     public void testGetQuestionId() throws Exception {
-        assertEquals(1, longTermSurvey.getQuestionId());
+        assertEquals(1, longTermSurvey.getID());
     }
 }
