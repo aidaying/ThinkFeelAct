@@ -11,7 +11,9 @@ import android.os.Bundle;
 
 import nz.ac.aut.rnd.team.thinkfeelactproject.firsttimeloadup.FirstTimeInitialPageActivity;
 import nz.ac.aut.rnd.team.thinkfeelactproject.normalstartup.InitialPage;
-
+/**
+**This class is used to control which page to redirct to when the user start the application
+**/
 public class MainActivity extends FragmentActivity {
 
 
@@ -24,9 +26,13 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MultiDex.install(this);
-
+        // The Shared Perferences is used to store the user first name and last name, so it can remember in the application
         sharedPreferences = getSharedPreferences(ShaPreferences, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        //The following method is used to check whether the user is using this application for the first time or not,
+        //If so, it will set the first time to true and remember it in the shared preferences 
+        //Start up the activity with the survey question
+        //else it will start the bucket model page if this is the second time.
         boolean firstTime = sharedPreferences.getBoolean("first",true);
         if(firstTime){
             editor.putBoolean("first",false);
