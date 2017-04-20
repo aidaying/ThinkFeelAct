@@ -1,7 +1,7 @@
 # ThinkFeelActProject
-R-D Project
+R-D Project 
 Team Think Feel Act
-Members:
+2016 Members:
 Tsz Ying Chung
 Vivian Ngo
 Zihang Wang
